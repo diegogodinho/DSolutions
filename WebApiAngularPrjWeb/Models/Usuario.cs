@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Dados;
 
-namespace MvcApplication1.Models
+namespace WebApiAngularPrjWeb.Models
 {
     public class Usuario
     {

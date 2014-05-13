@@ -30,3 +30,5 @@ D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebApiAngularPrjWeb\bin\Sys
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebApiAngularPrjWeb\bin\System.Web.WebPages.Razor.xml
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebApiAngularPrjWeb\obj\Debug\WebApiAngularPrjWeb.dll
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebApiAngularPrjWeb\obj\Debug\WebApiAngularPrjWeb.pdb
+D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebApiAngularPrjWeb\bin\Autenticacao.dll
+D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebApiAngularPrjWeb\bin\Autenticacao.pdb

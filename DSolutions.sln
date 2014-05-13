@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dados", "Dados\Dados.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAngularPrjWeb", "WebApiAngularPrjWeb\WebApiAngularPrjWeb.csproj", "{5D08226E-7C8D-45E4-9A6F-896C30896D3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autenticacao", "Autenticacao\Autenticacao.csproj", "{84634C3E-4C06-4557-9EE8-8F4435507EFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{5D08226E-7C8D-45E4-9A6F-896C30896D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D08226E-7C8D-45E4-9A6F-896C30896D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D08226E-7C8D-45E4-9A6F-896C30896D3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84634C3E-4C06-4557-9EE8-8F4435507EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84634C3E-4C06-4557-9EE8-8F4435507EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84634C3E-4C06-4557-9EE8-8F4435507EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84634C3E-4C06-4557-9EE8-8F4435507EFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

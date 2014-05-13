@@ -1,6 +1,6 @@
 var diegoApp = angular.module('diegoApp', [
   'ngRoute',
-  'diegoController'
+  'controllerPadrao'
 ]);
 diegoApp.config(['$routeProvider',
   function ($routeProvider) {
@@ -13,6 +13,10 @@ diegoApp.config(['$routeProvider',
           templateUrl: 'partials/UsuarioDetails.htm',
           controller: 'UsuarioDetailsController'
       }).
+       when('/Login', {
+           templateUrl: 'partials/Login.htm',
+           controller: 'LoginCtrl'
+       }).
       otherwise({
           redirectTo: '/Usuario'
       });

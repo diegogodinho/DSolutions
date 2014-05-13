@@ -5,19 +5,21 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Dados;
-using MvcApplication1.Models;
+using WebApiAngularPrjWeb.Models;
 
-namespace MvcApplication1.Controllers
+namespace WebApiAngularPrjWeb.Controllers
 {
+    
     public class UsuarioController : ApiController
     {
         public IEnumerable<Usuario> GetUsuarios()
-        {
+        {            
             return (new Usuario().BuscarTodos());
         }
-        
+
+        [Authorize(Roles = "Administrators")]        
         public Usuario GetUsuario(int id)
-        {
+        {            
             return (new Usuario().BuscarPorId(id));
         }
     }
