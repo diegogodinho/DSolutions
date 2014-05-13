@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TesteMVCModelStoreContainer" CdmEntityContainer="DBContext">
+    <EntitySetMapping Name="FUNCIONALIDADE">
+      <EntityTypeMapping TypeName="TesteMVCModel.FUNCIONALIDADE">
+        <MappingFragment StoreEntitySet="FUNCIONALIDADE">
+          <ScalarProperty Name="IDFUNCIONALIDADE" ColumnName="IDFUNCIONALIDADE" />
+          <ScalarProperty Name="NOMEFUNCIONALIDADE" ColumnName="NOMEFUNCIONALIDADE" />
+          <ScalarProperty Name="CODFUNCIONALIDADE" ColumnName="CODFUNCIONALIDADE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONALIDADEGRUPO">
+      <EntityTypeMapping TypeName="TesteMVCModel.FUNCIONALIDADEGRUPO">
+        <MappingFragment StoreEntitySet="FUNCIONALIDADEGRUPO">
+          <ScalarProperty Name="IDFUNCIONALIDADEGRUPO" ColumnName="IDFUNCIONALIDADEGRUPO" />
+          <ScalarProperty Name="IDFUNCIONALIDADE" ColumnName="IDFUNCIONALIDADE" />
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRUPOS">
+      <EntityTypeMapping TypeName="TesteMVCModel.GRUPOS">
+        <MappingFragment StoreEntitySet="GRUPOS">
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+          <ScalarProperty Name="NOMEGRUPO" ColumnName="NOMEGRUPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOGRUPO">
+      <EntityTypeMapping TypeName="TesteMVCModel.USUARIOGRUPO">
+        <MappingFragment StoreEntitySet="USUARIOGRUPO">
+          <ScalarProperty Name="IDUSUARIOGRUPO" ColumnName="IDUSUARIOGRUPO" />
+          <ScalarProperty Name="IDUSUARIOUNIVERSUS" ColumnName="IDUSUARIOUNIVERSUS" />
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOUNIVERSUS">
+      <EntityTypeMapping TypeName="TesteMVCModel.USUARIOUNIVERSUS">
+        <MappingFragment StoreEntitySet="USUARIOUNIVERSUS">
+          <ScalarProperty Name="IDUSUARIOUNIVERSUS" ColumnName="IDUSUARIOUNIVERSUS" />
+          <ScalarProperty Name="SINCRONIZARLMS" ColumnName="SINCRONIZARLMS" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="SOBRENOME" ColumnName="SOBRENOME" />
+          <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+          <ScalarProperty Name="SENHAPADRAO" ColumnName="SENHAPADRAO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CODPESSOA" ColumnName="CODPESSOA" />
+          <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
+          <ScalarProperty Name="DTCRIACAO" ColumnName="DTCRIACAO" />
+          <ScalarProperty Name="DTMODIFICACAO" ColumnName="DTMODIFICACAO" />
+          <ScalarProperty Name="DTEXPORTACAO" ColumnName="DTEXPORTACAO" />
+          <ScalarProperty Name="VERSAOREPOSITORIO" ColumnName="VERSAOREPOSITORIO" />
+          <ScalarProperty Name="SINCRONIZADOCOMFALHA" ColumnName="SINCRONIZADOCOMFALHA" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="USUARIOADMINISTRATIVO" ColumnName="USUARIOADMINISTRATIVO" />
+          <ScalarProperty Name="VERSAOREPOSITORIOFOTO" ColumnName="VERSAOREPOSITORIOFOTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

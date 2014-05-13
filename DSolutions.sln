@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dados", "Dados\Dados.csproj", "{58CD403C-8DDA-4797-97CD-D8467A346071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAngularPrjWeb", "WebApiAngularPrjWeb\WebApiAngularPrjWeb.csproj", "{5D08226E-7C8D-45E4-9A6F-896C30896D3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58CD403C-8DDA-4797-97CD-D8467A346071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58CD403C-8DDA-4797-97CD-D8467A346071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58CD403C-8DDA-4797-97CD-D8467A346071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58CD403C-8DDA-4797-97CD-D8467A346071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D08226E-7C8D-45E4-9A6F-896C30896D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D08226E-7C8D-45E4-9A6F-896C30896D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D08226E-7C8D-45E4-9A6F-896C30896D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D08226E-7C8D-45E4-9A6F-896C30896D3E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
