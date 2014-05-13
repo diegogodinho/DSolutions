@@ -8,6 +8,7 @@ using WebApiAngularPrjWeb.Models;
 using Autenticacao;
 using System.Threading;
 using System.Web;
+using System.Web.Security;
 
 namespace WebApiAngularPrjWeb.Controllers
 {
@@ -27,6 +28,7 @@ namespace WebApiAngularPrjWeb.Controllers
                 {
                     HttpContext.Current.User = userProfile;
                 }
+                //FormsAuthentication.SetAuthCookie(userProfile.Identity.Name , false);
             }
         }
     }

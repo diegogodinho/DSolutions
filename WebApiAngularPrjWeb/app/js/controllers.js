@@ -42,5 +42,8 @@ controllerPadrao.controller('LoginCtrl', ['$scope', '$location', '$routeParams',
              console.log(data);
          });
      };
+     $scope.Voltar = function () {
+         $location.path("/Usuario");
+     };
 
  } ]);
