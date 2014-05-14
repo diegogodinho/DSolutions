@@ -17,7 +17,7 @@ namespace WebApiAngularPrjWeb.Controllers
             return (new Usuario().BuscarTodos());
         }
 
-        [Authorize(Roles = "Administrators")]        
+        //[Authorize(Roles = "Administrators")]        
         public Usuario GetUsuario(int id)
         {            
             return (new Usuario().BuscarPorId(id));

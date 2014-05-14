@@ -122,18 +122,39 @@
     <Content Include="app\bower_components\angular-route\angular-route.js" />
     <Content Include="app\bower_components\angular\angular.js" />
     <Content Include="app\bower_components\angular\angular.min.js" />
+    <Content Include="app\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="app\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="app\bower_components\bootstrap\dist\css\bootstrap.css" />
-    <Content Include="app\index.htm" />
+    <Content Include="app\bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="app\bower_components\bootstrap\js\bootstrap.js" />
+    <Content Include="app\bower_components\bootstrap\js\bootstrap.min.js" />
+    <Content Include="app\bower_components\devoops\devoops.js" />
+    <Content Include="app\bower_components\devoops\style.css" />
+    <Content Include="app\bower_components\jquery\fullcalendar.css" />
+    <Content Include="app\bower_components\jquery\jquery-2.1.0.min.js" />
+    <Content Include="app\bower_components\jquery\jquery-ui.min.css" />
+    <Content Include="app\bower_components\jquery\jquery.fancybox.css" />
+    <Content Include="app\bower_components\jquery\jquery.justifiedgallery.js" />
+    <Content Include="app\bower_components\jquery\jquery.tinymce.min.js" />
+    <Content Include="app\bower_components\jquery\style.css" />
+    <Content Include="app\bower_components\jquery\tinymce.min.js" />
+    <Content Include="app\bower_components\select2\select2.css" />
+    <Content Include="app\bower_components\xcharts\xcharts.css" />
+    <Content Include="app\bower_components\xcharts\xcharts.js" />
+    <Content Include="app\bower_components\xcharts\xcharts.min.css" />
+    <Content Include="app\bower_components\xcharts\xcharts.min.js" />
+    <Content Include="app\index.html" />
     <Content Include="app\js\animations.js" />
     <Content Include="app\js\app.js" />
     <Content Include="app\js\controllers.js" />
     <Content Include="app\js\directives.js" />
     <Content Include="app\js\filters.js" />
     <Content Include="app\js\services.js" />
-    <Content Include="app\partials\Login.htm" />
-    <Content Include="app\partials\UsuarioDetails.htm" />
-    <Content Include="app\partials\UsuarioList.htm" />
+    <Content Include="app\partials\Login.html" />
+    <Content Include="app\partials\Usuario\UsuarioDetails.html" />
+    <Content Include="app\partials\Usuario\UsuarioList.html" />
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -151,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app\bower_components\angular\angular.min.js.map" />
+    <None Include="app\bower_components\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="app\bower_components\bootstrap\dist\css\bootstrap.css.map" />
     <None Include="bower.json" />
     <None Include="package.json" />

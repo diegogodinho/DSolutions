@@ -11,3 +11,4 @@ D:\Estudo\RestAngularEntityFramework\MvcApplication1\Autenticacao\bin\Debug\Syst
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\Autenticacao\bin\Debug\pt-br\System.Web.Http.resources.dll
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\Autenticacao\bin\Debug\pt-br\System.Net.Http.resources.dll
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\Autenticacao\bin\Debug\pt-br\System.Net.Http.Formatting.resources.dll
+D:\Estudo\RestAngularEntityFramework\MvcApplication1\Autenticacao\obj\Debug\Autenticacao.csprojResolveAssemblyReference.cache
