@@ -11,7 +11,7 @@ namespace WebApiAngularPrjWeb.Controllers
 {
     
     public class UsuarioController : ApiController
-    {
+    {        
         public IEnumerable<Usuario> GetUsuarios()
         {            
             return (new Usuario().BuscarTodos());

@@ -11,7 +11,7 @@ namespace WebApiAngularPrjWeb
         {
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "app/api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 

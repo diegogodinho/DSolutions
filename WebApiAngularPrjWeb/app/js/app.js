@@ -6,18 +6,19 @@ diegoApp.config(['$routeProvider',
   function ($routeProvider) {
       $routeProvider.
       when('/Usuario', {
-          templateUrl: 'partials/Usuario/UsuarioList.html',
+          templateUrl: 'app/partials/Usuario/UsuarioLista.html',
           controller: 'UsuarioListController'
       }).
       when('/Usuario/:id', {
-          templateUrl: 'partials/Usuario/UsuarioDetails.html',
+          templateUrl: 'app/partials/Usuario/UsuarioDetalhe.html',
           controller: 'UsuarioDetailsController'
       }).
        when('/Login', {
-           templateUrl: 'partials/Login.html',
+           templateUrl: 'app/partials/Login.html',
            controller: 'LoginCtrl'
-       }).
-      otherwise({
-          redirectTo: '/'
-      });
+       })
+//       .
+//      otherwise({
+//          redirectTo: '/'
+//      });
   } ]);
