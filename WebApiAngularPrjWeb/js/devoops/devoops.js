@@ -243,7 +243,7 @@ function LoadSparkLineScript(callback){
 //  Function for load content from url and put in $('.ajax-content') block
 //
 function LoadAjaxContent(url){
-	/*$('.preloader').show();
+	$('.preloader').show();
 	$.ajax({
 		mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
 		url: url,
@@ -257,8 +257,7 @@ function LoadAjaxContent(url){
 		},
 		dataType: "html",
 		async: false
-	});
-    */
+	});    
 }
 //
 //  Function maked all .box selector is draggable, to disable for concrete element add class .no-drop
@@ -2304,7 +2303,7 @@ $(document).ready(function () {
 	if (ajax_url.length < 1) {
 		ajax_url = 'ajax/dashboard.html';
 	}
-	LoadAjaxContent(ajax_url);
+	//LoadAjaxContent(ajax_url);
 	$('.main-menu').on('click', 'a', function (e) {
 		var parents = $(this).parents('li');
 		var li = $(this).closest('li.dropdown');

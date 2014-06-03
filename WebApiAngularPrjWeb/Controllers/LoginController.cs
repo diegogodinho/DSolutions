@@ -16,20 +16,20 @@ namespace WebApiAngularPrjWeb.Controllers
     {
         public void AutenticarUsuario(LoginModel login)
         {
-            LoginModel usuarioRetorno = login.BuscarUsuario(login.Login, login.Senha);
-            if (usuarioRetorno != null)
-            {                
-                UserProfile userProfile = new UserProfile(new UserIdentity(usuarioRetorno.Login));
-                userProfile.Papeis.Add(usuarioRetorno.Papel);
+            //LoginModel usuarioRetorno = login.BuscarUsuario(login.Login, login.Senha);
+            //if (usuarioRetorno != null)
+            //{                
+            //    UserProfile userProfile = new UserProfile(new UserIdentity(usuarioRetorno.Login));
+            //    userProfile.Papeis.Add(usuarioRetorno.Papel);
 
-                Thread.CurrentPrincipal = userProfile;
+            //    Thread.CurrentPrincipal = userProfile;
 
-                if (HttpContext.Current != null)
-                {
-                    HttpContext.Current.User = userProfile;
-                }
-                //FormsAuthentication.SetAuthCookie(userProfile.Identity.Name , false);
-            }
+            //    if (HttpContext.Current != null)
+            //    {
+            //        HttpContext.Current.User = userProfile;
+            //    }
+            //    //FormsAuthentication.SetAuthCookie(userProfile.Identity.Name , false);
+            //}
         }
     }
 }

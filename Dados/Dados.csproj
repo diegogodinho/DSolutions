@@ -43,19 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapeamentoEntidades.Designer.cs">
+    <Compile Include="Entidades.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MapeamentoEntidades.edmx</DependentUpon>
+      <DependentUpon>Entidades.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonDBContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="MapeamentoEntidades.edmx">
+    <EntityDeploy Include="Entidades.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MapeamentoEntidades.Designer.cs</LastGenOutput>
+      <LastGenOutput>Entidades.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,14 +7,14 @@ namespace Dados
 {
     public class SingletonDBContext
     {
-        public DBContext dbContext
+        public ContextDB dbContext
         {
             get;
             private set;
         }
         private SingletonDBContext()
         {
-            dbContext = new DBContext();
+            dbContext = new ContextDB();
         }
         private static Object obj = new object();
 

@@ -12,7 +12,7 @@ namespace WebApiAngularPrjWeb.Models
 
         public String Nome { get; set; }
 
-        public List<Usuario> BuscarTodos()
+        public static List<Usuario> BuscarTodos()
         {
             List<Usuario> retorno = new List<Usuario>();
             (from a in SingletonDBContext.Current.dbContext.USUARIOUNIVERSUS
@@ -27,7 +27,7 @@ namespace WebApiAngularPrjWeb.Models
             return retorno;
         }
 
-        public Usuario BuscarPorId(int id)
+        public static Usuario BuscarPorId(int id)
         {
             USUARIOUNIVERSUS usuario = (from a in SingletonDBContext.Current.dbContext.USUARIOUNIVERSUS
                                         where a.IDUSUARIOUNIVERSUS == id

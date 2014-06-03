@@ -9,18 +9,21 @@ using WebApiAngularPrjWeb.Models;
 
 namespace WebApiAngularPrjWeb.Controllers
 {
-    
+
     public class UsuarioController : ApiController
-    {        
+    {
         public IEnumerable<Usuario> GetUsuarios()
-        {            
-            return (new Usuario().BuscarTodos());
+        {
+            return (Usuario.BuscarTodos());
         }
 
         //[Authorize(Roles = "Administrators")]        
         public Usuario GetUsuario(int id)
-        {            
-            return (new Usuario().BuscarPorId(id));
+        {
+            return (Usuario.BuscarPorId(id));
         }
+
+
+
     }
 }

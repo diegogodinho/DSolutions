@@ -105,6 +105,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -176,22 +178,8 @@
     <Content Include="css\img\ui-left.png" />
     <Content Include="css\img\ui-right.png" />
     <Content Include="index.html" />
-    <Content Include="js\angular\angular-resource.js" />
-    <Content Include="js\angular\angular-route.js" />
-    <Content Include="js\angular\angular.js" />
-    <Content Include="js\angular\angular.min.js" />
-    <Content Include="js\angular\animations.js" />
-    <Content Include="js\angular\app.js" />
-    <Content Include="js\angular\controllers.js" />
-    <Content Include="js\angular\controllers\Login\loginCtrl.js" />
-    <Content Include="js\angular\controllers\Usuario\usuarioCtrl.js" />
-    <Content Include="js\angular\directives.js" />
-    <Content Include="js\angular\filters.js" />
-    <Content Include="js\angular\services.js" />
     <Content Include="js\devoops\devoops.js" />
     <Content Include="js\devoops\devoops.min.js" />
-    <Content Include="Partials\Usuario\UsuarioDetalhe.html" />
-    <Content Include="Partials\Usuario\UsuarioLista.html" />
     <Content Include="plugins\bootstrapvalidator\bootstrapValidator.css" />
     <Content Include="plugins\bootstrapvalidator\bootstrapValidator.js" />
     <Content Include="plugins\bootstrapvalidator\bootstrapValidator.min.css" />
@@ -582,7 +570,6 @@
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
-    <None Include="js\angular\angular.min.js.map" />
     <None Include="package.json" />
     <None Include="plugins\bootstrapvalidator\bootstrapValidator.scss" />
     <None Include="plugins\bootstrap\bootstrap-theme.css.map" />
@@ -609,6 +596,7 @@
     <None Include="plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <None Include="plugins\xcharts\LICENSE" />
     <None Include="plugins\xcharts\README.md" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Autenticacao\Autenticacao.csproj">
