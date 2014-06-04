@@ -3,4 +3,3 @@ D:\Estudo\RestAngularEntityFramework\MvcApplication1\Dados\bin\Debug\Dados.dll
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\Dados\bin\Debug\Dados.pdb
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\Dados\obj\Debug\Dados.dll
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\Dados\obj\Debug\Dados.pdb
-D:\Estudo\RestAngularEntityFramework\MvcApplication1\Dados\obj\Debug\Dados.csprojResolveAssemblyReference.cache

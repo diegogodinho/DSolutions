@@ -51,14 +51,35 @@ namespace WebMVC.Models
             usuarioPorGrupo.UsuariosPertencentesAoGrupo = (from a in SingletonDBContext.Current.dbContext.USUARIOGRUPO
                                                            where a.IDGRUPO == grupoID
                                                            orderby a.USUARIOUNIVERSUS.NOME
-                                                           select new Usuario { ID = a.IDUSUARIOUNIVERSUS, Nome = a.USUARIOUNIVERSUS.NOME }).ToList();
+                                                           select new Usuario { ID = a.IDUSUARIOUNIVERSUS, Nome = a.USUARIOUNIVERSUS.NOME.TrimEnd() }).ToList();
             List<int> ids = new List<int>();
             usuarioPorGrupo.UsuariosPertencentesAoGrupo.ForEach(r => { ids.Add(r.ID); });
             usuarioPorGrupo.UsuariosNaoPertencentesAoGrupo = (from a in SingletonDBContext.Current.dbContext.USUARIOUNIVERSUS
                                                               where !ids.Contains(a.IDUSUARIOUNIVERSUS)
                                                               orderby a.NOME
-                                                              select new Usuario { ID = a.IDUSUARIOUNIVERSUS, Nome = a.NOME }).ToList();
+                                                              select new Usuario { ID = a.IDUSUARIOUNIVERSUS, Nome = a.NOME.TrimEnd() }).ToList();
             return usuarioPorGrupo;
+        }
+
+        public void RemoverUsuarioGrupo(int grupoID, int idusuario)
+        {
+            USUARIOGRUPO usuario = (from a in SingletonDBContext.Current.dbContext.USUARIOGRUPO
+                                    where a.IDGRUPO == grupoID && a.IDUSUARIOUNIVERSUS == idusuario
+                                    select a).FirstOrDefault();
+            if (usuario != null)
+            {
+                SingletonDBContext.Current.dbContext.USUARIOGRUPO.DeleteObject(usuario);
+                SingletonDBContext.Current.dbContext.SaveChanges();
+            }
+        }
+
+        public void IncluirUsuarioGrupo(int grupoID, int idusuario)
+        {
+            USUARIOGRUPO usuario = new USUARIOGRUPO();
+            usuario.IDGRUPO = grupoID;
+            usuario.IDUSUARIOUNIVERSUS = idusuario;
+            SingletonDBContext.Current.dbContext.USUARIOGRUPO.AddObject(usuario);
+            SingletonDBContext.Current.dbContext.SaveChanges();
         }
     }
 }

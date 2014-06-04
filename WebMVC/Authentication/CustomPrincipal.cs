@@ -22,7 +22,7 @@ namespace WebMVC.Authentication
 
         public bool IsInRole(string role)
         {
-            return Grupos.Any(r => r.Nome == role);
+            return Grupos.Any(r => r.Nome.ToUpper() == role.ToUpper());
         }
 
         public bool PermiteAcessoAFuncionalidade(string funcionalidade)

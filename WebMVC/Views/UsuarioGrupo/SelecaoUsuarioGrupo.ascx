@@ -1,34 +1,4 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<WebMVC.Models.UsuarioPorGrupo>" %>
-<%--<div id="example-1-2">
-    <div class="column left first">
-        <ul class="sortable-list">
-            <% Model.UsuariosPertencentesAoGrupo.ForEach(usuarioGrupo =>
-           {  %>
-            <li class="sortable-item">
-                <%= usuarioGrupo.Nome %></li>
-            <% }); %>
-        </ul>
-    </div>
-    <div class="column left">
-        <ul class="sortable-list">            
-            <% Model.UsuariosNaoPertencentesAoGrupo.ForEach(usuarioForaDoGrupo =>
-           {  %>
-            <li class="sortable-item">
-                <%= usuarioForaDoGrupo.Nome%></li>
-            <% }); %>
-        </ul>
-    </div>
-    <div class="column left">
-        <ul class="sortable-list">
-            <li class="sortable-item">Sortable item E</li>
-        </ul>
-    </div>
-    <div class="clearer">
-        &nbsp;</div>
-</div>
-<script type="text/javascript">
-    ativarDrag();
-</script>--%>
 <table width="100%;" style="min-height: 300px; border:0" border="0" cellpadding="0" cellspacing="0" >
     <tr>
         <td style="width: 40%; vertical-align: top;">
@@ -45,13 +15,13 @@
                 <tr>
                     <td>
                     <center>
-                        <input type="button" id="retirarUsuarioGrupo" value=">>" />
+                        <input type="button" id="retirarUsuarioGrupo" value=">>" onclick="retirarUsuarioGrupoclick(this)"/>
                         </center>
                     </td>
                 </tr>
                 <tr>
                     <td><center>
-                        <input type="button" id="IncluirUsuarioGrupo" value="<<" />
+                        <input type="button" id="IncluirUsuarioGrupo" value="<<"  onclick="IncluirUsuarioGrupoclick(this)"/>
                         </center>
                     </td>
                 </tr>
@@ -68,3 +38,7 @@
         </td>
     </tr>
 </table>
+<input type="hidden" id="opcao" name="opcao"/>
+<input type="hidden" id="grupo" name="grupo"/>
+
+ 

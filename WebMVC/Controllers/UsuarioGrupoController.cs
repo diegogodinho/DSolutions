@@ -28,9 +28,21 @@ namespace WebMVC.Controllers
         }
 
 
-        public ActionResult AdicionarRemoverUsuarioGrupo(int? idUsuarioGrupo)
+        public ActionResult AdicionarRemoverUsuarioGrupo(int? grupo, int? opcao, int? UsuariosGrupo, int? UsuarioNoPresentesNoGrupo)
         {
-            return null;
+            if (opcao.HasValue)
+            {
+                if (opcao.Value == 1)
+                {
+                    _grupoRepository.IncluirUsuarioGrupo(grupo.Value, UsuarioNoPresentesNoGrupo.Value);
+                }
+                else
+                {
+                    _grupoRepository.RemoverUsuarioGrupo(grupo.Value, UsuariosGrupo.Value);
+                }
+                return PartialView("SelecaoUsuarioGrupo", _grupoRepository.BuscarUsuariosDoGrupoEForaDele(grupo.Value));
+            }
+            return View();
         }
     }
 }
