@@ -10,8 +10,7 @@
     </a>
 </td>
 <td>
-    <a href="<%: Url.Action("Delete", new {id=Model.ID }) %>">
-        <%--onclick="return confirm('Tem certeza que deseja excluir a funcionalidade <%: item.NomeFuncionalidade %> ?')">--%>
+    <a href="<%: Url.Action("Delete", new {id=Model.ID }) %>">        
         <img alt="Excluir" title="Excluir" src="<%: Url.Content("~/imagens/Delete.png") %>" />
     </a>
 </td>

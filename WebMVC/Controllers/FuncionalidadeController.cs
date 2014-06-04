@@ -18,7 +18,6 @@ namespace WebMVC.Controllers
             base.Initialize(requestContext);
         }
 
-
         [CustomAuthorize(Roles = "GERENTE")]
         public ActionResult Index(int? page, string sorter)
         {

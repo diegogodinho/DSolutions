@@ -86,18 +86,28 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\FuncionalidadeModel.cs" />
     <Compile Include="Models\GrupoModel.cs" />
+    <Compile Include="Models\UsuarioGrupoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\AccountValidation.cs" />
     <Compile Include="Validators\PropertiesMustMatchAttribute.cs" />
+    <Compile Include="Validators\RangeFieldRangeValidator.cs" />
     <Compile Include="Validators\ValidatePasswordLengthAttribute.cs" />
     <Compile Include="Views\Shared\IDados.cs" />
     <Compile Include="Views\Shared\PaginatedData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\loading.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="imagens\Delete.png" />
     <Content Include="imagens\Detalhes.png" />
     <Content Include="imagens\Edit.png" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.4.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.custom.min.js" />
+    <Content Include="Scripts\jquery2.1.js" />
     <Content Include="Views\Funcionalidade\Create.aspx" />
     <Content Include="Views\Funcionalidade\Delete.aspx" />
     <Content Include="Views\Funcionalidade\Details.aspx" />
@@ -111,6 +121,7 @@
     <Content Include="Views\Home\Error.aspx" />
     <Content Include="Views\Shared\partialControlsGrid.ascx" />
     <Content Include="Views\UsuarioGrupo\Index.aspx" />
+    <Content Include="Views\UsuarioGrupo\SelecaoUsuarioGrupo.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

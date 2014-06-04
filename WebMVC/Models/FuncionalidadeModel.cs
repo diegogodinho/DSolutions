@@ -11,6 +11,7 @@ using System.Linq.Expressions;
 using WebMVC.Views.Shared;
 using System.Reflection;
 using Dados;
+using WebMVC.Validators;
 
 namespace WebMVC.Models
 {
@@ -24,7 +25,7 @@ namespace WebMVC.Models
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("Código")]
-        public string CodFuncionalidade { get; set; }
+        public string CodFuncionalidade { get; set; }      
     }
 
     public class FuncionalidadeRepository : IDados<FuncionalidadeModel>
