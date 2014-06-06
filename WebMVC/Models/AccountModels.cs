@@ -123,12 +123,15 @@ namespace WebMVC.Models
                                         usuarioUniversus.NOME,
                                         usuarioGrupo = usuarioUniversus.USUARIOGRUPO.Select(r => new
                                         {
-                                            nomeGrupo = r.GRUPOS.NOMEGRUPO.TrimEnd(),
-                                            funcionalidades = r.GRUPOS.FUNCIONALIDADEGRUPO.Select(f => new
+                                            nomeGrupo = r.GRUPO.NOMEGRUPO.TrimEnd(),
+                                            funcionalidades = r.GRUPO.FUNCIONALIDADEGRUPO.Select(f => new
                                             {
                                                 nome = f.FUNCIONALIDADE.NOMEFUNCIONALIDADE.TrimEnd(),
                                                 codigoFuncionalidade = f.FUNCIONALIDADE.CODFUNCIONALIDADE.TrimEnd(),
-                                                acao = f.ACOESPERMITIDAS
+                                                permiteCriacao = f.PERMITECRIACAO,
+                                                permiteLeitura = f.PERMITELEITURA,
+                                                permiteAlteracao = f.PERMITEALTERACAO,
+                                                permiteExclusao = f.PERMITEEXCLUSAO
                                             })
                                         })
                                     }).FirstOrDefault();
@@ -147,8 +150,10 @@ namespace WebMVC.Models
                                 Funcionalidade funcionalidade = new Funcionalidade();
                                 funcionalidade.NomeFuncionalidade = funcGrupo.nome;
                                 funcionalidade.CodigoFuncionalidade = funcGrupo.codigoFuncionalidade;
-                                if (funcGrupo.acao.HasValue)
-                                    funcionalidade.Acao = (Acao)funcGrupo.acao.Value;
+                                funcionalidade.PermiteCriacao = funcGrupo.permiteCriacao.HasValue ? funcGrupo.permiteCriacao.Value : 0;
+                                funcionalidade.PermiteLeitura = funcGrupo.permiteLeitura.HasValue ? funcGrupo.permiteLeitura.Value : 0;
+                                funcionalidade.PermiteAlteracao = funcGrupo.permiteAlteracao.HasValue ? funcGrupo.permiteAlteracao.Value : 0;
+                                funcionalidade.PermiteExclusao = funcGrupo.permiteExclusao.HasValue ? funcGrupo.permiteExclusao.Value : 0;
                                 grupo.Funcionalidades.Add(funcionalidade);
                             });
                         grupos.Add(grupo);

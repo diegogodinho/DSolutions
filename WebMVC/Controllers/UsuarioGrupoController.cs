@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebMVC.Models;
 using WebMVC.Views.Shared;
+using WebMVC.Attributes;
 
 namespace WebMVC.Controllers
 {
@@ -17,17 +18,19 @@ namespace WebMVC.Controllers
             _grupoRepository = new UsuarioGrupoRepository();
             base.Initialize(requestContext);
         }
+        [CustomAuthorize]
         public ActionResult Index()
         {
             return View(_grupoRepository.BuscarTodos());
         }
 
-        public ActionResult GrupoSelecionado(int? grupos)
+        [CustomAuthorize]
+        public ActionResult GrupoSelecionado(int? grupo)
         {
-            return PartialView("SelecaoUsuarioGrupo", _grupoRepository.BuscarUsuariosDoGrupoEForaDele(grupos.Value));
+            return PartialView("SelecaoUsuarioGrupo", _grupoRepository.BuscarUsuariosDoGrupoEForaDele(grupo.Value));
         }
 
-
+        [CustomAuthorize]
         public ActionResult AdicionarRemoverUsuarioGrupo(int? grupo, int? opcao, int? UsuariosGrupo, int? UsuarioNoPresentesNoGrupo)
         {
             if (opcao.HasValue)

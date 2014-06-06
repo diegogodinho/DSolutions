@@ -18,7 +18,7 @@ namespace WebMVC.Controllers
             base.Initialize(requestContext);
         }
 
-        [CustomAuthorize(Roles = "GERENTE")]
+        [CustomAuthorize]
         public ActionResult Index(int? page, string sorter)
         {
             List<FuncionalidadeModel> funcinalidades = _funcionalidadeRepository.BuscarTodos();
@@ -38,11 +38,13 @@ namespace WebMVC.Controllers
         }
 
         #region Create
+        [CustomAuthorize]
         public ActionResult Create()
         {
             return View();
         }
 
+        [CustomAuthorize]
         [HttpPost]
         public ActionResult Create(FuncionalidadeModel model)
         {
@@ -57,6 +59,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Edit
+        [CustomAuthorize]
         public ActionResult Edit(int id)
         {
             FuncionalidadeModel funcionalidadeModel = _funcionalidadeRepository.BuscarPorID(id);
@@ -65,6 +68,7 @@ namespace WebMVC.Controllers
             return RedirectToAction("Index", "Funcionalidade");
         }
 
+        [CustomAuthorize]
         [HttpPost]
         public ActionResult Edit(FuncionalidadeModel model)
         {
@@ -79,6 +83,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Delete
+        [CustomAuthorize]
         public ActionResult Delete(int id)
         {
             FuncionalidadeModel funcionalidadeModel = _funcionalidadeRepository.BuscarPorID(id);
@@ -88,6 +93,7 @@ namespace WebMVC.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Delete(FuncionalidadeModel funcionalidade)
         {
             _funcionalidadeRepository.ExcluirItem(funcionalidade);
@@ -96,6 +102,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Details
+        [CustomAuthorize]
         public ActionResult Details(int id)
         {
             FuncionalidadeModel funcionalidadeModel = _funcionalidadeRepository.BuscarPorID(id);

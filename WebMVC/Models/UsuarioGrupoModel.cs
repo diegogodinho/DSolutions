@@ -10,11 +10,11 @@ using WebMVC.Views.Shared;
 
 namespace WebMVC.Models
 {
-    public class UsuarioGrupoModel : BaseModel
-    {
-        [Required]
-        public List<GrupoModel> Grupos { get; set; }
-    }
+    //public class UsuarioGrupoModel : BaseModel
+    //{
+    //    [Required]
+    //    public GrupoModel Grupo { get; set; }
+    //}
 
 
     public class Usuario : BaseModel
@@ -25,18 +25,18 @@ namespace WebMVC.Models
     public class UsuarioPorGrupo : BaseModel
     {
         public List<Usuario> UsuariosPertencentesAoGrupo { get; set; }
-        public List<Usuario> UsuariosNaoPertencentesAoGrupo { get; set; }
+        public List<Usuario> UsuariosNaoPertencentesAoGrupo { get; set; }        
     }
 
     public class UsuarioGrupoRepository
     {
-        public UsuarioGrupoModel BuscarTodos()
+        public List<GrupoModel> BuscarTodos()
         {
-            UsuarioGrupoModel retorno = new UsuarioGrupoModel();
-            retorno.Grupos = new List<GrupoModel>();
-            SingletonDBContext.Current.dbContext.GRUPOS.ToList().ForEach(r =>
+            List<GrupoModel> retorno = new List<GrupoModel>();
+            //retorno.Grupo = new List<GrupoModel>();
+            SingletonDBContext.Current.dbContext.GRUPO.ToList().ForEach(r =>
             {
-                retorno.Grupos.Add(new GrupoModel()
+                retorno.Add(new GrupoModel()
                 {
                     ID = r.IDGRUPO,
                     NomeGrupo = r.NOMEGRUPO

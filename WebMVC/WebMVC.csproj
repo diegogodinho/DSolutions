@@ -76,6 +76,7 @@
     <Compile Include="Authentication\Profile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FuncionalidadeController.cs" />
+    <Compile Include="Controllers\FuncionalidadeGrupoController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioGrupoController.cs" />
@@ -84,6 +85,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\FuncionalidadeGrupoModels.cs" />
     <Compile Include="Models\FuncionalidadeModel.cs" />
     <Compile Include="Models\GrupoModel.cs" />
     <Compile Include="Models\UsuarioGrupoModel.cs" />
@@ -108,6 +110,10 @@
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.custom.min.js" />
     <Content Include="Scripts\jquery2.1.js" />
+    <Content Include="Views\FuncionalidadeGrupo\Create.aspx" />
+    <Content Include="Views\FuncionalidadeGrupo\CriarFuncionalidadeGrupo.aspx" />
+    <Content Include="Views\FuncionalidadeGrupo\Index.aspx" />
+    <Content Include="Views\FuncionalidadeGrupo\GridGruposPorFuncionalidade.ascx" />
     <Content Include="Views\Funcionalidade\Create.aspx" />
     <Content Include="Views\Funcionalidade\Delete.aspx" />
     <Content Include="Views\Funcionalidade\Details.aspx" />
@@ -122,7 +128,9 @@
     <Content Include="Views\Shared\partialControlsGrid.ascx" />
     <Content Include="Views\UsuarioGrupo\Index.aspx" />
     <Content Include="Views\UsuarioGrupo\SelecaoUsuarioGrupo.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

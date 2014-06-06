@@ -11,7 +11,7 @@ namespace WebMVC.Authentication
         public string Nome { get; private set; }
         public List<Grupo> Grupos { get; private set; }
 
-        public CustomPrincipal(string nome,List<Grupo> grupos)
+        public CustomPrincipal(string nome, List<Grupo> grupos)
         {
             Nome = nome;
             Identity = new GenericIdentity(nome);
@@ -44,7 +44,9 @@ namespace WebMVC.Authentication
             {
                 if (grupo.Funcionalidades != null)
                 {
-                    return grupo.Funcionalidades.Any(f => f.NomeFuncionalidade == funcionalidade && f.Acao == acao);
+                    return grupo.Funcionalidades.Any(f => f.NomeFuncionalidade == funcionalidade &&
+                        ((acao == Acao.Criar && f.PermiteCriacao == 1) || (acao == Acao.Ler && f.PermiteLeitura == 1) ||
+                        (acao == Acao.Atualizar && f.PermiteAlteracao == 1) || (acao == Acao.Excluir && f.PermiteExclusao == 1)));
                 }
                 else
                     return false;

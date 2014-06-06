@@ -9,6 +9,9 @@ namespace WebMVC.Authentication
     {
         public string NomeFuncionalidade { get; set; }
         public string CodigoFuncionalidade { get; set; }
-        public Acao Acao { get; set; }
+        public int PermiteCriacao { get; set; }
+        public int PermiteLeitura { get; set; }
+        public int PermiteAlteracao { get; set; }
+        public int PermiteExclusao { get; set; }
     }
 }

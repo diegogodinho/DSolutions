@@ -39,6 +39,6 @@
     </tr>
 </table>
 <input type="hidden" id="opcao" name="opcao"/>
-<input type="hidden" id="grupo" name="grupo"/>
+<input type="hidden" id="grupoInterno" name="grupo"/>
 
  

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.UsuarioGrupoModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<List<WebMVC.Models.GrupoModel>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Index
@@ -10,14 +10,14 @@
     <script type="text/javascript">
         function retirarUsuarioGrupoclick(self) {
             $("#opcao").val('2');
-            $("#grupo").val($("#grupos").val());
+            $("#grupoInterno").val($("#grupo").val());
             //AddValueCombo("UsuarioNoPresentesNoGrupo", $("#UsuariosGrupo").text(), $("#UsuariosGrupo").val());
             //$("#UsuariosGrupo").remove();
             $(self).parents('form').submit();
         }
         function IncluirUsuarioGrupoclick(self) {
             $("#opcao").val('1');
-            $("#grupo").val($("#grupos").val());
+            $("#grupoInterno").val($("#grupo").val());
             $(self).parents('form').submit();
         }
         function AddValueCombo(comboID, text, value) {
@@ -34,10 +34,10 @@
         <%: Html.Label("Grupos")%>
     </div>
     <div class="editor-field">
-        <%= Html.DropDownList("grupos", new SelectList(Model.Grupos, "ID", "NomeGrupo"), new { style = "width: 50%" })%>
+        <%= Html.DropDownList("grupo", new SelectList(Model, "ID", "NomeGrupo"), new { style = "width: 50%" })%>
     </div>
     <script type="text/javascript">
-        $('#grupos').change(function () {
+        $('#grupo').change(function () {
             $(this).parents('form').submit();
         });
     </script>

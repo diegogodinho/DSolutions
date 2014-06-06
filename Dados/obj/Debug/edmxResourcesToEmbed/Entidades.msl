@@ -16,26 +16,18 @@
           <ScalarProperty Name="IDFUNCIONALIDADEGRUPO" ColumnName="IDFUNCIONALIDADEGRUPO" />
           <ScalarProperty Name="IDFUNCIONALIDADE" ColumnName="IDFUNCIONALIDADE" />
           <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
-          <ScalarProperty Name="ACOESPERMITIDAS" ColumnName="ACOESPERMITIDAS" />
+          <ScalarProperty Name="PERMITECRIACAO" ColumnName="PERMITECRIACAO" />
+          <ScalarProperty Name="PERMITELEITURA" ColumnName="PERMITELEITURA" />
+          <ScalarProperty Name="PERMITEALTERACAO" ColumnName="PERMITEALTERACAO" />
+          <ScalarProperty Name="PERMITEEXCLUSAO" ColumnName="PERMITEEXCLUSAO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GRUPOS">
-      <EntityTypeMapping TypeName="Dados.GRUPOS">
-        <MappingFragment StoreEntitySet="GRUPOS">
+    <EntitySetMapping Name="GRUPO">
+      <EntityTypeMapping TypeName="Dados.GRUPO">
+        <MappingFragment StoreEntitySet="GRUPO">
           <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
           <ScalarProperty Name="NOMEGRUPO" ColumnName="NOMEGRUPO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="Dados.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

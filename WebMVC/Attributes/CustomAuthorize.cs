@@ -24,7 +24,7 @@ namespace WebMVC.Attributes
             {
                 if (CurrentUser.Grupos != null && CurrentUser.Grupos.Count > 0)
                 {
-                    if (!CurrentUser.IsInRole(Roles))
+                    if (!String.IsNullOrEmpty(Roles) && !CurrentUser.IsInRole(Roles))
                         this.HandleUnauthorizedRequest(filterContext, "Desculpe, mas você não tem permissão para acessar esse recurso!");
                 }
                 else

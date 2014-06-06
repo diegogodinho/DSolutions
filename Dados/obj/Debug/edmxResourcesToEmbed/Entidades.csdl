@@ -3,8 +3,7 @@
   <EntityContainer Name="ContextDB" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="FUNCIONALIDADE" EntityType="Dados.FUNCIONALIDADE" />
     <EntitySet Name="FUNCIONALIDADEGRUPO" EntityType="Dados.FUNCIONALIDADEGRUPO" />
-    <EntitySet Name="GRUPOS" EntityType="Dados.GRUPOS" />
-    <EntitySet Name="sysdiagrams" EntityType="Dados.sysdiagrams" />
+    <EntitySet Name="GRUPO" EntityType="Dados.GRUPO" />
     <EntitySet Name="USUARIOGRUPO" EntityType="Dados.USUARIOGRUPO" />
     <EntitySet Name="USUARIOUNIVERSUS" EntityType="Dados.USUARIOUNIVERSUS" />
     <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" Association="Dados.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
@@ -12,11 +11,11 @@
       <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
     </AssociationSet>
     <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_GRUPOS" Association="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS">
-      <End Role="GRUPOS" EntitySet="GRUPOS" />
+      <End Role="GRUPO" EntitySet="GRUPO" />
       <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
     </AssociationSet>
     <AssociationSet Name="FK_USUARIOGRUPO_GRUPOS" Association="Dados.FK_USUARIOGRUPO_GRUPOS">
-      <End Role="GRUPOS" EntitySet="GRUPOS" />
+      <End Role="GRUPO" EntitySet="GRUPO" />
       <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
     </AssociationSet>
     <AssociationSet Name="FK_USUARIOGRUPO_USUARIOUNIVERSUS" Association="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS">
@@ -40,28 +39,21 @@
     <Property Name="IDFUNCIONALIDADEGRUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDFUNCIONALIDADE" Type="Int32" Nullable="false" />
     <Property Name="IDGRUPO" Type="Int32" Nullable="false" />
-    <Property Name="ACOESPERMITIDAS" Type="Int32" />
+    <Property Name="PERMITECRIACAO" Type="Int32" />
+    <Property Name="PERMITELEITURA" Type="Int32" />
+    <Property Name="PERMITEALTERACAO" Type="Int32" />
+    <Property Name="PERMITEEXCLUSAO" Type="Int32" />
     <NavigationProperty Name="FUNCIONALIDADE" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" FromRole="FUNCIONALIDADEGRUPO" ToRole="FUNCIONALIDADE" />
-    <NavigationProperty Name="GRUPOS" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS" FromRole="FUNCIONALIDADEGRUPO" ToRole="GRUPOS" />
+    <NavigationProperty Name="GRUPO" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS" FromRole="FUNCIONALIDADEGRUPO" ToRole="GRUPO" />
   </EntityType>
-  <EntityType Name="GRUPOS">
+  <EntityType Name="GRUPO">
     <Key>
       <PropertyRef Name="IDGRUPO" />
     </Key>
     <Property Name="IDGRUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NOMEGRUPO" Type="String" MaxLength="2000" Unicode="true" FixedLength="true" />
-    <NavigationProperty Name="FUNCIONALIDADEGRUPO" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS" FromRole="GRUPOS" ToRole="FUNCIONALIDADEGRUPO" />
-    <NavigationProperty Name="USUARIOGRUPO" Relationship="Dados.FK_USUARIOGRUPO_GRUPOS" FromRole="GRUPOS" ToRole="USUARIOGRUPO" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="FUNCIONALIDADEGRUPO" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS" FromRole="GRUPO" ToRole="FUNCIONALIDADEGRUPO" />
+    <NavigationProperty Name="USUARIOGRUPO" Relationship="Dados.FK_USUARIOGRUPO_GRUPOS" FromRole="GRUPO" ToRole="USUARIOGRUPO" />
   </EntityType>
   <EntityType Name="USUARIOGRUPO">
     <Key>
@@ -70,7 +62,7 @@
     <Property Name="IDUSUARIOGRUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDUSUARIOUNIVERSUS" Type="Int32" Nullable="false" />
     <Property Name="IDGRUPO" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="GRUPOS" Relationship="Dados.FK_USUARIOGRUPO_GRUPOS" FromRole="USUARIOGRUPO" ToRole="GRUPOS" />
+    <NavigationProperty Name="GRUPO" Relationship="Dados.FK_USUARIOGRUPO_GRUPOS" FromRole="USUARIOGRUPO" ToRole="GRUPO" />
     <NavigationProperty Name="USUARIOUNIVERSUS" Relationship="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS" FromRole="USUARIOGRUPO" ToRole="USUARIOUNIVERSUS" />
   </EntityType>
   <EntityType Name="USUARIOUNIVERSUS">
@@ -109,10 +101,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_FUNCIONALIDADEGRUPO_GRUPOS">
-    <End Role="GRUPOS" Type="Dados.GRUPOS" Multiplicity="1" />
+    <End Role="GRUPO" Type="Dados.GRUPO" Multiplicity="1" />
     <End Role="FUNCIONALIDADEGRUPO" Type="Dados.FUNCIONALIDADEGRUPO" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="GRUPOS">
+      <Principal Role="GRUPO">
         <PropertyRef Name="IDGRUPO" />
       </Principal>
       <Dependent Role="FUNCIONALIDADEGRUPO">
@@ -121,10 +113,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_USUARIOGRUPO_GRUPOS">
-    <End Role="GRUPOS" Type="Dados.GRUPOS" Multiplicity="1" />
+    <End Role="GRUPO" Type="Dados.GRUPO" Multiplicity="1" />
     <End Role="USUARIOGRUPO" Type="Dados.USUARIOGRUPO" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="GRUPOS">
+      <Principal Role="GRUPO">
         <PropertyRef Name="IDGRUPO" />
       </Principal>
       <Dependent Role="USUARIOGRUPO">

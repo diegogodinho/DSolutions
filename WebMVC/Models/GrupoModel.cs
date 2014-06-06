@@ -22,7 +22,7 @@ namespace WebMVC.Models
         public List<GrupoModel> BuscarTodos()
         {
             List<GrupoModel> retorno = new List<GrupoModel>();
-            SingletonDBContext.Current.dbContext.GRUPOS.ToList().ForEach(r =>
+            SingletonDBContext.Current.dbContext.GRUPO.ToList().ForEach(r =>
             {
                 retorno.Add(new GrupoModel()
                 {
@@ -35,7 +35,7 @@ namespace WebMVC.Models
 
         public GrupoModel BuscarPorID(int ID)
         {
-            GrupoModel retorno = (from a in SingletonDBContext.Current.dbContext.GRUPOS
+            GrupoModel retorno = (from a in SingletonDBContext.Current.dbContext.GRUPO
                                   where a.IDGRUPO == ID
                                   select new GrupoModel { ID = a.IDGRUPO, NomeGrupo = a.NOMEGRUPO }).FirstOrDefault();
             return retorno;
@@ -43,27 +43,27 @@ namespace WebMVC.Models
 
         public void AdicionarItem(GrupoModel item)
         {
-            GRUPOS grupo = new GRUPOS();
+            GRUPO grupo = new GRUPO();
             grupo.NOMEGRUPO = item.NomeGrupo;
-            SingletonDBContext.Current.dbContext.AddToGRUPOS(grupo);
+            SingletonDBContext.Current.dbContext.AddToGRUPO(grupo);
             SingletonDBContext.Current.dbContext.SaveChanges();
         }
 
         public void ExcluirItem(GrupoModel item)
         {
-            GRUPOS grupos = (from a in SingletonDBContext.Current.dbContext.GRUPOS
+            GRUPO grupos = (from a in SingletonDBContext.Current.dbContext.GRUPO
                                              where a.IDGRUPO == item.ID
                                              select a).FirstOrDefault();
             if (grupos != null)
             {
-                SingletonDBContext.Current.dbContext.GRUPOS.DeleteObject(grupos);
+                SingletonDBContext.Current.dbContext.GRUPO.DeleteObject(grupos);
                 SingletonDBContext.Current.dbContext.SaveChanges();
             }
         }
 
         public void EditarItem(GrupoModel item)
         {
-            GRUPOS grupos = (from a in SingletonDBContext.Current.dbContext.GRUPOS
+            GRUPO grupos = (from a in SingletonDBContext.Current.dbContext.GRUPO
                              where a.IDGRUPO == item.ID
                              select a).FirstOrDefault();
             if (grupos != null)

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebMVC.Models;
 using WebMVC.Views.Shared;
+using WebMVC.Attributes;
 
 namespace WebMVC.Controllers
 {
@@ -17,12 +18,14 @@ namespace WebMVC.Controllers
             base.Initialize(requestContext);
         }
 
+        [CustomAuthorize]
         public ActionResult Index()
         {
             return View(_grupoRepository.BuscarTodos());
         }
 
         #region Create
+         [CustomAuthorize]
         public ActionResult Create()
         {
             return View();
@@ -30,6 +33,7 @@ namespace WebMVC.Controllers
 
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Create(GrupoModel model)
         {
             if (ModelState.IsValid)
@@ -44,6 +48,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Edit
+        [CustomAuthorize]
         public ActionResult Edit(int id)
         {
             GrupoModel grupoModel = _grupoRepository.BuscarPorID(id);
@@ -55,6 +60,7 @@ namespace WebMVC.Controllers
 
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Edit(GrupoModel model)
         {
             _grupoRepository.EditarItem(model);
@@ -63,6 +69,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Delete
+        [CustomAuthorize]
         public ActionResult Delete(int id)
         {
             GrupoModel grupoModel = _grupoRepository.BuscarPorID(id);
@@ -74,6 +81,7 @@ namespace WebMVC.Controllers
 
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Delete(GrupoModel model)
         {
             _grupoRepository.ExcluirItem(model);
@@ -82,6 +90,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Details
+        [CustomAuthorize]
         public ActionResult Details(int id)
         {
             GrupoModel grupoModel = _grupoRepository.BuscarPorID(id);

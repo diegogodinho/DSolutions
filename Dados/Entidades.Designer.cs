@@ -20,8 +20,8 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("Dados", "FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1", "FUNCIONALIDADE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.FUNCIONALIDADE), "FUNCIONALIDADEGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.FUNCIONALIDADEGRUPO), true)]
-[assembly: EdmRelationshipAttribute("Dados", "FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPOS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.GRUPOS), "FUNCIONALIDADEGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.FUNCIONALIDADEGRUPO), true)]
-[assembly: EdmRelationshipAttribute("Dados", "FK_USUARIOGRUPO_GRUPOS", "GRUPOS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.GRUPOS), "USUARIOGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.USUARIOGRUPO), true)]
+[assembly: EdmRelationshipAttribute("Dados", "FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.GRUPO), "FUNCIONALIDADEGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.FUNCIONALIDADEGRUPO), true)]
+[assembly: EdmRelationshipAttribute("Dados", "FK_USUARIOGRUPO_GRUPOS", "GRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.GRUPO), "USUARIOGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.USUARIOGRUPO), true)]
 [assembly: EdmRelationshipAttribute("Dados", "FK_USUARIOGRUPO_USUARIOUNIVERSUS", "USUARIOUNIVERSUS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.USUARIOUNIVERSUS), "USUARIOGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.USUARIOGRUPO), true)]
 
 #endregion
@@ -109,34 +109,18 @@ namespace Dados
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<GRUPOS> GRUPOS
+        public ObjectSet<GRUPO> GRUPO
         {
             get
             {
-                if ((_GRUPOS == null))
+                if ((_GRUPO == null))
                 {
-                    _GRUPOS = base.CreateObjectSet<GRUPOS>("GRUPOS");
+                    _GRUPO = base.CreateObjectSet<GRUPO>("GRUPO");
                 }
-                return _GRUPOS;
+                return _GRUPO;
             }
         }
-        private ObjectSet<GRUPOS> _GRUPOS;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<sysdiagrams> sysdiagrams
-        {
-            get
-            {
-                if ((_sysdiagrams == null))
-                {
-                    _sysdiagrams = base.CreateObjectSet<sysdiagrams>("sysdiagrams");
-                }
-                return _sysdiagrams;
-            }
-        }
-        private ObjectSet<sysdiagrams> _sysdiagrams;
+        private ObjectSet<GRUPO> _GRUPO;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -191,19 +175,11 @@ namespace Dados
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the GRUPOS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the GRUPO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToGRUPOS(GRUPOS gRUPOS)
+        public void AddToGRUPO(GRUPO gRUPO)
         {
-            base.AddObject("GRUPOS", gRUPOS);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the sysdiagrams EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTosysdiagrams(sysdiagrams sysdiagrams)
-        {
-            base.AddObject("sysdiagrams", sysdiagrams);
+            base.AddObject("GRUPO", gRUPO);
         }
     
         /// <summary>
@@ -474,24 +450,96 @@ namespace Dados
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ACOESPERMITIDAS
+        public Nullable<global::System.Int32> PERMITECRIACAO
         {
             get
             {
-                return _ACOESPERMITIDAS;
+                return _PERMITECRIACAO;
             }
             set
             {
-                OnACOESPERMITIDASChanging(value);
-                ReportPropertyChanging("ACOESPERMITIDAS");
-                _ACOESPERMITIDAS = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ACOESPERMITIDAS");
-                OnACOESPERMITIDASChanged();
+                OnPERMITECRIACAOChanging(value);
+                ReportPropertyChanging("PERMITECRIACAO");
+                _PERMITECRIACAO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PERMITECRIACAO");
+                OnPERMITECRIACAOChanged();
             }
         }
-        private Nullable<global::System.Int32> _ACOESPERMITIDAS;
-        partial void OnACOESPERMITIDASChanging(Nullable<global::System.Int32> value);
-        partial void OnACOESPERMITIDASChanged();
+        private Nullable<global::System.Int32> _PERMITECRIACAO;
+        partial void OnPERMITECRIACAOChanging(Nullable<global::System.Int32> value);
+        partial void OnPERMITECRIACAOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PERMITELEITURA
+        {
+            get
+            {
+                return _PERMITELEITURA;
+            }
+            set
+            {
+                OnPERMITELEITURAChanging(value);
+                ReportPropertyChanging("PERMITELEITURA");
+                _PERMITELEITURA = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PERMITELEITURA");
+                OnPERMITELEITURAChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PERMITELEITURA;
+        partial void OnPERMITELEITURAChanging(Nullable<global::System.Int32> value);
+        partial void OnPERMITELEITURAChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PERMITEALTERACAO
+        {
+            get
+            {
+                return _PERMITEALTERACAO;
+            }
+            set
+            {
+                OnPERMITEALTERACAOChanging(value);
+                ReportPropertyChanging("PERMITEALTERACAO");
+                _PERMITEALTERACAO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PERMITEALTERACAO");
+                OnPERMITEALTERACAOChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PERMITEALTERACAO;
+        partial void OnPERMITEALTERACAOChanging(Nullable<global::System.Int32> value);
+        partial void OnPERMITEALTERACAOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PERMITEEXCLUSAO
+        {
+            get
+            {
+                return _PERMITEEXCLUSAO;
+            }
+            set
+            {
+                OnPERMITEEXCLUSAOChanging(value);
+                ReportPropertyChanging("PERMITEEXCLUSAO");
+                _PERMITEEXCLUSAO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PERMITEEXCLUSAO");
+                OnPERMITEEXCLUSAOChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PERMITEEXCLUSAO;
+        partial void OnPERMITEEXCLUSAOChanging(Nullable<global::System.Int32> value);
+        partial void OnPERMITEEXCLUSAOChanged();
 
         #endregion
 
@@ -542,16 +590,16 @@ namespace Dados
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPOS")]
-        public GRUPOS GRUPOS
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPO")]
+        public GRUPO GRUPO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPOS>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPOS").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPO>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPOS>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPOS").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPO>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPO").Value = value;
             }
         }
         /// <summary>
@@ -559,17 +607,17 @@ namespace Dados
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<GRUPOS> GRUPOSReference
+        public EntityReference<GRUPO> GRUPOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPOS>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPOS");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPO>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRUPOS>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPOS", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRUPO>("Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPO", value);
                 }
             }
         }
@@ -581,22 +629,22 @@ namespace Dados
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="GRUPOS")]
+    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="GRUPO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class GRUPOS : EntityObject
+    public partial class GRUPO : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new GRUPOS object.
+        /// Create a new GRUPO object.
         /// </summary>
         /// <param name="iDGRUPO">Initial value of the IDGRUPO property.</param>
-        public static GRUPOS CreateGRUPOS(global::System.Int32 iDGRUPO)
+        public static GRUPO CreateGRUPO(global::System.Int32 iDGRUPO)
         {
-            GRUPOS gRUPOS = new GRUPOS();
-            gRUPOS.IDGRUPO = iDGRUPO;
-            return gRUPOS;
+            GRUPO gRUPO = new GRUPO();
+            gRUPO.IDGRUPO = iDGRUPO;
+            return gRUPO;
         }
 
         #endregion
@@ -705,163 +753,6 @@ namespace Dados
 
         #endregion
 
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="sysdiagrams")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class sysdiagrams : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new sysdiagrams object.
-        /// </summary>
-        /// <param name="name">Initial value of the name property.</param>
-        /// <param name="principal_id">Initial value of the principal_id property.</param>
-        /// <param name="diagram_id">Initial value of the diagram_id property.</param>
-        public static sysdiagrams Createsysdiagrams(global::System.String name, global::System.Int32 principal_id, global::System.Int32 diagram_id)
-        {
-            sysdiagrams sysdiagrams = new sysdiagrams();
-            sysdiagrams.name = name;
-            sysdiagrams.principal_id = principal_id;
-            sysdiagrams.diagram_id = diagram_id;
-            return sysdiagrams;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                OnnameChanging(value);
-                ReportPropertyChanging("name");
-                _name = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("name");
-                OnnameChanged();
-            }
-        }
-        private global::System.String _name;
-        partial void OnnameChanging(global::System.String value);
-        partial void OnnameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 principal_id
-        {
-            get
-            {
-                return _principal_id;
-            }
-            set
-            {
-                Onprincipal_idChanging(value);
-                ReportPropertyChanging("principal_id");
-                _principal_id = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("principal_id");
-                Onprincipal_idChanged();
-            }
-        }
-        private global::System.Int32 _principal_id;
-        partial void Onprincipal_idChanging(global::System.Int32 value);
-        partial void Onprincipal_idChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 diagram_id
-        {
-            get
-            {
-                return _diagram_id;
-            }
-            set
-            {
-                if (_diagram_id != value)
-                {
-                    Ondiagram_idChanging(value);
-                    ReportPropertyChanging("diagram_id");
-                    _diagram_id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("diagram_id");
-                    Ondiagram_idChanged();
-                }
-            }
-        }
-        private global::System.Int32 _diagram_id;
-        partial void Ondiagram_idChanging(global::System.Int32 value);
-        partial void Ondiagram_idChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> version
-        {
-            get
-            {
-                return _version;
-            }
-            set
-            {
-                OnversionChanging(value);
-                ReportPropertyChanging("version");
-                _version = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("version");
-                OnversionChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _version;
-        partial void OnversionChanging(Nullable<global::System.Int32> value);
-        partial void OnversionChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.Byte[] definition
-        {
-            get
-            {
-                return StructuralObject.GetValidValue(_definition);
-            }
-            set
-            {
-                OndefinitionChanging(value);
-                ReportPropertyChanging("definition");
-                _definition = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("definition");
-                OndefinitionChanged();
-            }
-        }
-        private global::System.Byte[] _definition;
-        partial void OndefinitionChanging(global::System.Byte[] value);
-        partial void OndefinitionChanged();
-
-        #endregion
-
-    
     }
     
     /// <summary>
@@ -979,16 +870,16 @@ namespace Dados
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_USUARIOGRUPO_GRUPOS", "GRUPOS")]
-        public GRUPOS GRUPOS
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_USUARIOGRUPO_GRUPOS", "GRUPO")]
+        public GRUPO GRUPO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPOS>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPOS").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPO>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPOS>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPOS").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPO>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPO").Value = value;
             }
         }
         /// <summary>
@@ -996,17 +887,17 @@ namespace Dados
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<GRUPOS> GRUPOSReference
+        public EntityReference<GRUPO> GRUPOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPOS>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPOS");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRUPO>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRUPOS>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPOS", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRUPO>("Dados.FK_USUARIOGRUPO_GRUPOS", "GRUPO", value);
                 }
             }
         }

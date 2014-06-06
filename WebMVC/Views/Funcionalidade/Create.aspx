@@ -29,19 +29,7 @@
             <%: Html.TextBoxFor(model => model.CodFuncionalidade) %>
             <%: Html.ValidationMessageFor(model => model.CodFuncionalidade) %>
         </div>
-        <%--<div class="editor-field">
-            <%  
-           int value = 0;
-           var values = Enum.GetValues(typeof(WebMVC.Authentication.Acao)).Cast<Enum>().Select(v => new SelectListItem
-                       {
-                           Selected = false,
-                           Text = v.ToString(),
-                           Value = (value++).ToString()
-                       });     
-                   
-            %>
-            <%= Html.DropDownList("este", values)%>
-        </div>--%>
+        
         <p>
             <input type="submit" value="Create" />
         </p>
