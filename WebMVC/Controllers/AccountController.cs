@@ -17,11 +17,11 @@ namespace WebMVC.Controllers
 
     [HandleError]
     public class AccountController : Controller
-    {        
+    {
         public IMembershipService MembershipService { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
-        {           
+        {
             if (MembershipService == null) { MembershipService = new AccountMembershipService(); }
 
             base.Initialize(requestContext);
@@ -58,7 +58,7 @@ namespace WebMVC.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "HomeAdmin");
                     }
                 }
                 else
@@ -127,7 +127,7 @@ namespace WebMVC.Controllers
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                   // autenticarUsuario(model.UserName, model.Password);//false /* createPersistentCookie */);
+                    // autenticarUsuario(model.UserName, model.Password);//false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
                 else
