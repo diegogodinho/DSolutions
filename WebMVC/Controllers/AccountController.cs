@@ -36,6 +36,12 @@ namespace WebMVC.Controllers
             return View();
         }
 
+
+        public ActionResult LoginEspecifico()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
@@ -57,7 +63,7 @@ namespace WebMVC.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "O nome do usuário ou senha são inválidos. Tente novamente");
                 }
             }
 

@@ -14,7 +14,7 @@ namespace WebMVC.Models
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("Nome")]
-        public string NomeGrupo { get; set; }
+        public string NomeGrupo { get; set; }        
     }
 
     public class GrupoRepository : IDados<GrupoModel>
@@ -32,7 +32,7 @@ namespace WebMVC.Models
             });
             return retorno;
         }
-
+       
         public GrupoModel BuscarPorID(int ID)
         {
             GrupoModel retorno = (from a in SingletonDBContext.Current.dbContext.GRUPO

@@ -63,5 +63,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BAIRRO">
+      <EntityTypeMapping TypeName="Dados.BAIRRO">
+        <MappingFragment StoreEntitySet="BAIRRO">
+          <ScalarProperty Name="SIGLA" ColumnName="SIGLA" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="IDCIDADE" ColumnName="IDCIDADE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CIDADE">
+      <EntityTypeMapping TypeName="Dados.CIDADE">
+        <MappingFragment StoreEntitySet="CIDADE">
+          <ScalarProperty Name="SIGLA" ColumnName="SIGLA" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

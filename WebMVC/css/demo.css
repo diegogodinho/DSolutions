@@ -1,0 +1,38 @@
+#logo img {background-color:#558844;}
+
+.miniColors-trigger {height:16px;width:16px;background:url(trigger.png) center no-repeat;display:inline-block;outline:none;margin:0px 0 0 0;}
+
+.miniColors-selector {position:absolute;width:185px;height:160px;background:#444;border:solid 1px #333;-moz-box-shadow:0 0 6px rgba(0, 0, 0, .25);-webkit-box-shadow:0 0 6px rgba(0, 0, 0, .25);box-shadow:0 0 6px rgba(0, 0, 0, .25);-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;padding:5px;z-index:999999;}
+
+.miniColors-colors {position:absolute;top:5px;left:5px;width:150px;height:150px;background:url(colors.png) right no-repeat;cursor:crosshair;}
+
+.miniColors-hues {position: absolute;top: 5px;left: 160px;width: 20px;height: 150px;background: url(colors.png) left no-repeat;cursor: crosshair;}
+
+.miniColors-colorPicker {position: absolute;width: 9px;height: 9px;border: 1px solid #fff;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;}
+.miniColors-colorPicker-inner {position: absolute;top: 0;left: 0; width: 7px;height: 7px;border: 1px solid #000;-moz-border-radius: 9px;
+-webkit-border-radius: 9px;border-radius: 9px;}
+
+.miniColors-huePicker {position:absolute;left:-3px;width:24px;height:1px;border:1px solid #fff;border-radius:2px;background:#000;}
+
+#settings {position:absolute;top:0px;left:0;z-index:9999;font-family:Arial,sans-serif;displa:none;}
+
+#settings strong {color:#666;font-size:11px;text-transform:uppercase;margin-top:10px;display:block;}
+#settings ul {margin-left:0;}
+
+.color-picker-wrap {background:#ccc;padding:0 10px 10px;width:90px;float:left;border-radius:0 0 3px 0;border:1px solid #bbb;border-width:0 1px 1px 0;}
+.color-picker-wrap label {margin-top:5px;font-size:10px;line-height:20px;font-weight:bold;text-transform:uppercase;color:#444;display:block;padding:0;}
+.color-picker-wrap input {float:left;padding:2px;margin-righ:3px;width:50px;positio:relative;to:1px;font-size:10px;color:#444;border:0;border-radius:3px;margin:0 3px 0 0;background:#aaa;-webkit-box-shadow:none;box-shadow:none;}
+
+#demo-background {list-style:none;}
+#demo-background a {cursor:pointer;display:block;width:20px;height:20px;float:left;margin:0px 6px 4px 0;background-color:#333;background-repeat:repeat;color:#aaa;text-align:center;line-height:20px;text-decoration:none;font-size:11px;border-radius:4px;}
+#demo-background a:hover {background-color:#444;}
+#demo-background a.active {background-color:#444;}
+
+.demo-switch {display:block;width:20px;height:20px;border-right:10px solid #444;background:#333;text-indent:-9999px;border-radius:4px;}
+
+
+@media only screen and (max-width: 900px) {
+
+	#settings {display:none;}
+
+}

@@ -3,63 +3,159 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
+    <meta charset="utf-8">
+    <meta name="description" content="Your description goes here...">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
     <script src="../../Scripts/jquery2.1.js" type="text/javascript"></script>
-    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/loading.css" rel="stylesheet" type="text/css" />
     <script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>
     <script src="../../Scripts/MicrosoftMvcValidation.js" type="text/javascript"></script>
     <script src="../../Scripts/MicrosoftMvcValidation.debug.js" type="text/javascript"></script>
     <script src="../../Scripts/MicrosoftMvcAjax.debug.js" type="text/javascript"></script>
+    <%--Template--%>
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/demo.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../../img/template/favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic">
+    <script src="../../js/respond.min.js"></script>
 </head>
-<body>
-    <div class="page">
-        <div id="header">
-            <div id="title">
-                <h1>
-                    Logomarca</h1>
+<body id="home">
+    <header>
+		<div class="header-inner">
+			<a href="index.html" ><img src="../../img/logo3.png" alt="Domus"></a>
+			
+			<div id="nav">
+				<ul>
+					<%--<li><a href="index.html" id="current">Home</a></li>--%>
+                    <li><%= Html.ActionLink("Home","Index","Home")  %></li>
+					<li><a href="browse.html">História</a></li>
+					<li><a href="agents.html">Colaboradores</a></li>
+					<li><a href="news.html">Notícias</a></li>
+					<li><a href="contact.html">Contato</a></li>
+                    <li> <% Html.RenderPartial("LogOnUserControl"); %></li>
+				</ul>
+			</div>
+		</div><!-- /header-inner -->
+	</header>
+    <%--<% Html.RenderPartial("LogOnUserControl"); %>
+    <ul id="menu">
+        <li>
+            <%: Html.ActionLink("Home", "Index", "Home")%></li>
+        <li>
+            <%: Html.ActionLink("About", "About", "Home")%></li>
+        <li>
+            <%
+                if (Request.IsAuthenticated)
+                {                        
+            %>
+            <%: Html.ActionLink("Funcionalidades", "Index", "Funcionalidade")%></li>
+        <li>
+            <%: Html.ActionLink("Cadastro de grupos", "Index", "Grupo")%></li>
+        <li>
+            <%: Html.ActionLink("Grupos de usuario", "Index", "UsuarioGrupo")%></li>
+        <li>
+            <%: Html.ActionLink("Funcionalidade grupo", "Index", "FuncionalidadeGrupo")%></li>
+        <% } %>
+    </ul>--%>
+    <div id="wrapper">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+    <div class="testimonial">
+        <blockquote>
+            <p>
+                Com a ajuda da Vital Imobiliária eu encontrei um lar perfeito para minha família.
+            </p>
+            <cite>&mdash; David Quick, Belleville<img src="../../img/testimonial.jpg" alt=""></cite></blockquote>
+    </div>
+    <!-- /testimonial -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="one_fourth">
+                <h3>
+                    About Domus</h3>
+                <p>
+                    <img src="../../img/logo-footer.png" alt="" class="right">
+                    This theme is a modern and stylish real estate theme. It's responsive and built
+                    mobile first, which means that it works on any screen size. Take a look around!</p>
             </div>
-            <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
+            <div class="one_fourth">
+                <h3>
+                    Contact Us</h3>
+                <p>
+                    <img src="../../img/agent-1.jpg" alt="" class="right">
+                    Call us at <b>555.123.4567</b> or send us an email to <a href="mailto:hello@domus.com">
+                        hello@domus.com</a>. You can also contact us via the <a href="contact.html">contact
+                            form</a>.</p>
             </div>
-            <div id="menucontainer">
-                <ul id="menu">
-                    <li>
-                        <%: Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li>
-                        <%: Html.ActionLink("About", "About", "Home")%></li>
-                    <li>
-                        <%
-                            if (Request.IsAuthenticated)
-                            {                        
-                        %>
-                        <%: Html.ActionLink("Funcionalidades", "Index", "Funcionalidade")%></li>
-                    <li>
-                        <%: Html.ActionLink("Cadastro de grupos", "Index", "Grupo")%></li>
-                    <li>
-                        <%: Html.ActionLink("Grupos de usuario", "Index", "UsuarioGrupo")%></li>
-                         <li>
-                        <%: Html.ActionLink("Funcionalidade grupo", "Index", "FuncionalidadeGrupo")%></li>
-                    <% } %>
+            <div class="one_fourth">
+                <h3>
+                    Newsletter</h3>
+                <p>
+                    Subscribe to our newsletter and get the latest news to your inbox. You can unsubscribe
+                    anytime.</p>
+                <!-- newsletter -->
+                <form action="form.php" id="form-newsletter" method="post">
+                <input type="text" placeholder="Email Address" name="email" class="required email"
+                    size="28">
+                <input type="hidden" name="form" value="newsletter">
+                <button type="submit" name="submit">
+                    Go</button>
+                </form>
+            </div>
+            <div class="one_fourth last">
+                <h3>
+                    Follow Us</h3>
+                <ul id="social">
+                    <li><a href="#" id="facebook">Facebook</a></li>
+                    <li><a href="#" id="twitter">Twitter</a></li>
+                    <li><a href="#" id="google">Google Plus</a></li>
+                    <li><a href="#" id="flickr">Flickr</a></li>
+                    <li><a href="#" id="instagram">Instagram</a></li>
+                    <li><a href="#" id="vimeo">Vimeo</a></li>
+                    <li><a href="#" id="youtube">YouTube</a></li>
+                    <li><a href="#" id="pinterest">Pinterest</a></li>
+                    <li><a href="#" id="rss">RSS</a></li>
                 </ul>
             </div>
-        </div>
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            <div id="footer">
+            <div class="clear">
             </div>
         </div>
+        <!-- /footer-inner -->
     </div>
+    <!-- /footer -->
+    <footer>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="browse.html">Browse</a></li>
+			<li><a href="agents.html">Our Agents</a></li>
+			<li><a href="news.html">News</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+
+		<p><a href="contact.html">556 Tremont St, Boston, MA, 02116 United States</a> <br>Copyright &copy; 2013 Domus Inc.</p>
+	</footer>
+    <!-- JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - -
+	DEMO ONLY  - - - - - - - - - - - - - - - - - - - - - - -
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <script type="text/javascript">
-        $body = $("body");
-        $(document).on({
-            ajaxStart: function () { $body.addClass("loading"); },
-            ajaxStop: function () { $body.removeClass("loading"); }
-        });
-    </script>
-    <div class="modal">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-26120576-9']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+		</script>
+    <script src="../../js/demo.js" type="text/javascript"></script>
+    <div class="demo-styling">
     </div>
 </body>
 </html>

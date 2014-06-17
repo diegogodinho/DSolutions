@@ -4,13 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Dados.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Dados.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="DadosStoreContainer">
+          <EntitySet Name="BAIRRO" EntityType="Dados.Store.BAIRRO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CIDADE" EntityType="Dados.Store.CIDADE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FUNCIONALIDADE" EntityType="Dados.Store.FUNCIONALIDADE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FUNCIONALIDADEGRUPO" EntityType="Dados.Store.FUNCIONALIDADEGRUPO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRUPO" EntityType="Dados.Store.GRUPO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="USUARIOGRUPO" EntityType="Dados.Store.USUARIOGRUPO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="USUARIOUNIVERSUS" EntityType="Dados.Store.USUARIOUNIVERSUS" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.Store.FK_BAIRRO_CIDADE">
+            <End Role="CIDADE" EntitySet="CIDADE" />
+            <End Role="BAIRRO" EntitySet="BAIRRO" />
+          </AssociationSet>
           <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" Association="Dados.Store.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
             <End Role="FUNCIONALIDADE" EntitySet="FUNCIONALIDADE" />
             <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
@@ -28,6 +34,23 @@
             <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="BAIRRO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDCIDADE" Type="int" Nullable="false" />
+          <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="SIGLA" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="CIDADE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="SIGLA" Type="varchar" Nullable="false" MaxLength="4000" />
+        </EntityType>
         <EntityType Name="FUNCIONALIDADE">
           <Key>
             <PropertyRef Name="IDFUNCIONALIDADE" />
@@ -85,6 +108,18 @@
           <Property Name="USUARIOADMINISTRATIVO" Type="bit" />
           <Property Name="VERSAOREPOSITORIOFOTO" Type="varbinary" MaxLength="8" />
         </EntityType>
+        <Association Name="FK_BAIRRO_CIDADE">
+          <End Role="CIDADE" Type="Dados.Store.CIDADE" Multiplicity="1" />
+          <End Role="BAIRRO" Type="Dados.Store.BAIRRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIDADE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BAIRRO">
+              <PropertyRef Name="IDCIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
           <End Role="FUNCIONALIDADE" Type="Dados.Store.FUNCIONALIDADE" Multiplicity="1" />
           <End Role="FUNCIONALIDADEGRUPO" Type="Dados.Store.FUNCIONALIDADEGRUPO" Multiplicity="*" />
@@ -133,8 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Dados" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -159,6 +193,12 @@
           <AssociationSet Name="FK_USUARIOGRUPO_USUARIOUNIVERSUS" Association="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS">
             <End Role="USUARIOUNIVERSUS" EntitySet="USUARIOUNIVERSUS" />
             <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+          </AssociationSet>
+          <EntitySet Name="BAIRRO" EntityType="Dados.BAIRRO" />
+          <EntitySet Name="CIDADE" EntityType="Dados.CIDADE" />
+          <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.FK_BAIRRO_CIDADE">
+            <End Role="CIDADE" EntitySet="CIDADE" />
+            <End Role="BAIRRO" EntitySet="BAIRRO" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="FUNCIONALIDADE">
@@ -274,6 +314,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BAIRRO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDCIDADE" Nullable="false" />
+          <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SIGLA" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIDADE" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="BAIRRO" ToRole="CIDADE" />
+        </EntityType>
+        <EntityType Name="CIDADE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SIGLA" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BAIRRO" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="CIDADE" ToRole="BAIRRO" />
+        </EntityType>
+        <Association Name="FK_BAIRRO_CIDADE">
+          <End Type="Dados.CIDADE" Role="CIDADE" Multiplicity="1" />
+          <End Type="Dados.BAIRRO" Role="BAIRRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIDADE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BAIRRO">
+              <PropertyRef Name="IDCIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -342,6 +413,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BAIRRO">
+            <EntityTypeMapping TypeName="Dados.BAIRRO">
+              <MappingFragment StoreEntitySet="BAIRRO">
+                <ScalarProperty Name="SIGLA" ColumnName="SIGLA" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="IDCIDADE" ColumnName="IDCIDADE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIDADE">
+            <EntityTypeMapping TypeName="Dados.CIDADE">
+              <MappingFragment StoreEntitySet="CIDADE">
+                <ScalarProperty Name="SIGLA" ColumnName="SIGLA" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -383,6 +473,12 @@
         <AssociationConnector Association="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS" ManuallyRouted="false">
           <ConnectorPoint PointX="2" PointY="1.8651432291666668" />
           <ConnectorPoint PointX="2.375" PointY="1.8651432291666668" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Dados.BAIRRO" Width="1.5" PointX="6.375" PointY="3.875" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="Dados.CIDADE" Width="1.5" PointX="3.5" PointY="3.875" Height="1.7879850260416674" />
+        <AssociationConnector Association="Dados.FK_BAIRRO_CIDADE" >
+          <ConnectorPoint PointX="5" PointY="4.7689925130208337" />
+          <ConnectorPoint PointX="6.375" PointY="4.7689925130208337" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

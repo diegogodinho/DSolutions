@@ -5,3 +5,10 @@ D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebMVC\bin\Dados.pdb
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebMVC\obj\Debug\WebMVC.csprojResolveAssemblyReference.cache
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebMVC\obj\Debug\WebMVC.dll
 D:\Estudo\RestAngularEntityFramework\MvcApplication1\WebMVC\obj\Debug\WebMVC.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\WebMVC\bin\WebMVC.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\WebMVC\bin\WebMVC.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\WebMVC\bin\Dados.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\WebMVC\bin\Dados.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\WebMVC\obj\Debug\WebMVC.csprojResolveAssemblyReference.cache
+D:\Estudo\MVCDSolutions\MvcApplication1\WebMVC\obj\Debug\WebMVC.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\WebMVC\obj\Debug\WebMVC.pdb

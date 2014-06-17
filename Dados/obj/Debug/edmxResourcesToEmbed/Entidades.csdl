@@ -22,6 +22,12 @@
       <End Role="USUARIOUNIVERSUS" EntitySet="USUARIOUNIVERSUS" />
       <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
     </AssociationSet>
+    <EntitySet Name="BAIRRO" EntityType="Dados.BAIRRO" />
+    <EntitySet Name="CIDADE" EntityType="Dados.CIDADE" />
+    <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.FK_BAIRRO_CIDADE">
+      <End Role="CIDADE" EntitySet="CIDADE" />
+      <End Role="BAIRRO" EntitySet="BAIRRO" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="FUNCIONALIDADE">
     <Key>
@@ -133,6 +139,37 @@
       </Principal>
       <Dependent Role="USUARIOGRUPO">
         <PropertyRef Name="IDUSUARIOUNIVERSUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BAIRRO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IDCIDADE" Nullable="false" />
+    <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SIGLA" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CIDADE" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="BAIRRO" ToRole="CIDADE" />
+  </EntityType>
+  <EntityType Name="CIDADE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SIGLA" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BAIRRO" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="CIDADE" ToRole="BAIRRO" />
+  </EntityType>
+  <Association Name="FK_BAIRRO_CIDADE">
+    <End Type="Dados.CIDADE" Role="CIDADE" Multiplicity="1" />
+    <End Type="Dados.BAIRRO" Role="BAIRRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIDADE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BAIRRO">
+        <PropertyRef Name="IDCIDADE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -18,7 +18,7 @@
     %>
     <table>
         <tr>
-            <th colspan="3">
+            <th>
             </th>
             <th>
                 <%= Html.ActionLink("ID", "Index", new    { sorter = "ID" }) %>

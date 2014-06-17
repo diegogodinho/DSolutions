@@ -1,18 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<WebMVC.Models.GrupoModel>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Index
+    Grupos
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Lista de Grupos</h2>
+        Grupos</h2>
     <table>
         <tr>
-            <th colspan="3">
+            <th >
             </th>
-            <th>
-                ID
-            </th>
+           
             <th>
                 Nome
             </th>
@@ -20,10 +18,7 @@
         <% foreach (var item in Model)
            { %>
         <tr>
-            <% Html.RenderPartial("partialControlsGrid", item); %>
-            <td>
-                <%: item.ID %>
-            </td>
+            <% Html.RenderPartial("partialControlsGrid", item); %>           
             <td>
                 <%: item.NomeGrupo %>
             </td>
@@ -31,6 +26,6 @@
         <% } %>
     </table>
     <p>
-        <%: Html.ActionLink("Novo registro", "Create") %>
+        <%: Html.ActionLink("Novo", "Create") %>
     </p>
 </asp:Content>

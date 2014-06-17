@@ -39,12 +39,12 @@ namespace WebMVC.Models
     public class LogOnModel
     {
         [Required]
-        [DisplayName("User name")]
+        [DisplayName("Usuário")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [DisplayName("Password")]
+        [DisplayName("Senha")]
         public string Password { get; set; }
 
         [DisplayName("Remember me?")]

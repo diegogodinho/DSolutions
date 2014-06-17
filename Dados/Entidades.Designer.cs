@@ -23,6 +23,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Dados", "FK_FUNCIONALIDADEGRUPO_GRUPOS", "GRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.GRUPO), "FUNCIONALIDADEGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.FUNCIONALIDADEGRUPO), true)]
 [assembly: EdmRelationshipAttribute("Dados", "FK_USUARIOGRUPO_GRUPOS", "GRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.GRUPO), "USUARIOGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.USUARIOGRUPO), true)]
 [assembly: EdmRelationshipAttribute("Dados", "FK_USUARIOGRUPO_USUARIOUNIVERSUS", "USUARIOUNIVERSUS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.USUARIOUNIVERSUS), "USUARIOGRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.USUARIOGRUPO), true)]
+[assembly: EdmRelationshipAttribute("Dados", "FK_BAIRRO_CIDADE", "CIDADE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.CIDADE), "BAIRRO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.BAIRRO), true)]
 
 #endregion
 
@@ -153,6 +154,38 @@ namespace Dados
             }
         }
         private ObjectSet<USUARIOUNIVERSUS> _USUARIOUNIVERSUS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BAIRRO> BAIRRO
+        {
+            get
+            {
+                if ((_BAIRRO == null))
+                {
+                    _BAIRRO = base.CreateObjectSet<BAIRRO>("BAIRRO");
+                }
+                return _BAIRRO;
+            }
+        }
+        private ObjectSet<BAIRRO> _BAIRRO;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CIDADE> CIDADE
+        {
+            get
+            {
+                if ((_CIDADE == null))
+                {
+                    _CIDADE = base.CreateObjectSet<CIDADE>("CIDADE");
+                }
+                return _CIDADE;
+            }
+        }
+        private ObjectSet<CIDADE> _CIDADE;
 
         #endregion
 
@@ -197,6 +230,22 @@ namespace Dados
         {
             base.AddObject("USUARIOUNIVERSUS", uSUARIOUNIVERSUS);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BAIRRO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBAIRRO(BAIRRO bAIRRO)
+        {
+            base.AddObject("BAIRRO", bAIRRO);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CIDADE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCIDADE(CIDADE cIDADE)
+        {
+            base.AddObject("CIDADE", cIDADE);
+        }
 
         #endregion
 
@@ -205,6 +254,316 @@ namespace Dados
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="BAIRRO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BAIRRO : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BAIRRO object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="iDCIDADE">Initial value of the IDCIDADE property.</param>
+        /// <param name="nOME">Initial value of the NOME property.</param>
+        public static BAIRRO CreateBAIRRO(global::System.Int32 id, global::System.Int32 iDCIDADE, global::System.String nOME)
+        {
+            BAIRRO bAIRRO = new BAIRRO();
+            bAIRRO.ID = id;
+            bAIRRO.IDCIDADE = iDCIDADE;
+            bAIRRO.NOME = nOME;
+            return bAIRRO;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDCIDADE
+        {
+            get
+            {
+                return _IDCIDADE;
+            }
+            set
+            {
+                OnIDCIDADEChanging(value);
+                ReportPropertyChanging("IDCIDADE");
+                _IDCIDADE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDCIDADE");
+                OnIDCIDADEChanged();
+            }
+        }
+        private global::System.Int32 _IDCIDADE;
+        partial void OnIDCIDADEChanging(global::System.Int32 value);
+        partial void OnIDCIDADEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NOME
+        {
+            get
+            {
+                return _NOME;
+            }
+            set
+            {
+                OnNOMEChanging(value);
+                ReportPropertyChanging("NOME");
+                _NOME = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NOME");
+                OnNOMEChanged();
+            }
+        }
+        private global::System.String _NOME;
+        partial void OnNOMEChanging(global::System.String value);
+        partial void OnNOMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SIGLA
+        {
+            get
+            {
+                return _SIGLA;
+            }
+            set
+            {
+                OnSIGLAChanging(value);
+                ReportPropertyChanging("SIGLA");
+                _SIGLA = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SIGLA");
+                OnSIGLAChanged();
+            }
+        }
+        private global::System.String _SIGLA;
+        partial void OnSIGLAChanging(global::System.String value);
+        partial void OnSIGLAChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_BAIRRO_CIDADE", "CIDADE")]
+        public CIDADE CIDADE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CIDADE>("Dados.FK_BAIRRO_CIDADE", "CIDADE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CIDADE>("Dados.FK_BAIRRO_CIDADE", "CIDADE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CIDADE> CIDADEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CIDADE>("Dados.FK_BAIRRO_CIDADE", "CIDADE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CIDADE>("Dados.FK_BAIRRO_CIDADE", "CIDADE", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="CIDADE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CIDADE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CIDADE object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="nOME">Initial value of the NOME property.</param>
+        /// <param name="sIGLA">Initial value of the SIGLA property.</param>
+        public static CIDADE CreateCIDADE(global::System.Int32 id, global::System.String nOME, global::System.String sIGLA)
+        {
+            CIDADE cIDADE = new CIDADE();
+            cIDADE.ID = id;
+            cIDADE.NOME = nOME;
+            cIDADE.SIGLA = sIGLA;
+            return cIDADE;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NOME
+        {
+            get
+            {
+                return _NOME;
+            }
+            set
+            {
+                OnNOMEChanging(value);
+                ReportPropertyChanging("NOME");
+                _NOME = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NOME");
+                OnNOMEChanged();
+            }
+        }
+        private global::System.String _NOME;
+        partial void OnNOMEChanging(global::System.String value);
+        partial void OnNOMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SIGLA
+        {
+            get
+            {
+                return _SIGLA;
+            }
+            set
+            {
+                OnSIGLAChanging(value);
+                ReportPropertyChanging("SIGLA");
+                _SIGLA = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SIGLA");
+                OnSIGLAChanged();
+            }
+        }
+        private global::System.String _SIGLA;
+        partial void OnSIGLAChanging(global::System.String value);
+        partial void OnSIGLAChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_BAIRRO_CIDADE", "BAIRRO")]
+        public EntityCollection<BAIRRO> BAIRRO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BAIRRO>("Dados.FK_BAIRRO_CIDADE", "BAIRRO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BAIRRO>("Dados.FK_BAIRRO_CIDADE", "BAIRRO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.

@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Dados.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="DadosStoreContainer">
+    <EntitySet Name="BAIRRO" EntityType="Dados.Store.BAIRRO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CIDADE" EntityType="Dados.Store.CIDADE" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FUNCIONALIDADE" EntityType="Dados.Store.FUNCIONALIDADE" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FUNCIONALIDADEGRUPO" EntityType="Dados.Store.FUNCIONALIDADEGRUPO" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GRUPO" EntityType="Dados.Store.GRUPO" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="USUARIOGRUPO" EntityType="Dados.Store.USUARIOGRUPO" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="USUARIOUNIVERSUS" EntityType="Dados.Store.USUARIOUNIVERSUS" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.Store.FK_BAIRRO_CIDADE">
+      <End Role="CIDADE" EntitySet="CIDADE" />
+      <End Role="BAIRRO" EntitySet="BAIRRO" />
+    </AssociationSet>
     <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" Association="Dados.Store.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
       <End Role="FUNCIONALIDADE" EntitySet="FUNCIONALIDADE" />
       <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
@@ -23,6 +29,23 @@
       <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="BAIRRO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IDCIDADE" Type="int" Nullable="false" />
+    <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
+    <Property Name="SIGLA" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="CIDADE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
+    <Property Name="SIGLA" Type="varchar" Nullable="false" MaxLength="4000" />
+  </EntityType>
   <EntityType Name="FUNCIONALIDADE">
     <Key>
       <PropertyRef Name="IDFUNCIONALIDADE" />
@@ -80,6 +103,18 @@
     <Property Name="USUARIOADMINISTRATIVO" Type="bit" />
     <Property Name="VERSAOREPOSITORIOFOTO" Type="varbinary" MaxLength="8" />
   </EntityType>
+  <Association Name="FK_BAIRRO_CIDADE">
+    <End Role="CIDADE" Type="Dados.Store.CIDADE" Multiplicity="1" />
+    <End Role="BAIRRO" Type="Dados.Store.BAIRRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIDADE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BAIRRO">
+        <PropertyRef Name="IDCIDADE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
     <End Role="FUNCIONALIDADE" Type="Dados.Store.FUNCIONALIDADE" Multiplicity="1" />
     <End Role="FUNCIONALIDADEGRUPO" Type="Dados.Store.FUNCIONALIDADEGRUPO" Multiplicity="*" />
