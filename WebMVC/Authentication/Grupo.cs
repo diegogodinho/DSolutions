@@ -8,6 +8,6 @@ namespace WebMVC.Authentication
     public class Grupo
     {
         public string Nome { get; set; }
-        public List<Funcionalidade> Funcionalidades { get; set; }
+        public int ID { get; set; }
     }
 }

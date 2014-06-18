@@ -11,7 +11,7 @@ namespace WebMVC.Validators
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
     public sealed class PropertiesMustMatchAttribute : ValidationAttribute
     {
-        private const string _defaultErrorMessage = "'{0}' and '{1}' não corresponderem.";
+        private const string _defaultErrorMessage = "'{0}' and '{1}' não correspondem.";
         private readonly object _typeId = new object();
 
         public PropertiesMustMatchAttribute(string originalProperty, string confirmProperty)

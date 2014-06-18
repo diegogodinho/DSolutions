@@ -9,48 +9,30 @@ namespace WebMVC.Authentication
     public class CustomPrincipal : ICustomPrincipal
     {
         public string Nome { get; private set; }
-        public List<Grupo> Grupos { get; private set; }
+        public Grupo Grupo { get; private set; }
 
-        public CustomPrincipal(string nome, List<Grupo> grupos)
+        public CustomPrincipal(string nome, Grupo grupo)
         {
             Nome = nome;
             Identity = new GenericIdentity(nome);
-            Grupos = grupos;
+            Grupo = grupo;
         }
 
         public IIdentity Identity { get; private set; }
 
         public bool IsInRole(string role)
         {
-            return Grupos.Any(r => r.Nome.ToUpper() == role.ToUpper());
+            return Grupo.Nome.ToUpper() == role.ToUpper();
         }
 
         public bool PermiteAcessoAFuncionalidade(string funcionalidade)
         {
-            return Grupos.Any(delegate(Grupo grupo)
-            {
-                if (grupo.Funcionalidades != null)
-                {
-                    return grupo.Funcionalidades.Any(f => f.NomeFuncionalidade == funcionalidade);
-                }
-                else
-                    return false;
-            });
+            throw new NotImplementedException();
         }
 
         public bool PermiteAcessoAAcao(string funcionalidade, Acao acao)
         {
-            return Grupos.Any(delegate(Grupo grupo)
-            {
-                if (grupo.Funcionalidades != null)
-                {
-                    return grupo.Funcionalidades.Any(f => f.NomeFuncionalidade == funcionalidade &&
-                        ((acao == Acao.Criar && f.PermiteCriacao == 1) || (acao == Acao.Ler && f.PermiteLeitura == 1) ||
-                        (acao == Acao.Atualizar && f.PermiteAlteracao == 1) || (acao == Acao.Excluir && f.PermiteExclusao == 1)));
-                }
-                else
-                    return false;
-            });
+            throw new NotImplementedException();
         }
     }
 }

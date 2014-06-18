@@ -34,6 +34,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
             <li class="active"><a href="\HomeAdmin/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="\Usuario/"><i class="fa fa-font"></i> Usuarios</a></li>
             <li><a href="\Grupo/"><i class="fa fa-bar-chart-o"></i> Grupos</a></li>
             <li><a href="\Cidade/"><i class="fa fa-table"></i> Cidades</a></li>
             <li><a href="\Bairro/"><i class="fa fa-edit"></i> Bairros</a></li>
@@ -60,14 +61,16 @@
                 <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
                 <li class="divider"></li>
                 <%--<li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>--%>
-                <li><%: Html.ActionLink("Log Out", "LogOff", "Account","Account", new { @class = "fa fa-power-off" })%> </li>
+                <li><%: Html.ActionLink("Log Out", "LogOff", "Usuario","Usuario", new { @class = "fa fa-power-off" })%> </li>
               </ul>
             </li>            
           </ul>
         </div><!-- /.navbar-collapse -->
       </nav>
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        </asp:ContentPlaceHolder>
+        <div id="page-wrapper">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </div>
     <!-- /#wrapper -->
     <!-- JavaScript -->

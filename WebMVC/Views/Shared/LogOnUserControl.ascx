@@ -1,14 +1,13 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%
     if (Request.IsAuthenticated) {
-%>
-        Welcome <b><%: Page.User.Identity.Name %></b>!
-         <%: Html.ActionLink("Log Off", "LogOff", "Account") %> 
+%>        
+         <%: Html.ActionLink("Área Administrativa", "Index", "HomeAdmin") %> 
 <%
     }
     else {
 %> 
-         <%: Html.ActionLink("Acesso Restrito", "LoginEspecifico", "Account") %> 
+         <%: Html.ActionLink("Acesso Restrito", "LoginEspecifico", "Usuario") %> 
 <%
     }
 %>

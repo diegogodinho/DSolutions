@@ -8,30 +8,15 @@
         <EntityContainer Name="DadosStoreContainer">
           <EntitySet Name="BAIRRO" EntityType="Dados.Store.BAIRRO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CIDADE" EntityType="Dados.Store.CIDADE" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="FUNCIONALIDADE" EntityType="Dados.Store.FUNCIONALIDADE" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="FUNCIONALIDADEGRUPO" EntityType="Dados.Store.FUNCIONALIDADEGRUPO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRUPO" EntityType="Dados.Store.GRUPO" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="USUARIOGRUPO" EntityType="Dados.Store.USUARIOGRUPO" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="USUARIOUNIVERSUS" EntityType="Dados.Store.USUARIOUNIVERSUS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USUARIO" EntityType="Dados.Store.USUARIO" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.Store.FK_BAIRRO_CIDADE">
             <End Role="CIDADE" EntitySet="CIDADE" />
             <End Role="BAIRRO" EntitySet="BAIRRO" />
           </AssociationSet>
-          <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" Association="Dados.Store.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
-            <End Role="FUNCIONALIDADE" EntitySet="FUNCIONALIDADE" />
-            <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_GRUPOS" Association="Dados.Store.FK_FUNCIONALIDADEGRUPO_GRUPOS">
+          <AssociationSet Name="FK_USUARIO_GRUPO" Association="Dados.Store.FK_USUARIO_GRUPO">
             <End Role="GRUPO" EntitySet="GRUPO" />
-            <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USUARIOGRUPO_GRUPOS" Association="Dados.Store.FK_USUARIOGRUPO_GRUPOS">
-            <End Role="GRUPO" EntitySet="GRUPO" />
-            <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USUARIOGRUPO_USUARIOUNIVERSUS" Association="Dados.Store.FK_USUARIOGRUPO_USUARIOUNIVERSUS">
-            <End Role="USUARIOUNIVERSUS" EntitySet="USUARIOUNIVERSUS" />
-            <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="BAIRRO">
@@ -51,62 +36,27 @@
           <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
           <Property Name="SIGLA" Type="varchar" Nullable="false" MaxLength="4000" />
         </EntityType>
-        <EntityType Name="FUNCIONALIDADE">
-          <Key>
-            <PropertyRef Name="IDFUNCIONALIDADE" />
-          </Key>
-          <Property Name="IDFUNCIONALIDADE" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="NOMEFUNCIONALIDADE" Type="nchar" Nullable="false" MaxLength="2000" />
-          <Property Name="CODFUNCIONALIDADE" Type="nchar" Nullable="false" MaxLength="2000" />
-        </EntityType>
-        <EntityType Name="FUNCIONALIDADEGRUPO">
-          <Key>
-            <PropertyRef Name="IDFUNCIONALIDADEGRUPO" />
-          </Key>
-          <Property Name="IDFUNCIONALIDADEGRUPO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="IDFUNCIONALIDADE" Type="int" Nullable="false" />
-          <Property Name="IDGRUPO" Type="int" Nullable="false" />
-          <Property Name="PERMITECRIACAO" Type="int" />
-          <Property Name="PERMITELEITURA" Type="int" />
-          <Property Name="PERMITEALTERACAO" Type="int" />
-          <Property Name="PERMITEEXCLUSAO" Type="int" />
-        </EntityType>
         <EntityType Name="GRUPO">
           <Key>
             <PropertyRef Name="IDGRUPO" />
           </Key>
           <Property Name="IDGRUPO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="NOMEGRUPO" Type="nchar" MaxLength="2000" />
+          <Property Name="NOMEGRUPO" Type="varchar" Nullable="false" MaxLength="4000" />
         </EntityType>
-        <EntityType Name="USUARIOGRUPO">
+        <EntityType Name="USUARIO">
           <Key>
-            <PropertyRef Name="IDUSUARIOGRUPO" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="IDUSUARIOGRUPO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="IDUSUARIOUNIVERSUS" Type="int" Nullable="false" />
-          <Property Name="IDGRUPO" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="USUARIOUNIVERSUS">
-          <Key>
-            <PropertyRef Name="IDUSUARIOUNIVERSUS" />
-          </Key>
-          <Property Name="IDUSUARIOUNIVERSUS" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SINCRONIZARLMS" Type="bit" />
-          <Property Name="NOME" Type="varchar" MaxLength="250" />
-          <Property Name="SOBRENOME" Type="varchar" MaxLength="250" />
-          <Property Name="LOGIN" Type="varchar" MaxLength="300" />
-          <Property Name="SENHAPADRAO" Type="varchar" MaxLength="60" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="70" />
-          <Property Name="CODPESSOA" Type="int" />
-          <Property Name="ATIVO" Type="bit" />
-          <Property Name="DTCRIACAO" Type="datetime" />
-          <Property Name="DTMODIFICACAO" Type="datetime" />
-          <Property Name="DTEXPORTACAO" Type="datetime" />
-          <Property Name="VERSAOREPOSITORIO" Type="varbinary" MaxLength="8" />
-          <Property Name="SINCRONIZADOCOMFALHA" Type="bit" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="SOBRENOME" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="EMAIL" Type="varchar" Nullable="false" MaxLength="400" />
+          <Property Name="DATANASCIMENTO" Type="datetime" Nullable="false" />
+          <Property Name="CPF" Type="varchar" Nullable="false" MaxLength="4000" />
           <Property Name="FOTO" Type="image" />
-          <Property Name="USUARIOADMINISTRATIVO" Type="bit" />
-          <Property Name="VERSAOREPOSITORIOFOTO" Type="varbinary" MaxLength="8" />
+          <Property Name="SENHA" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="IDGRUPO" Type="int" />
+          <Property Name="LOGIN" Type="varchar" Nullable="false" MaxLength="4000" />
         </EntityType>
         <Association Name="FK_BAIRRO_CIDADE">
           <End Role="CIDADE" Type="Dados.Store.CIDADE" Multiplicity="1" />
@@ -120,51 +70,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
-          <End Role="FUNCIONALIDADE" Type="Dados.Store.FUNCIONALIDADE" Multiplicity="1" />
-          <End Role="FUNCIONALIDADEGRUPO" Type="Dados.Store.FUNCIONALIDADEGRUPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FUNCIONALIDADE">
-              <PropertyRef Name="IDFUNCIONALIDADE" />
-            </Principal>
-            <Dependent Role="FUNCIONALIDADEGRUPO">
-              <PropertyRef Name="IDFUNCIONALIDADE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FUNCIONALIDADEGRUPO_GRUPOS">
-          <End Role="GRUPO" Type="Dados.Store.GRUPO" Multiplicity="1" />
-          <End Role="FUNCIONALIDADEGRUPO" Type="Dados.Store.FUNCIONALIDADEGRUPO" Multiplicity="*" />
+        <Association Name="FK_USUARIO_GRUPO">
+          <End Role="GRUPO" Type="Dados.Store.GRUPO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Dados.Store.USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GRUPO">
               <PropertyRef Name="IDGRUPO" />
             </Principal>
-            <Dependent Role="FUNCIONALIDADEGRUPO">
+            <Dependent Role="USUARIO">
               <PropertyRef Name="IDGRUPO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIOGRUPO_GRUPOS">
-          <End Role="GRUPO" Type="Dados.Store.GRUPO" Multiplicity="1" />
-          <End Role="USUARIOGRUPO" Type="Dados.Store.USUARIOGRUPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRUPO">
-              <PropertyRef Name="IDGRUPO" />
-            </Principal>
-            <Dependent Role="USUARIOGRUPO">
-              <PropertyRef Name="IDGRUPO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIOGRUPO_USUARIOUNIVERSUS">
-          <End Role="USUARIOUNIVERSUS" Type="Dados.Store.USUARIOUNIVERSUS" Multiplicity="1" />
-          <End Role="USUARIOGRUPO" Type="Dados.Store.USUARIOGRUPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOUNIVERSUS">
-              <PropertyRef Name="IDUSUARIOUNIVERSUS" />
-            </Principal>
-            <Dependent Role="USUARIOGRUPO">
-              <PropertyRef Name="IDUSUARIOUNIVERSUS" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -173,147 +87,19 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Dados" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="ContextDB" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FUNCIONALIDADE" EntityType="Dados.FUNCIONALIDADE" />
-          <EntitySet Name="FUNCIONALIDADEGRUPO" EntityType="Dados.FUNCIONALIDADEGRUPO" />
-          <EntitySet Name="GRUPO" EntityType="Dados.GRUPO" />
-          <EntitySet Name="USUARIOGRUPO" EntityType="Dados.USUARIOGRUPO" />
-          <EntitySet Name="USUARIOUNIVERSUS" EntityType="Dados.USUARIOUNIVERSUS" />
-          <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" Association="Dados.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
-            <End Role="FUNCIONALIDADE" EntitySet="FUNCIONALIDADE" />
-            <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FUNCIONALIDADEGRUPO_GRUPOS" Association="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS">
-            <End Role="GRUPO" EntitySet="GRUPO" />
-            <End Role="FUNCIONALIDADEGRUPO" EntitySet="FUNCIONALIDADEGRUPO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USUARIOGRUPO_GRUPOS" Association="Dados.FK_USUARIOGRUPO_GRUPOS">
-            <End Role="GRUPO" EntitySet="GRUPO" />
-            <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USUARIOGRUPO_USUARIOUNIVERSUS" Association="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS">
-            <End Role="USUARIOUNIVERSUS" EntitySet="USUARIOUNIVERSUS" />
-            <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
-          </AssociationSet>
           <EntitySet Name="BAIRRO" EntityType="Dados.BAIRRO" />
           <EntitySet Name="CIDADE" EntityType="Dados.CIDADE" />
+          <EntitySet Name="GRUPO" EntityType="Dados.GRUPO" />
+          <EntitySet Name="USUARIO" EntityType="Dados.USUARIO" />
           <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.FK_BAIRRO_CIDADE">
             <End Role="CIDADE" EntitySet="CIDADE" />
             <End Role="BAIRRO" EntitySet="BAIRRO" />
           </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_GRUPO" Association="Dados.FK_USUARIO_GRUPO">
+            <End Role="GRUPO" EntitySet="GRUPO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="FUNCIONALIDADE">
-          <Key>
-            <PropertyRef Name="IDFUNCIONALIDADE" />
-          </Key>
-          <Property Name="IDFUNCIONALIDADE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMEFUNCIONALIDADE" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="true" />
-          <Property Name="CODFUNCIONALIDADE" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="true" />
-          <NavigationProperty Name="FUNCIONALIDADEGRUPO" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" FromRole="FUNCIONALIDADE" ToRole="FUNCIONALIDADEGRUPO" />
-        </EntityType>
-        <EntityType Name="FUNCIONALIDADEGRUPO">
-          <Key>
-            <PropertyRef Name="IDFUNCIONALIDADEGRUPO" />
-          </Key>
-          <Property Name="IDFUNCIONALIDADEGRUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDFUNCIONALIDADE" Type="Int32" Nullable="false" />
-          <Property Name="IDGRUPO" Type="Int32" Nullable="false" />
-          <Property Name="PERMITECRIACAO" Type="Int32" />
-          <Property Name="PERMITELEITURA" Type="Int32" />
-          <Property Name="PERMITEALTERACAO" Type="Int32" />
-          <Property Name="PERMITEEXCLUSAO" Type="Int32" />
-          <NavigationProperty Name="FUNCIONALIDADE" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" FromRole="FUNCIONALIDADEGRUPO" ToRole="FUNCIONALIDADE" />
-          <NavigationProperty Name="GRUPO" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS" FromRole="FUNCIONALIDADEGRUPO" ToRole="GRUPO" />
-        </EntityType>
-        <EntityType Name="GRUPO">
-          <Key>
-            <PropertyRef Name="IDGRUPO" />
-          </Key>
-          <Property Name="IDGRUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMEGRUPO" Type="String" MaxLength="2000" Unicode="true" FixedLength="true" />
-          <NavigationProperty Name="FUNCIONALIDADEGRUPO" Relationship="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS" FromRole="GRUPO" ToRole="FUNCIONALIDADEGRUPO" />
-          <NavigationProperty Name="USUARIOGRUPO" Relationship="Dados.FK_USUARIOGRUPO_GRUPOS" FromRole="GRUPO" ToRole="USUARIOGRUPO" />
-        </EntityType>
-        <EntityType Name="USUARIOGRUPO">
-          <Key>
-            <PropertyRef Name="IDUSUARIOGRUPO" />
-          </Key>
-          <Property Name="IDUSUARIOGRUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDUSUARIOUNIVERSUS" Type="Int32" Nullable="false" />
-          <Property Name="IDGRUPO" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="GRUPO" Relationship="Dados.FK_USUARIOGRUPO_GRUPOS" FromRole="USUARIOGRUPO" ToRole="GRUPO" />
-          <NavigationProperty Name="USUARIOUNIVERSUS" Relationship="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS" FromRole="USUARIOGRUPO" ToRole="USUARIOUNIVERSUS" />
-        </EntityType>
-        <EntityType Name="USUARIOUNIVERSUS">
-          <Key>
-            <PropertyRef Name="IDUSUARIOUNIVERSUS" />
-          </Key>
-          <Property Name="IDUSUARIOUNIVERSUS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SINCRONIZARLMS" Type="Boolean" />
-          <Property Name="NOME" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
-          <Property Name="SOBRENOME" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
-          <Property Name="LOGIN" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
-          <Property Name="SENHAPADRAO" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="70" Unicode="false" FixedLength="false" />
-          <Property Name="CODPESSOA" Type="Int32" />
-          <Property Name="ATIVO" Type="Boolean" />
-          <Property Name="DTCRIACAO" Type="DateTime" />
-          <Property Name="DTMODIFICACAO" Type="DateTime" />
-          <Property Name="DTEXPORTACAO" Type="DateTime" />
-          <Property Name="VERSAOREPOSITORIO" Type="Binary" MaxLength="8" FixedLength="false" />
-          <Property Name="SINCRONIZADOCOMFALHA" Type="Boolean" />
-          <Property Name="FOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="USUARIOADMINISTRATIVO" Type="Boolean" />
-          <Property Name="VERSAOREPOSITORIOFOTO" Type="Binary" MaxLength="8" FixedLength="false" />
-          <NavigationProperty Name="USUARIOGRUPO" Relationship="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS" FromRole="USUARIOUNIVERSUS" ToRole="USUARIOGRUPO" />
-        </EntityType>
-        <Association Name="FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1">
-          <End Role="FUNCIONALIDADE" Type="Dados.FUNCIONALIDADE" Multiplicity="1" />
-          <End Role="FUNCIONALIDADEGRUPO" Type="Dados.FUNCIONALIDADEGRUPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FUNCIONALIDADE">
-              <PropertyRef Name="IDFUNCIONALIDADE" />
-            </Principal>
-            <Dependent Role="FUNCIONALIDADEGRUPO">
-              <PropertyRef Name="IDFUNCIONALIDADE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FUNCIONALIDADEGRUPO_GRUPOS">
-          <End Role="GRUPO" Type="Dados.GRUPO" Multiplicity="1" />
-          <End Role="FUNCIONALIDADEGRUPO" Type="Dados.FUNCIONALIDADEGRUPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRUPO">
-              <PropertyRef Name="IDGRUPO" />
-            </Principal>
-            <Dependent Role="FUNCIONALIDADEGRUPO">
-              <PropertyRef Name="IDGRUPO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIOGRUPO_GRUPOS">
-          <End Role="GRUPO" Type="Dados.GRUPO" Multiplicity="1" />
-          <End Role="USUARIOGRUPO" Type="Dados.USUARIOGRUPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRUPO">
-              <PropertyRef Name="IDGRUPO" />
-            </Principal>
-            <Dependent Role="USUARIOGRUPO">
-              <PropertyRef Name="IDGRUPO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIOGRUPO_USUARIOUNIVERSUS">
-          <End Role="USUARIOUNIVERSUS" Type="Dados.USUARIOUNIVERSUS" Multiplicity="1" />
-          <End Role="USUARIOGRUPO" Type="Dados.USUARIOGRUPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOUNIVERSUS">
-              <PropertyRef Name="IDUSUARIOUNIVERSUS" />
-            </Principal>
-            <Dependent Role="USUARIOGRUPO">
-              <PropertyRef Name="IDUSUARIOUNIVERSUS" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="BAIRRO">
           <Key>
             <PropertyRef Name="ID" />
@@ -333,6 +119,30 @@
           <Property Type="String" Name="SIGLA" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BAIRRO" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="CIDADE" ToRole="BAIRRO" />
         </EntityType>
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="IDGRUPO" />
+          </Key>
+          <Property Type="Int32" Name="IDGRUPO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NOMEGRUPO" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Dados.FK_USUARIO_GRUPO" FromRole="GRUPO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SOBRENOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DATANASCIMENTO" Nullable="false" />
+          <Property Type="String" Name="CPF" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="FOTO" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="SENHA" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IDGRUPO" />
+          <Property Type="String" Name="LOGIN" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRUPO" Relationship="Dados.FK_USUARIO_GRUPO" FromRole="USUARIO" ToRole="GRUPO" />
+        </EntityType>
         <Association Name="FK_BAIRRO_CIDADE">
           <End Type="Dados.CIDADE" Role="CIDADE" Multiplicity="1" />
           <End Type="Dados.BAIRRO" Role="BAIRRO" Multiplicity="*" />
@@ -345,74 +155,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_USUARIO_GRUPO">
+          <End Type="Dados.GRUPO" Role="GRUPO" Multiplicity="0..1" />
+          <End Type="Dados.USUARIO" Role="USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPO">
+              <PropertyRef Name="IDGRUPO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="IDGRUPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DadosStoreContainer" CdmEntityContainer="ContextDB">
-          <EntitySetMapping Name="FUNCIONALIDADE">
-            <EntityTypeMapping TypeName="Dados.FUNCIONALIDADE">
-              <MappingFragment StoreEntitySet="FUNCIONALIDADE">
-                <ScalarProperty Name="IDFUNCIONALIDADE" ColumnName="IDFUNCIONALIDADE" />
-                <ScalarProperty Name="NOMEFUNCIONALIDADE" ColumnName="NOMEFUNCIONALIDADE" />
-                <ScalarProperty Name="CODFUNCIONALIDADE" ColumnName="CODFUNCIONALIDADE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FUNCIONALIDADEGRUPO">
-            <EntityTypeMapping TypeName="Dados.FUNCIONALIDADEGRUPO">
-              <MappingFragment StoreEntitySet="FUNCIONALIDADEGRUPO">
-                <ScalarProperty Name="IDFUNCIONALIDADEGRUPO" ColumnName="IDFUNCIONALIDADEGRUPO" />
-                <ScalarProperty Name="IDFUNCIONALIDADE" ColumnName="IDFUNCIONALIDADE" />
-                <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
-                <ScalarProperty Name="PERMITECRIACAO" ColumnName="PERMITECRIACAO" />
-                <ScalarProperty Name="PERMITELEITURA" ColumnName="PERMITELEITURA" />
-                <ScalarProperty Name="PERMITEALTERACAO" ColumnName="PERMITEALTERACAO" />
-                <ScalarProperty Name="PERMITEEXCLUSAO" ColumnName="PERMITEEXCLUSAO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRUPO">
-            <EntityTypeMapping TypeName="Dados.GRUPO">
-              <MappingFragment StoreEntitySet="GRUPO">
-                <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
-                <ScalarProperty Name="NOMEGRUPO" ColumnName="NOMEGRUPO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USUARIOGRUPO">
-            <EntityTypeMapping TypeName="Dados.USUARIOGRUPO">
-              <MappingFragment StoreEntitySet="USUARIOGRUPO">
-                <ScalarProperty Name="IDUSUARIOGRUPO" ColumnName="IDUSUARIOGRUPO" />
-                <ScalarProperty Name="IDUSUARIOUNIVERSUS" ColumnName="IDUSUARIOUNIVERSUS" />
-                <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USUARIOUNIVERSUS">
-            <EntityTypeMapping TypeName="Dados.USUARIOUNIVERSUS">
-              <MappingFragment StoreEntitySet="USUARIOUNIVERSUS">
-                <ScalarProperty Name="IDUSUARIOUNIVERSUS" ColumnName="IDUSUARIOUNIVERSUS" />
-                <ScalarProperty Name="SINCRONIZARLMS" ColumnName="SINCRONIZARLMS" />
-                <ScalarProperty Name="NOME" ColumnName="NOME" />
-                <ScalarProperty Name="SOBRENOME" ColumnName="SOBRENOME" />
-                <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
-                <ScalarProperty Name="SENHAPADRAO" ColumnName="SENHAPADRAO" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="CODPESSOA" ColumnName="CODPESSOA" />
-                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
-                <ScalarProperty Name="DTCRIACAO" ColumnName="DTCRIACAO" />
-                <ScalarProperty Name="DTMODIFICACAO" ColumnName="DTMODIFICACAO" />
-                <ScalarProperty Name="DTEXPORTACAO" ColumnName="DTEXPORTACAO" />
-                <ScalarProperty Name="VERSAOREPOSITORIO" ColumnName="VERSAOREPOSITORIO" />
-                <ScalarProperty Name="SINCRONIZADOCOMFALHA" ColumnName="SINCRONIZADOCOMFALHA" />
-                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
-                <ScalarProperty Name="USUARIOADMINISTRATIVO" ColumnName="USUARIOADMINISTRATIVO" />
-                <ScalarProperty Name="VERSAOREPOSITORIOFOTO" ColumnName="VERSAOREPOSITORIOFOTO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BAIRRO">
             <EntityTypeMapping TypeName="Dados.BAIRRO">
               <MappingFragment StoreEntitySet="BAIRRO">
@@ -427,6 +187,30 @@
             <EntityTypeMapping TypeName="Dados.CIDADE">
               <MappingFragment StoreEntitySet="CIDADE">
                 <ScalarProperty Name="SIGLA" ColumnName="SIGLA" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRUPO">
+            <EntityTypeMapping TypeName="Dados.GRUPO">
+              <MappingFragment StoreEntitySet="GRUPO">
+                <ScalarProperty Name="NOMEGRUPO" ColumnName="NOMEGRUPO" />
+                <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="Dados.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+                <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+                <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="DATANASCIMENTO" ColumnName="DATANASCIMENTO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SOBRENOME" ColumnName="SOBRENOME" />
                 <ScalarProperty Name="NOME" ColumnName="NOME" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -453,32 +237,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Entidades">
-        <EntityTypeShape EntityType="Dados.FUNCIONALIDADE" Width="1.5" PointX="9.125" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
-        <EntityTypeShape EntityType="Dados.FUNCIONALIDADEGRUPO" Width="1.5" PointX="6.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="Dados.GRUPO" Width="1.5" PointX="4.375" PointY="0.875" Height="1.7879850260416657" IsExpanded="true" />
-        <EntityTypeShape EntityType="Dados.USUARIOGRUPO" Width="1.5" PointX="2.375" PointY="0.875" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="Dados.USUARIOUNIVERSUS" Width="1.5" PointX="0.5" PointY="0.5" Height="4.4802050781250022" IsExpanded="true" />
-        <AssociationConnector Association="Dados.FK_FUNCIONALIDADEGRUPO_FUNCIONALIDADE1" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.125" PointY="1.6439925130208335" />
-          <ConnectorPoint PointX="8.25" PointY="1.6439925130208335" />
-        </AssociationConnector>
-        <AssociationConnector Association="Dados.FK_FUNCIONALIDADEGRUPO_GRUPOS" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.875" PointY="1.7689925130208328" />
-          <ConnectorPoint PointX="6.75" PointY="1.7689925130208328" />
-        </AssociationConnector>
-        <AssociationConnector Association="Dados.FK_USUARIOGRUPO_GRUPOS" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.375" PointY="1.7689925130208328" />
-          <ConnectorPoint PointX="3.875" PointY="1.7689925130208328" />
-        </AssociationConnector>
-        <AssociationConnector Association="Dados.FK_USUARIOGRUPO_USUARIOUNIVERSUS" ManuallyRouted="false">
-          <ConnectorPoint PointX="2" PointY="1.8651432291666668" />
-          <ConnectorPoint PointX="2.375" PointY="1.8651432291666668" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="Dados.BAIRRO" Width="1.5" PointX="6.375" PointY="3.875" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="Dados.CIDADE" Width="1.5" PointX="3.5" PointY="3.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Dados.BAIRRO" Width="1.5" PointX="8" PointY="0.875" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="Dados.CIDADE" Width="1.5" PointX="5.75" PointY="1" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Dados.GRUPO" Width="1.5" PointX="0.75" PointY="1.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="Dados.USUARIO" Width="1.5" PointX="3" PointY="1" Height="3.1340950520833313" />
         <AssociationConnector Association="Dados.FK_BAIRRO_CIDADE" >
-          <ConnectorPoint PointX="5" PointY="4.7689925130208337" />
-          <ConnectorPoint PointX="6.375" PointY="4.7689925130208337" />
+          <ConnectorPoint PointX="7.25" PointY="1.8939925130208337" />
+          <ConnectorPoint PointX="8" PointY="1.8939925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Dados.FK_USUARIO_GRUPO" >
+          <ConnectorPoint PointX="2.25" PointY="2.5478417968750016" />
+          <ConnectorPoint PointX="3" PointY="2.5478417968750016" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

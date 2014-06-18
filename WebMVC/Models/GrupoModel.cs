@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using WebMVC.Views.Shared;
 using Dados;
+using System.Data;
 
 namespace WebMVC.Models
 {
@@ -14,10 +15,10 @@ namespace WebMVC.Models
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("Nome")]
-        public string NomeGrupo { get; set; }        
+        public string NomeGrupo { get; set; }
     }
 
-    public class GrupoRepository : IDados<GrupoModel>
+    public class GrupoRepository
     {
         public List<GrupoModel> BuscarTodos()
         {
@@ -32,7 +33,7 @@ namespace WebMVC.Models
             });
             return retorno;
         }
-       
+
         public GrupoModel BuscarPorID(int ID)
         {
             GrupoModel retorno = (from a in SingletonDBContext.Current.dbContext.GRUPO
@@ -51,24 +52,32 @@ namespace WebMVC.Models
 
         public void ExcluirItem(GrupoModel item)
         {
-            GRUPO grupos = (from a in SingletonDBContext.Current.dbContext.GRUPO
-                                             where a.IDGRUPO == item.ID
-                                             select a).FirstOrDefault();
-            if (grupos != null)
+            try
             {
-                SingletonDBContext.Current.dbContext.GRUPO.DeleteObject(grupos);
-                SingletonDBContext.Current.dbContext.SaveChanges();
+                GRUPO grupos = (from a in SingletonDBContext.Current.dbContext.GRUPO
+                                where a.IDGRUPO == item.ID
+                                select a).FirstOrDefault();
+                if (grupos != null)
+                {
+                    SingletonDBContext.Current.dbContext.GRUPO.DeleteObject(grupos);
+                    SingletonDBContext.Current.dbContext.SaveChanges();
+                }
             }
+            catch (UpdateException)
+            {
+                throw new Exception("Exclusão não permitida, existe dependência para registro corrente!");
+            }
+
         }
 
         public void EditarItem(GrupoModel item)
         {
             GRUPO grupos = (from a in SingletonDBContext.Current.dbContext.GRUPO
-                             where a.IDGRUPO == item.ID
-                             select a).FirstOrDefault();
+                            where a.IDGRUPO == item.ID
+                            select a).FirstOrDefault();
             if (grupos != null)
             {
-                grupos.NOMEGRUPO = item.NomeGrupo;                
+                grupos.NOMEGRUPO = item.NomeGrupo;
                 SingletonDBContext.Current.dbContext.SaveChanges();
             }
         }

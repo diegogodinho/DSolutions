@@ -22,7 +22,7 @@ namespace WebMVC.Attributes
         {
             if (filterContext.HttpContext.Request.IsAuthenticated)
             {
-                if (CurrentUser.Grupos != null && CurrentUser.Grupos.Count > 0)
+                if (CurrentUser.Grupo != null)
                 {
                     if (!String.IsNullOrEmpty(Roles) && !CurrentUser.IsInRole(Roles))
                         this.HandleUnauthorizedRequest(filterContext, "Desculpe, mas você não tem permissão para acessar esse recurso!");

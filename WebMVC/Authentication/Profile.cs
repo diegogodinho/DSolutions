@@ -8,6 +8,6 @@ namespace WebMVC.Authentication
     public class Profile
     {
         public string Login { get; set; }
-        public List<Grupo> Grupos { get; set; }
+        public Grupo Grupo { get; set; }
     }
 }

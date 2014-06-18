@@ -43,7 +43,7 @@ namespace WebMVC
                 JavaScriptSerializer json_serializer = new JavaScriptSerializer();
                 Profile newUser = json_serializer.Deserialize<Profile>(authTicket.UserData);
 
-                HttpContext.Current.User = new CustomPrincipal(newUser.Login, newUser.Grupos); 
+                HttpContext.Current.User = new CustomPrincipal(newUser.Login, newUser.Grupo); 
             }
         }
     }

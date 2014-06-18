@@ -12,11 +12,11 @@ namespace WebMVC.Controllers
     public class GrupoController : Controller
     {
         private GrupoRepository _grupoRepository;
-        
+
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             _grupoRepository = new GrupoRepository();
-            
+
             base.Initialize(requestContext);
         }
 
@@ -27,7 +27,7 @@ namespace WebMVC.Controllers
         }
 
         #region Create
-         [CustomAuthorize]
+        [CustomAuthorize]
         public ActionResult Create()
         {
             return View();
@@ -36,7 +36,7 @@ namespace WebMVC.Controllers
 
         [HttpPost]
         [CustomAuthorize]
-         public ActionResult Create(GrupoModel model)
+        public ActionResult Create(GrupoModel model)
         {
             if (ModelState.IsValid)
             {
@@ -44,7 +44,7 @@ namespace WebMVC.Controllers
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Teste mensagem de erro");
-            return View(model);            
+            return View(model);
         }
 
         #endregion
@@ -86,7 +86,15 @@ namespace WebMVC.Controllers
         [CustomAuthorize]
         public ActionResult Delete(GrupoModel model)
         {
-            _grupoRepository.ExcluirItem(model);
+            try
+            {
+                _grupoRepository.ExcluirItem(model);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Error", "Home", new { message = e.Message });
+            }
+
             return RedirectToAction("Index", "Grupo");
         }
         #endregion
