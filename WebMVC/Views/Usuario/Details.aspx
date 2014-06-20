@@ -11,6 +11,7 @@
     </script>
     <h2>
         Detalhes</h2>
+    <%= Html.Imagem(Model.FotoString) %>
     <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Login) %>
     <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Nome) %>
     <%= Html.LabelAndDisableTextBoxPDSolution(model => model.SobreNome) %>

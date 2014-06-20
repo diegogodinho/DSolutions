@@ -4,15 +4,27 @@
     Create
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<script type="text/javascript">
-    $(function () {
-        SeletorMenu(1);
-    });
-    </script>
     <script type="text/javascript">
-        function fileChange(teste) {
-            $("#imagem").attr("src", teste.value);
-        }
+        $(function () {
+            SeletorMenu(1);
+            $("#OriginalLocation").on("change", function () {
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+                if (/^image/.test(files[0].type)) { // only image file
+                    var reader = new FileReader(); // instance of the FileReader
+                    reader.readAsDataURL(files[0]); // read the local file
+
+                    reader.onloadend = function () { // set image data as background of div
+                        $("#fotoimagem").attr("src", this.result);
+                        $("#fotoValue").val(this.result);
+
+                    }
+                }
+            });
+        });     
+        
+    
     </script>
     <ol class="breadcrumb">
         <li><a href="index.html"><i class="icon-dashboard"></i>Usuário</a></li>
@@ -22,16 +34,16 @@
         Novo Usuário</h2>
     <hr />
     <% Html.EnableClientValidation(); %>
-    <% using (Html.BeginForm())
+    <% using (Html.BeginForm("Create", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
        {%>
     <%: Html.ValidationSummary(true) %>
     <div class="form-group pequeno">
-        <img width="100" height="100" id="imagem" />
+        <img width="300" height="237" id="fotoimagem" alt="" src="../../imagens/new_user.jpg" />
         <div class="editor-label">
             <%: Html.LabelFor(model => model.Foto) %>
         </div>
         <div class="editor-field">
-            <input type="file" onchange="fileChange(this);" />
+            <input type="file" id="OriginalLocation"  />
         </div>
     </div>
     <%=  Html.LabelAndTextBoxPDSolution(model=> model.Login) %>

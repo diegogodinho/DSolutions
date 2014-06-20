@@ -36,11 +36,11 @@ namespace WebMVC.Attributes
 
         protected void HandleUnauthorizedRequest(AuthorizationContext filterContext, string erroMessage)
         {
-            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Error", message = erroMessage }));
+            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Usuario", action = "LoginEspecifico", message = erroMessage }));
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Error" }));
+            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Usuario", action = "LoginEspecifico" }));
         }
     }
 }

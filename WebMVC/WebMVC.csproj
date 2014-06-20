@@ -111,6 +111,7 @@
     <Content Include="imagens\Delete.png" />
     <Content Include="imagens\Detalhes.png" />
     <Content Include="imagens\Edit.png" />
+    <Content Include="imagens\new_user.jpg" />
     <Content Include="img\agent-1.jpg" />
     <Content Include="img\blockquote.png" />
     <Content Include="img\featured.png" />
@@ -135,6 +136,12 @@
     <Content Include="img\trigger.png" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\chart-data-morris.js" />
+    <Content Include="js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="js\jquery.fileupload-process.js" />
+    <Content Include="js\jquery.fileupload-ui.js" />
+    <Content Include="js\jquery.fileupload-validate.js" />
+    <Content Include="js\jquery.fileupload.js" />
+    <Content Include="js\jquery.iframe-transport.js" />
     <Content Include="js\jquery.tablesorter.js" />
     <Content Include="js\tables.js" />
     <Content Include="js\Util.js" />
@@ -149,6 +156,7 @@
     <Content Include="js\scripts.js" />
     <Content Include="Views\Bairro\Cidade.aspx" />
     <Content Include="Views\Bairro\Create.aspx" />
+    <Content Include="Views\Bairro\Delete.aspx" />
     <Content Include="Views\Bairro\Details.aspx" />
     <Content Include="Views\Bairro\Edit.aspx" />
     <Content Include="Views\Bairro\Index.aspx" />
@@ -157,6 +165,7 @@
     <Content Include="Views\Cidade\Edit.aspx" />
     <Content Include="Views\Cidade\Index.aspx" />
     <Content Include="Views\Grupo\Create.aspx" />
+    <Content Include="Views\Grupo\Delete.aspx" />
     <Content Include="Views\Grupo\Details.aspx" />
     <Content Include="Views\Grupo\Edit.aspx" />
     <Content Include="Views\Grupo\Index.aspx" />
@@ -166,9 +175,7 @@
     <Content Include="Views\Usuario\Edit.aspx" />
     <Content Include="Views\Usuario\Index.aspx" />
     <Content Include="Views\Usuario\LoginEspecifico.aspx" />
-    <Content Include="Views\Bairro\Delete.aspx" />
     <Content Include="Views\Cidade\Delete.aspx" />
-    <Content Include="Views\Grupo\Delete.aspx" />
     <Content Include="Views\HomeAdmin\Index.aspx" />
     <Content Include="Views\Home\Error.aspx" />
     <Content Include="Views\Shared\NameUserControl.ascx" />

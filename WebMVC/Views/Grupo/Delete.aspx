@@ -1,30 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.GrupoModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Delete
+	Delete
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
+
 <script type="text/javascript">
     $(function () {
-        SeletorMenu(2);
+        SeletorMenu(0);
     });
-    </script>
-    <h3>
-        Tem certeza de que deseja excluir?</h3>
-    <div class="display-label">
-        ID</div>
-    <div class="display-field">
-        <%: Model.ID %></div>
-    <div class="display-label">
-        NomeGrupo</div>
-    <div class="display-field">
-        <%: Model.NomeGrupo %></div>
-    <% using (Html.BeginForm())
-       { %>
-    <p>
-        <button type="submit" value="excluir">
-            Excluir</button>
-        <%: Html.ActionLink("Voltar", "Index") %>
-    </p>
+    </script>  
+    <h2>Tem certeza que deseja excluir este item?</h2>
+	<hr/>
+        
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.NomeGrupo) %>                   
+    
+    <% using (Html.BeginForm()) { %>
+        <p>
+		    <input type="submit" value="Excluir" /> |
+		    <%: Html.ActionLink("Voltar", "Index") %>
+        </p>
     <% } %>
+
 </asp:Content>
+

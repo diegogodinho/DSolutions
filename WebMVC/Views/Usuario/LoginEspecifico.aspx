@@ -17,6 +17,11 @@
 </head>
 <body>
     <div class="container">
+        <% if (ViewData["message"] != null) { %>
+        <div class="alert alert-info alert-dismissable">
+            <%= ViewData["message"].ToString() %>
+        </div>
+        <% }%>
         <% using (Html.BeginForm("LogOn", "Usuario", FormMethod.Post, new { @class = "form-signin", role = "form" }))
            { %>
         <h2 class="form-signin-heading">
@@ -31,6 +36,6 @@
                 Enviar</button>
         </div>
         <% } %>
-    </div>  
+    </div>
 </body>
 </html>

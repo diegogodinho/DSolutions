@@ -11,6 +11,8 @@ using WebMVC.Models;
 using WebMVC.Authentication;
 using System.Web.Script.Serialization;
 using WebMVC.Validators;
+using WebMVC.Attributes;
+using System.IO;
 
 namespace WebMVC.Controllers
 {
@@ -32,8 +34,10 @@ namespace WebMVC.Controllers
             return View();
         }
 
-        public ActionResult LoginEspecifico()
+        public ActionResult LoginEspecifico(string message)
         {
+            if (message != null)
+                ViewData["message"] = message;
             return View();
         }
 
@@ -170,6 +174,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Create
+        [CustomAuthorize]
         public ActionResult Create()
         {
             UsuarioModel usuario = new UsuarioModel();
@@ -188,6 +193,15 @@ namespace WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files != null && Request.Files.Count > 0)
+                {
+                    byte[] fileData = null;
+                    using (var binaryReader = new BinaryReader(Request.Files[0].InputStream))
+                    {
+                        fileData = binaryReader.ReadBytes(Request.Files[0].ContentLength);
+                    }
+                    model.Foto = fileData;
+                }
                 usuarioRepository.AdicionarItem(model);
                 return RedirectToAction("Index");
             }
@@ -201,8 +215,7 @@ namespace WebMVC.Controllers
                 });
                 return View(model);
             }
-            
-            
+
         }
         #endregion
 
@@ -272,7 +285,10 @@ namespace WebMVC.Controllers
         #region Details
         public ActionResult Details(int id)
         {
-            return View(usuarioRepository.BuscarPorID(id));
+            UsuarioModel usuario = usuarioRepository.BuscarPorID(id);
+            if (usuario.Foto != null)
+                usuario.FotoString = System.Convert.ToBase64String(usuario.Foto, 0, usuario.Foto.Length);
+            return View(usuario);
         }
         #endregion
 

@@ -106,10 +106,18 @@ namespace WebMVC.Helpers
         private static string LabelAndDisableTextBoxDSolution<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string tamanho)
         {
             MvcHtmlString label = LabelExtensions.LabelFor<TModel, TProperty>(htmlHelper, expression);
-            MvcHtmlString textBox = InputExtensions.TextBoxFor<TModel, TProperty>(htmlHelper, expression, new { @class = "form-control", disabled = "disabled" });            
+            MvcHtmlString textBox = InputExtensions.TextBoxFor<TModel, TProperty>(htmlHelper, expression, new { @class = "form-control", disabled = "disabled" });
             return string.Format("<div class=\"form-group {0}\"><div class=\"editor-label\">{1}</div><div class=\"editor-field\">{2}</div></div>", tamanho, label.ToHtmlString(), textBox.ToHtmlString());
         }
 
         #endregion
+
+
+        public static string Imagem<TModel>(this HtmlHelper<TModel> htmlHelper, string baseTeste)
+        {
+            if (baseTeste != null)
+                return string.Format("<img src=\"data:image/png;base64,{0}\" width=\"200\"  height=\"200\"> </img> ", baseTeste);
+            return "";
+        }
     }
 }

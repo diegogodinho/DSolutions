@@ -13,7 +13,7 @@
         Usuários</h3>
     <hr />
     <a href="\Usuario/Create" class="btn btn-default" style="float: right; margin-bottom: 10px;">
-        <spa class="glyphicon glyphicon-file">Novo</spa>
+        <span class="glyphicon glyphicon-file">Novo</span>
     </a>
     <table class="table table-striped table-bordered table-condensed">
         <tr>

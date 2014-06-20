@@ -101,6 +101,9 @@ namespace WebMVC.Models
         public GrupoModel Grupo { get; set; }
 
         public List<SelectListItem> GruposDisponiveis { get; set; }
+
+
+        public string FotoString { get; set; }
     }
 
 
