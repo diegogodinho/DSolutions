@@ -191,8 +191,18 @@ namespace WebMVC.Controllers
                 usuarioRepository.AdicionarItem(model);
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Teste mensagem de erro");
-            return View(model);
+            else
+            {
+                model.GruposDisponiveis = new List<SelectListItem>();
+                model.GruposDisponiveis.Add(new SelectListItem() { Selected = true, Text = "Selecione...", Value = "0" });
+                grupoRepository.BuscarTodos().ForEach(grupo =>
+                {
+                    model.GruposDisponiveis.Add(new SelectListItem() { Selected = false, Text = grupo.NomeGrupo, Value = grupo.ID.ToString() });
+                });
+                return View(model);
+            }
+            
+            
         }
         #endregion
 
@@ -260,9 +270,9 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Details
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
-            return View();
+            return View(usuarioRepository.BuscarPorID(id));
         }
         #endregion
 

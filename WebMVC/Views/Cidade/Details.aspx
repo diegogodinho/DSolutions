@@ -1,18 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.CidadeModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Detalhes Cidade
+	Details
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    $(function () {
+        SeletorMenu(0);
+    });
+    </script>
+    <h2>Detalhes</h2>
+    
         
-        <div class="display-label">Nome</div>
-        <div class="display-field"><%: Model.Nome %></div>
+      <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Nome) %>
         
-        <div class="display-label">Sigla</div>
-        <div class="display-field"><%: Model.Sigla %></div>           
+      <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Sigla) %>
+        
+      <%= Html.LabelAndDisableTextBoxPDSolution(model => model.ID) %>
+        
+    
     <p>
-        <%: Html.ActionLink("Editar", "Edit", new {  id=Model.ID  }) %> |
+        <%: Html.ActionLink("Editar", "Edit", new { id=Model.ID }) %> |
         <%: Html.ActionLink("Voltar", "Index") %>
     </p>
 

@@ -6,26 +6,22 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edição</h2>
+    <h2>Alterar</h2>
+	<hr/>
 
+    <% Html.EnableClientValidation(); %>
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
         
-        <fieldset>
-            <legend>Campos</legend>                       
             
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.NomeGrupo) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.NomeGrupo) %>
-                <%: Html.ValidationMessageFor(model => model.NomeGrupo) %>
-            </div>
+            <%= Html.LabelAndTextBoxPDSolution(model => model.NomeGrupo) %>
+            
+            <%= Html.LabelAndTextBoxPDSolution(model => model.ID) %>
             
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Salvar" />
             </p>
-        </fieldset>
+        
 
     <% } %>
 

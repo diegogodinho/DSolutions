@@ -1,25 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.GrupoModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Novo Grupo
+    Create
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        $(function () {
+            SeletorMenu(2);
+        });
+    </script>
     <h2>
         Novo Grupo</h2>
+    <hr />
     <% Html.EnableClientValidation(); %>
     <% using (Html.BeginForm())
        {%>
     <%: Html.ValidationSummary(true) %>
-    <div class="editor-label">
-        <%: Html.LabelFor(model => model.NomeGrupo) %>
-    </div>
-    <div class="editor-field">
-        <%: Html.TextBoxFor(model => model.NomeGrupo) %>
-        <%: Html.ValidationMessageFor(model => model.NomeGrupo) %>
-    </div>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.NomeGrupo) %>
     <p>
-        <button type="submit" value="Criar">
-            Criar</button>
+        <input type="submit" value="Criar" />
     </p>
     <% } %>
     <div>

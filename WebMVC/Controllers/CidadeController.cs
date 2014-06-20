@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebMVC.Models;
+using WebMVC.Views.Shared;
+using System.Configuration;
 
 namespace WebMVC.Controllers
 {
@@ -15,12 +17,11 @@ namespace WebMVC.Controllers
         public CidadeController()
         {
             cidadeRepository = new CidadeRepository();
-
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(cidadeRepository.BuscarTodos());
+            return View(new PaginatedData<CidadeModel>(cidadeRepository.BuscarTodos().AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
         }
 
         //
@@ -50,8 +51,7 @@ namespace WebMVC.Controllers
                 cidadeRepository.AdicionarItem(model);
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Teste mensagem de erro");
-            return RedirectToAction("Index");
+            return View();
 
         }
 

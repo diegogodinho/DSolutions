@@ -5,60 +5,23 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Edit</h2>
+        Alterar</h2>
+    <hr />
     <% Html.EnableClientValidation(); %>
     <% using (Html.BeginForm())
        {%>
     <%: Html.ValidationSummary(true) %>
-    <fieldset>
-        <legend>Fields</legend>
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Nome) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.TextBoxFor(model => model.Nome) %>
-            <%: Html.ValidationMessageFor(model => model.Nome) %>
-        </div>
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.SobreNome) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.TextBoxFor(model => model.SobreNome) %>
-            <%: Html.ValidationMessageFor(model => model.SobreNome) %>
-        </div>
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Email) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.TextBoxFor(model => model.Email) %>
-            <%: Html.ValidationMessageFor(model => model.Email) %>
-        </div>
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.DataNascimento) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.TextBoxFor(model => model.DataNascimento, String.Format("{0:g}", Model.DataNascimento)) %>
-            <%: Html.ValidationMessageFor(model => model.DataNascimento) %>
-        </div>
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Cpf) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.TextBoxFor(model => model.Cpf) %>
-            <%: Html.ValidationMessageFor(model => model.Cpf) %>
-        </div>
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.idGrupo) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownListFor(model => model.idGrupo,Model.GruposDisponiveis) %>
-        </div>
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.Nome) %>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.SobreNome) %>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.Email) %>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.DataNascimento) %>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.Cpf) %>
+    <%= Html.LabelAndDropDownListPDSolution(model => model.idGrupo,Model.GruposDisponiveis) %>
+    <p>
+        <input type="submit" value="Salvar" />
+    </p>
     <% } %>
     <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <%: Html.ActionLink("Voltar", "Index") %>
     </div>
 </asp:Content>

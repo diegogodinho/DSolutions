@@ -4,6 +4,11 @@
     Index
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    $(function () {
+        SeletorMenu(1);
+    });
+    </script>
     <h3>
         Usuários</h3>
     <hr />

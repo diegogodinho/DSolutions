@@ -4,6 +4,11 @@
     Delete
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    $(function () {
+        SeletorMenu(2);
+    });
+    </script>
     <h3>
         Tem certeza de que deseja excluir?</h3>
     <div class="display-label">

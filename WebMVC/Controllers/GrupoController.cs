@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebMVC.Models;
 using WebMVC.Views.Shared;
 using WebMVC.Attributes;
+using System.Configuration;
 
 namespace WebMVC.Controllers
 {
@@ -21,9 +22,9 @@ namespace WebMVC.Controllers
         }
 
         [CustomAuthorize]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(_grupoRepository.BuscarTodos());
+            return View(new PaginatedData<GrupoModel>(_grupoRepository.BuscarTodos().AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
         }
 
         #region Create
@@ -42,8 +43,7 @@ namespace WebMVC.Controllers
             {
                 _grupoRepository.AdicionarItem(model);
                 return RedirectToAction("Index");
-            }
-            ModelState.AddModelError("", "Teste mensagem de erro");
+            }            
             return View(model);
         }
 

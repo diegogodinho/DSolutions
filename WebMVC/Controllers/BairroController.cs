@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebMVC.Models;
+using WebMVC.Views.Shared;
+using System.Configuration;
 
 namespace WebMVC.Controllers
 {
@@ -21,18 +23,18 @@ namespace WebMVC.Controllers
         }
 
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(bairroRepository.BuscarTodos());
+            return View(new PaginatedData<BairroModel>(bairroRepository.BuscarTodos().AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
         }
 
 
-        public ActionResult Cidade(int id)
+        public ActionResult Cidade(int id, int? page)
         {
             List<BairroModel> models = bairroRepository.BuscarTodosDaCidade(id);
             if (models != null && models.Count > 0)
             {
-                return View(models);
+                return View(new PaginatedData<BairroModel>(models.AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
             }
             return RedirectToAction("Index");
         }

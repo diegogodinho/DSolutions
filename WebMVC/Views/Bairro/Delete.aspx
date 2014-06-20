@@ -4,6 +4,11 @@
     Exclusão Bairro
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">  
+<script type="text/javascript">
+    $(function () {
+        SeletorMenu(4);
+    });
+    </script>
     <h3>
        Tem certeza que deseja excluir esse registro?</h3>
     <fieldset>

@@ -5,47 +5,27 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
 
-    <h2>Delete</h2>
-
-    <h3>Are you sure you want to delete this?</h3>
-    <fieldset>
-        <legend>Fields</legend>
+<script type="text/javascript">
+    $(function () {
+        SeletorMenu(0);
+    });
+    </script>  
+    <h2>Tem certeza que deseja excluir este item?</h2>
+	<hr/>
         
-        <div class="display-label">Login</div>
-        <div class="display-field"><%: Model.Login %></div>
-        
-        <div class="display-label">Nome</div>
-        <div class="display-field"><%: Model.Nome %></div>
-        
-        <div class="display-label">SobreNome</div>
-        <div class="display-field"><%: Model.SobreNome %></div>
-        
-        <div class="display-label">Email</div>
-        <div class="display-field"><%: Model.Email %></div>
-        
-        <div class="display-label">Senha</div>
-        <div class="display-field"><%: Model.Senha %></div>
-        
-        <div class="display-label">ConfirmacaoSenha</div>
-        <div class="display-field"><%: Model.ConfirmacaoSenha %></div>
-        
-        <div class="display-label">DataNascimento</div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.DataNascimento) %></div>
-        
-        <div class="display-label">Cpf</div>
-        <div class="display-field"><%: Model.Cpf %></div>
-        
-        <div class="display-label">idGrupo</div>
-        <div class="display-field"><%: Model.idGrupo %></div>
-        
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.ID %></div>
-        
-    </fieldset>
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Login) %>        
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Nome) %>        
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.SobreNome) %>        
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Email) %>                 
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.DataNascimento) %>        
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Cpf) %>        
+               
+    
     <% using (Html.BeginForm()) { %>
         <p>
-		    <input type="submit" value="Delete" /> |
+		    <input type="submit" value="Excluir" /> |
 		    <%: Html.ActionLink("Voltar", "Index") %>
         </p>
     <% } %>

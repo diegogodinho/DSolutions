@@ -15,7 +15,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 
 namespace WebMVC.Models
-{  
+{
     [PropertiesMustMatch("NewPassword", "ConfirmPassword", ErrorMessage = "The new password and confirmation password do not match.")]
     public class ChangePasswordModel
     {
@@ -71,7 +71,7 @@ namespace WebMVC.Models
         [DisplayName("Email")]
         public virtual string Email { get; set; }
 
-        [Required]        
+        [Required]
         [DataType(DataType.Password)]
         [DisplayName("Senha")]
         public virtual string Senha { get; set; }
@@ -94,7 +94,7 @@ namespace WebMVC.Models
 
         [DisplayName("Foto")]
         public Byte[] Foto { get; set; }
-        
+
         [DisplayName("Grupo")]
         public int idGrupo { get; set; }
 
@@ -148,7 +148,7 @@ namespace WebMVC.Models
         }
     }
 
-    public class UsuarioRepository 
+    public class UsuarioRepository
     {
         public bool ValidarUsuario(string userName, string password, out CustomPrincipal principal)
         {
@@ -172,7 +172,7 @@ namespace WebMVC.Models
                 principal = new CustomPrincipal(userName, grupo);
                 return true;
             }
-            return false;           
+            return false;
         }
 
         public List<UsuarioModel> BuscarTodos()
@@ -180,6 +180,7 @@ namespace WebMVC.Models
             return SingletonDBContext.Current.dbContext.USUARIO.ToList().Select(r =>
                 new UsuarioModel()
                 {
+                    Login = r.LOGIN,
                     ID = r.ID,
                     Nome = r.NOME,
                     Cpf = r.CPF,
@@ -198,6 +199,7 @@ namespace WebMVC.Models
                                     where r.ID == ID
                                     select new UsuarioModel
                                     {
+                                        Login = r.LOGIN,
                                         ID = r.ID,
                                         Nome = r.NOME,
                                         Cpf = r.CPF,
@@ -250,7 +252,7 @@ namespace WebMVC.Models
                 usuario.SOBRENOME = item.SobreNome;
                 usuario.EMAIL = item.Email;
                 usuario.DATANASCIMENTO = item.DataNascimento;
-                usuario.IDGRUPO = item.idGrupo;                
+                usuario.IDGRUPO = item.idGrupo;
                 SingletonDBContext.Current.dbContext.SaveChanges();
             }
         }

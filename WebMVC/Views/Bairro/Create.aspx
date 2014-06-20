@@ -1,37 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.BairroModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Criar Bairro
+    Create
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
+    <script type="text/javascript">
+        $(function () {
+            SeletorMenu(3);
+        });
+    </script>
+    <h2>
+        Novo Bairro</h2>
+    <hr />
+    <% Html.EnableClientValidation(); %>
     <% using (Html.BeginForm())
        {%>
     <%: Html.ValidationSummary(true) %>
-    <div class="editor-label">
-        <%: Html.LabelFor(model => model.Cidade) %>
-    </div>
-    <div class="editor-field">
-        <%: Html.DropDownListFor(model=> model.Cidade,Model.CidadesDisponiveis) %>
-        <%: Html.ValidationMessageFor(model => model.Cidade) %>
-    </div>
-    <div class="editor-label">
-        <%: Html.LabelFor(model => model.Nome) %>
-    </div>
-    <div class="editor-field">
-        <%: Html.TextBoxFor(model => model.Nome) %>
-        <%: Html.ValidationMessageFor(model => model.Nome) %>
-    </div>
-    <div class="editor-label">
-        <%: Html.LabelFor(model => model.Sigla) %>
-    </div>
-    <div class="editor-field">
-        <%: Html.TextBoxFor(model => model.Sigla) %>
-        <%: Html.ValidationMessageFor(model => model.Sigla) %>
-    </div>
+    <%= Html.LabelAndDropDownListPDSolution(model=> model.Cidade,Model.CidadesDisponiveis) %>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.Nome) %>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.Sigla) %>
     <p>
-        <button type="submit" value="Criar">
-            Criar</button>
+        <input type="submit" value="Criar" />
     </p>
     <% } %>
     <div>
