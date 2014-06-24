@@ -2,12 +2,27 @@
 <Schema Namespace="Dados.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="DadosStoreContainer">
     <EntitySet Name="BAIRRO" EntityType="Dados.Store.BAIRRO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CARACTERISTICA" EntityType="Dados.Store.CARACTERISTICA" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CIDADE" EntityType="Dados.Store.CIDADE" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GRUPO" EntityType="Dados.Store.GRUPO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IMAGEMIMOVEL" EntityType="Dados.Store.IMAGEMIMOVEL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IMOVEL" EntityType="Dados.Store.IMOVEL" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="USUARIO" EntityType="Dados.Store.USUARIO" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.Store.FK_BAIRRO_CIDADE">
       <End Role="CIDADE" EntitySet="CIDADE" />
       <End Role="BAIRRO" EntitySet="BAIRRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IMAGEMIMOVEL_IMOVEL" Association="Dados.Store.FK_IMAGEMIMOVEL_IMOVEL">
+      <End Role="IMOVEL" EntitySet="IMOVEL" />
+      <End Role="IMAGEMIMOVEL" EntitySet="IMAGEMIMOVEL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IMOVEL_BAIRRO" Association="Dados.Store.FK_IMOVEL_BAIRRO">
+      <End Role="BAIRRO" EntitySet="BAIRRO" />
+      <End Role="IMOVEL" EntitySet="IMOVEL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IMOVEL_USUARIO" Association="Dados.Store.FK_IMOVEL_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="IMOVEL" EntitySet="IMOVEL" />
     </AssociationSet>
     <AssociationSet Name="FK_USUARIO_GRUPO" Association="Dados.Store.FK_USUARIO_GRUPO">
       <End Role="GRUPO" EntitySet="GRUPO" />
@@ -23,6 +38,13 @@
     <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
     <Property Name="SIGLA" Type="varchar" MaxLength="4000" />
   </EntityType>
+  <EntityType Name="CARACTERISTICA">
+    <Key>
+      <PropertyRef Name="IDCARACTERISTICA" />
+    </Key>
+    <Property Name="IDCARACTERISTICA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRICAO" Type="varchar" Nullable="false" MaxLength="4000" />
+  </EntityType>
   <EntityType Name="CIDADE">
     <Key>
       <PropertyRef Name="ID" />
@@ -37,6 +59,38 @@
     </Key>
     <Property Name="IDGRUPO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="NOMEGRUPO" Type="varchar" Nullable="false" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="IMAGEMIMOVEL">
+    <Key>
+      <PropertyRef Name="IDIMAGEM" />
+    </Key>
+    <Property Name="IDIMAGEM" Type="int" Nullable="false" />
+    <Property Name="IMAGEM" Type="image" Nullable="false" />
+    <Property Name="IDIMOVEL" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IMOVEL">
+    <Key>
+      <PropertyRef Name="IDIMOVEL" />
+    </Key>
+    <Property Name="IDIMOVEL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TITULO" Type="varchar" Nullable="false" MaxLength="4000" />
+    <Property Name="DESCRICAO" Type="varchar" Nullable="false" MaxLength="4000" />
+    <Property Name="QTDEQUARTOS" Type="int" Nullable="false" />
+    <Property Name="QTDEBANHEIROS" Type="int" Nullable="false" />
+    <Property Name="QTDEVAGASGARAGEM" Type="int" Nullable="false" />
+    <Property Name="VALOR" Type="float" Nullable="false" />
+    <Property Name="METRAGEM" Type="varchar" Nullable="false" MaxLength="4000" />
+    <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+    <Property Name="TIPO" Type="int" Nullable="false" />
+    <Property Name="CONDOMINIO" Type="float" />
+    <Property Name="IPTU" Type="float" />
+    <Property Name="IDADEIMOVEL" Type="int" />
+    <Property Name="QTDESUITES" Type="int" Nullable="false" />
+    <Property Name="QTDESALAS" Type="int" Nullable="false" />
+    <Property Name="QTDEUNIDADESPORANDAR" Type="int" />
+    <Property Name="LISTACARACTERISTICAS" Type="varchar" MaxLength="4000" />
+    <Property Name="SITUACAO" Type="int" Nullable="false" />
+    <Property Name="IDBAIRRO" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
@@ -62,6 +116,42 @@
       </Principal>
       <Dependent Role="BAIRRO">
         <PropertyRef Name="IDCIDADE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMAGEMIMOVEL_IMOVEL">
+    <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="1" />
+    <End Role="IMAGEMIMOVEL" Type="Dados.Store.IMAGEMIMOVEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMOVEL">
+        <PropertyRef Name="IDIMOVEL" />
+      </Principal>
+      <Dependent Role="IMAGEMIMOVEL">
+        <PropertyRef Name="IDIMOVEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMOVEL_BAIRRO">
+    <End Role="BAIRRO" Type="Dados.Store.BAIRRO" Multiplicity="1" />
+    <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BAIRRO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IMOVEL">
+        <PropertyRef Name="IDBAIRRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMOVEL_USUARIO">
+    <End Role="USUARIO" Type="Dados.Store.USUARIO" Multiplicity="1" />
+    <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IMOVEL">
+        <PropertyRef Name="IDUSUARIO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

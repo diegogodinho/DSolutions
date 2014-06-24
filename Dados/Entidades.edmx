@@ -7,12 +7,31 @@
     <Schema Namespace="Dados.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="DadosStoreContainer">
           <EntitySet Name="BAIRRO" EntityType="Dados.Store.BAIRRO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CARACTERISTICA" EntityType="Dados.Store.CARACTERISTICA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CIDADE" EntityType="Dados.Store.CIDADE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRUPO" EntityType="Dados.Store.GRUPO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IMAGEMIMOVEL" EntityType="Dados.Store.IMAGEMIMOVEL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IMOVEL" EntityType="Dados.Store.IMOVEL" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="USUARIO" EntityType="Dados.Store.USUARIO" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_BAIRRO_CIDADE" Association="Dados.Store.FK_BAIRRO_CIDADE">
             <End Role="CIDADE" EntitySet="CIDADE" />
             <End Role="BAIRRO" EntitySet="BAIRRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMAGEMIMOVEL_IMOVEL" Association="Dados.Store.FK_IMAGEMIMOVEL_IMOVEL">
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
+            <End Role="IMAGEMIMOVEL" EntitySet="IMAGEMIMOVEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMOVEL_BAIRRO" Association="Dados.Store.FK_IMOVEL_BAIRRO">
+            <End Role="BAIRRO" EntitySet="BAIRRO" />
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMOVEL_CIDADE" Association="Dados.Store.FK_IMOVEL_CIDADE">
+            <End Role="CIDADE" EntitySet="CIDADE" />
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMOVEL_USUARIO" Association="Dados.Store.FK_IMOVEL_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
           </AssociationSet>
           <AssociationSet Name="FK_USUARIO_GRUPO" Association="Dados.Store.FK_USUARIO_GRUPO">
             <End Role="GRUPO" EntitySet="GRUPO" />
@@ -28,6 +47,13 @@
           <Property Name="NOME" Type="varchar" Nullable="false" MaxLength="4000" />
           <Property Name="SIGLA" Type="varchar" MaxLength="4000" />
         </EntityType>
+        <EntityType Name="CARACTERISTICA">
+          <Key>
+            <PropertyRef Name="IDCARACTERISTICA" />
+          </Key>
+          <Property Name="IDCARACTERISTICA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="varchar" Nullable="false" MaxLength="4000" />
+        </EntityType>
         <EntityType Name="CIDADE">
           <Key>
             <PropertyRef Name="ID" />
@@ -42,6 +68,39 @@
           </Key>
           <Property Name="IDGRUPO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NOMEGRUPO" Type="varchar" Nullable="false" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="IMAGEMIMOVEL">
+          <Key>
+            <PropertyRef Name="IDIMAGEM" />
+          </Key>
+          <Property Name="IDIMAGEM" Type="int" Nullable="false" />
+          <Property Name="IMAGEM" Type="image" Nullable="false" />
+          <Property Name="IDIMOVEL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMOVEL">
+          <Key>
+            <PropertyRef Name="IDIMOVEL" />
+          </Key>
+          <Property Name="IDIMOVEL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TITULO" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="DESCRICAO" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="QTDEQUARTOS" Type="int" Nullable="false" />
+          <Property Name="QTDEBANHEIROS" Type="int" Nullable="false" />
+          <Property Name="QTDEVAGASGARAGEM" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="float" Nullable="false" />
+          <Property Name="METRAGEM" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+          <Property Name="TIPO" Type="int" Nullable="false" />
+          <Property Name="CONDOMINIO" Type="float" />
+          <Property Name="IPTU" Type="float" />
+          <Property Name="IDADEIMOVEL" Type="int" />
+          <Property Name="QTDESUITES" Type="int" Nullable="false" />
+          <Property Name="QTDESALAS" Type="int" Nullable="false" />
+          <Property Name="QTDEUNIDADESPORANDAR" Type="int" />
+          <Property Name="LISTACARACTERISTICAS" Type="varchar" MaxLength="4000" />
+          <Property Name="SITUACAO" Type="int" Nullable="false" />
+          <Property Name="IDBAIRRO" Type="int" Nullable="false" />
+          <Property Name="IDCIDADE" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -67,6 +126,54 @@
             </Principal>
             <Dependent Role="BAIRRO">
               <PropertyRef Name="IDCIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMAGEMIMOVEL_IMOVEL">
+          <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="1" />
+          <End Role="IMAGEMIMOVEL" Type="Dados.Store.IMAGEMIMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMOVEL">
+              <PropertyRef Name="IDIMOVEL" />
+            </Principal>
+            <Dependent Role="IMAGEMIMOVEL">
+              <PropertyRef Name="IDIMOVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMOVEL_BAIRRO">
+          <End Role="BAIRRO" Type="Dados.Store.BAIRRO" Multiplicity="1" />
+          <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAIRRO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IMOVEL">
+              <PropertyRef Name="IDBAIRRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMOVEL_CIDADE">
+          <End Role="CIDADE" Type="Dados.Store.CIDADE" Multiplicity="1" />
+          <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIDADE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IMOVEL">
+              <PropertyRef Name="IDCIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMOVEL_USUARIO">
+          <End Role="USUARIO" Type="Dados.Store.USUARIO" Multiplicity="1" />
+          <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IMOVEL">
+              <PropertyRef Name="IDUSUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -99,7 +206,26 @@
             <End Role="GRUPO" EntitySet="GRUPO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="CARACTERISTICA" EntityType="Dados.CARACTERISTICA" />
+          <EntitySet Name="IMAGEMIMOVEL" EntityType="Dados.IMAGEMIMOVEL" />
+          <EntitySet Name="IMOVEL" EntityType="Dados.IMOVEL" />
+          <AssociationSet Name="FK_IMOVEL_BAIRRO" Association="Dados.FK_IMOVEL_BAIRRO">
+            <End Role="BAIRRO" EntitySet="BAIRRO" />
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMOVEL_CIDADE" Association="Dados.FK_IMOVEL_CIDADE">
+            <End Role="CIDADE" EntitySet="CIDADE" />
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMAGEMIMOVEL_IMOVEL" Association="Dados.FK_IMAGEMIMOVEL_IMOVEL">
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
+            <End Role="IMAGEMIMOVEL" EntitySet="IMAGEMIMOVEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMOVEL_USUARIO" Association="Dados.FK_IMOVEL_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="IMOVEL" EntitySet="IMOVEL" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="BAIRRO">
           <Key>
             <PropertyRef Name="ID" />
@@ -109,6 +235,7 @@
           <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="SIGLA" MaxLength="4000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CIDADE" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="BAIRRO" ToRole="CIDADE" />
+          <NavigationProperty Name="IMOVEL" Relationship="Dados.FK_IMOVEL_BAIRRO" FromRole="BAIRRO" ToRole="IMOVEL" />
         </EntityType>
         <EntityType Name="CIDADE">
           <Key>
@@ -118,6 +245,7 @@
           <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="SIGLA" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BAIRRO" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="CIDADE" ToRole="BAIRRO" />
+          <NavigationProperty Name="IMOVEL" Relationship="Dados.FK_IMOVEL_CIDADE" FromRole="CIDADE" ToRole="IMOVEL" />
         </EntityType>
         <EntityType Name="GRUPO">
           <Key>
@@ -142,6 +270,7 @@
           <Property Type="Int32" Name="IDGRUPO" />
           <Property Type="String" Name="LOGIN" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GRUPO" Relationship="Dados.FK_USUARIO_GRUPO" FromRole="USUARIO" ToRole="GRUPO" />
+          <NavigationProperty Name="IMOVEL" Relationship="Dados.FK_IMOVEL_USUARIO" FromRole="USUARIO" ToRole="IMOVEL" />
         </EntityType>
         <Association Name="FK_BAIRRO_CIDADE">
           <End Type="Dados.CIDADE" Role="CIDADE" Multiplicity="1" />
@@ -164,6 +293,99 @@
             </Principal>
             <Dependent Role="USUARIO">
               <PropertyRef Name="IDGRUPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CARACTERISTICA">
+          <Key>
+            <PropertyRef Name="IDCARACTERISTICA" />
+          </Key>
+          <Property Type="Int32" Name="IDCARACTERISTICA" Nullable="false" />
+          <Property Type="String" Name="DESCRICAO" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IMAGEMIMOVEL">
+          <Key>
+            <PropertyRef Name="IDIMAGEM" />
+          </Key>
+          <Property Type="Int32" Name="IDIMAGEM" Nullable="false" />
+          <Property Type="Binary" Name="IMAGEM" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="IDIMOVEL" Nullable="false" />
+          <NavigationProperty Name="IMOVEL" Relationship="Dados.FK_IMAGEMIMOVEL_IMOVEL" FromRole="IMAGEMIMOVEL" ToRole="IMOVEL" />
+        </EntityType>
+        <EntityType Name="IMOVEL">
+          <Key>
+            <PropertyRef Name="IDIMOVEL" />
+          </Key>
+          <Property Type="Int32" Name="IDIMOVEL" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TITULO" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DESCRICAO" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="QTDEQUARTOS" Nullable="false" />
+          <Property Type="Int32" Name="QTDEBANHEIROS" Nullable="false" />
+          <Property Type="Int32" Name="QTDEVAGASGARAGEM" Nullable="false" />
+          <Property Type="Double" Name="VALOR" Nullable="false" />
+          <Property Type="String" Name="METRAGEM" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IDUSUARIO" Nullable="false" />
+          <Property Type="Int32" Name="TIPO" Nullable="false" />
+          <Property Type="Double" Name="CONDOMINIO" />
+          <Property Type="Double" Name="IPTU" />
+          <Property Type="Int32" Name="IDADEIMOVEL" />
+          <Property Type="Int32" Name="QTDESUITES" Nullable="false" />
+          <Property Type="Int32" Name="QTDESALAS" Nullable="false" />
+          <Property Type="Int32" Name="QTDEUNIDADESPORANDAR" />
+          <Property Type="String" Name="LISTACARACTERISTICAS" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SITUACAO" Nullable="false" />
+          <Property Type="Int32" Name="IDBAIRRO" Nullable="false" />
+          <Property Type="Int32" Name="IDCIDADE" Nullable="false" />
+          <NavigationProperty Name="BAIRRO" Relationship="Dados.FK_IMOVEL_BAIRRO" FromRole="IMOVEL" ToRole="BAIRRO" />
+          <NavigationProperty Name="CIDADE" Relationship="Dados.FK_IMOVEL_CIDADE" FromRole="IMOVEL" ToRole="CIDADE" />
+          <NavigationProperty Name="IMAGEMIMOVEL" Relationship="Dados.FK_IMAGEMIMOVEL_IMOVEL" FromRole="IMOVEL" ToRole="IMAGEMIMOVEL" />
+          <NavigationProperty Name="USUARIO" Relationship="Dados.FK_IMOVEL_USUARIO" FromRole="IMOVEL" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_IMOVEL_BAIRRO">
+          <End Type="Dados.BAIRRO" Role="BAIRRO" Multiplicity="1" />
+          <End Type="Dados.IMOVEL" Role="IMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAIRRO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IMOVEL">
+              <PropertyRef Name="IDBAIRRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMOVEL_CIDADE">
+          <End Type="Dados.CIDADE" Role="CIDADE" Multiplicity="1" />
+          <End Type="Dados.IMOVEL" Role="IMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIDADE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IMOVEL">
+              <PropertyRef Name="IDCIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMAGEMIMOVEL_IMOVEL">
+          <End Type="Dados.IMOVEL" Role="IMOVEL" Multiplicity="1" />
+          <End Type="Dados.IMAGEMIMOVEL" Role="IMAGEMIMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMOVEL">
+              <PropertyRef Name="IDIMOVEL" />
+            </Principal>
+            <Dependent Role="IMAGEMIMOVEL">
+              <PropertyRef Name="IDIMOVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMOVEL_USUARIO">
+          <End Type="Dados.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="Dados.IMOVEL" Role="IMOVEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IMOVEL">
+              <PropertyRef Name="IDUSUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -216,6 +438,49 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CARACTERISTICA">
+            <EntityTypeMapping TypeName="Dados.CARACTERISTICA">
+              <MappingFragment StoreEntitySet="CARACTERISTICA">
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="IDCARACTERISTICA" ColumnName="IDCARACTERISTICA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGEMIMOVEL">
+            <EntityTypeMapping TypeName="Dados.IMAGEMIMOVEL">
+              <MappingFragment StoreEntitySet="IMAGEMIMOVEL">
+                <ScalarProperty Name="IDIMOVEL" ColumnName="IDIMOVEL" />
+                <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
+                <ScalarProperty Name="IDIMAGEM" ColumnName="IDIMAGEM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMOVEL">
+            <EntityTypeMapping TypeName="Dados.IMOVEL">
+              <MappingFragment StoreEntitySet="IMOVEL">
+                <ScalarProperty Name="IDCIDADE" ColumnName="IDCIDADE" />
+                <ScalarProperty Name="IDBAIRRO" ColumnName="IDBAIRRO" />
+                <ScalarProperty Name="SITUACAO" ColumnName="SITUACAO" />
+                <ScalarProperty Name="LISTACARACTERISTICAS" ColumnName="LISTACARACTERISTICAS" />
+                <ScalarProperty Name="QTDEUNIDADESPORANDAR" ColumnName="QTDEUNIDADESPORANDAR" />
+                <ScalarProperty Name="QTDESALAS" ColumnName="QTDESALAS" />
+                <ScalarProperty Name="QTDESUITES" ColumnName="QTDESUITES" />
+                <ScalarProperty Name="IDADEIMOVEL" ColumnName="IDADEIMOVEL" />
+                <ScalarProperty Name="IPTU" ColumnName="IPTU" />
+                <ScalarProperty Name="CONDOMINIO" ColumnName="CONDOMINIO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="METRAGEM" ColumnName="METRAGEM" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="QTDEVAGASGARAGEM" ColumnName="QTDEVAGASGARAGEM" />
+                <ScalarProperty Name="QTDEBANHEIROS" ColumnName="QTDEBANHEIROS" />
+                <ScalarProperty Name="QTDEQUARTOS" ColumnName="QTDEQUARTOS" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="IDIMOVEL" ColumnName="IDIMOVEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -237,17 +502,37 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Entidades">
-        <EntityTypeShape EntityType="Dados.BAIRRO" Width="1.5" PointX="8" PointY="0.875" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="Dados.CIDADE" Width="1.5" PointX="5.75" PointY="1" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="Dados.GRUPO" Width="1.5" PointX="0.75" PointY="1.75" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="Dados.USUARIO" Width="1.5" PointX="3" PointY="1" Height="3.1340950520833313" />
+        <EntityTypeShape EntityType="Dados.BAIRRO" Width="1.5" PointX="4.875" PointY="7.25" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Dados.CIDADE" Width="1.5" PointX="2.25" PointY="4.625" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Dados.GRUPO" Width="1.5" PointX="0.5" PointY="0.5" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="Dados.USUARIO" Width="1.5" PointX="2.625" PointY="0.5" Height="3.3263964843749996" />
         <AssociationConnector Association="Dados.FK_BAIRRO_CIDADE" >
-          <ConnectorPoint PointX="7.25" PointY="1.8939925130208337" />
-          <ConnectorPoint PointX="8" PointY="1.8939925130208337" />
+          <ConnectorPoint PointX="3.75" PointY="6.4009000651041683" />
+          <ConnectorPoint PointX="4.96875" PointY="6.4009000651041683" />
+          <ConnectorPoint PointX="4.96875" PointY="7.25" />
         </AssociationConnector>
         <AssociationConnector Association="Dados.FK_USUARIO_GRUPO" >
-          <ConnectorPoint PointX="2.25" PointY="2.5478417968750016" />
-          <ConnectorPoint PointX="3" PointY="2.5478417968750016" />
+          <ConnectorPoint PointX="2" PointY="1.2978417968750016" />
+          <ConnectorPoint PointX="2.625" PointY="1.2978417968750016" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Dados.CARACTERISTICA" Width="1.5" PointX="10" PointY="0.625" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="Dados.IMAGEMIMOVEL" Width="1.5" PointX="7.75" PointY="0.625" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Dados.IMOVEL" Width="1.5" PointX="5.125" PointY="0.5" Height="5.6340136718750022" />
+        <AssociationConnector Association="Dados.FK_IMOVEL_BAIRRO" >
+          <ConnectorPoint PointX="5.75" PointY="7.25" />
+          <ConnectorPoint PointX="5.75" PointY="6.1340136718750022" />
+        </AssociationConnector>
+        <AssociationConnector Association="Dados.FK_IMOVEL_CIDADE" >
+          <ConnectorPoint PointX="3.75" PointY="5.3795068359375016" />
+          <ConnectorPoint PointX="5.125" PointY="5.3795068359375016" />
+        </AssociationConnector>
+        <AssociationConnector Association="Dados.FK_IMAGEMIMOVEL_IMOVEL" >
+          <ConnectorPoint PointX="6.625" PointY="1.5189925130208335" />
+          <ConnectorPoint PointX="7.75" PointY="1.5189925130208335" />
+        </AssociationConnector>
+        <AssociationConnector Association="Dados.FK_IMOVEL_USUARIO" >
+          <ConnectorPoint PointX="4.125" PointY="2.1631982421875" />
+          <ConnectorPoint PointX="5.125" PointY="2.1631982421875" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

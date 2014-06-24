@@ -74,6 +74,8 @@
     <Compile Include="Authentication\Grupo.cs" />
     <Compile Include="Authentication\ICustomPrincipal.cs" />
     <Compile Include="Authentication\Profile.cs" />
+    <Compile Include="Controllers\CaracteristicaController.cs" />
+    <Compile Include="Controllers\ImovelController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\BairroController.cs" />
     <Compile Include="Controllers\CidadeController.cs" />
@@ -84,6 +86,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CustomHelpers.cs" />
+    <Compile Include="Models\BaseRepository.cs" />
+    <Compile Include="Models\CaracteristicaModels.cs" />
+    <Compile Include="Models\ImovelModels.cs" />
     <Compile Include="Models\UsuarioModels.cs" />
     <Compile Include="Models\BairroModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -160,6 +165,11 @@
     <Content Include="Views\Bairro\Details.aspx" />
     <Content Include="Views\Bairro\Edit.aspx" />
     <Content Include="Views\Bairro\Index.aspx" />
+    <Content Include="Views\Caracteristica\Create.aspx" />
+    <Content Include="Views\Caracteristica\Delete.aspx" />
+    <Content Include="Views\Caracteristica\Details.aspx" />
+    <Content Include="Views\Caracteristica\Edit.aspx" />
+    <Content Include="Views\Caracteristica\Index.aspx" />
     <Content Include="Views\Cidade\Create.aspx" />
     <Content Include="Views\Cidade\Details.aspx" />
     <Content Include="Views\Cidade\Edit.aspx" />
@@ -169,6 +179,11 @@
     <Content Include="Views\Grupo\Details.aspx" />
     <Content Include="Views\Grupo\Edit.aspx" />
     <Content Include="Views\Grupo\Index.aspx" />
+    <Content Include="Views\Imovel\Create.aspx" />
+    <Content Include="Views\Imovel\Delete.aspx" />
+    <Content Include="Views\Imovel\Details.aspx" />
+    <Content Include="Views\Imovel\Edit.aspx" />
+    <Content Include="Views\Imovel\Index.aspx" />
     <Content Include="Views\Usuario\Create.aspx" />
     <Content Include="Views\Usuario\Delete.aspx" />
     <Content Include="Views\Usuario\Details.aspx" />

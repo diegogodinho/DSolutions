@@ -13,6 +13,7 @@ namespace WebMVC.Models
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("ID")]
+        [Key]
         public int ID { get; set; }
 
 
@@ -38,6 +39,27 @@ namespace WebMVC.Models
                 }
             }
             return objetoDeDestino;
+        }
+
+        public static void AdaptarTipos<TOrigem, TDestino>(TOrigem objetoOrigem,ref TDestino objetoDestino)
+          where TDestino : class,new()
+        {            
+            PropertyInfo[] propriedadesDeOrigem = objetoOrigem.GetType().GetProperties();
+            PropertyInfo[] propriedadesDeDestino = objetoDestino.GetType().GetProperties();
+            foreach (PropertyInfo propriedadeDeOrigem in propriedadesDeOrigem)
+            {
+                foreach (PropertyInfo propriedadeDeDestino in propriedadesDeDestino)
+                {
+                    if (propriedadeDeOrigem.Name.ToUpper() == propriedadeDeDestino.Name.ToUpper())
+                    {
+                        if (propriedadeDeDestino.CanWrite)
+                        {
+                            propriedadeDeDestino.SetValue(objetoDestino, propriedadeDeOrigem.GetValue(objetoOrigem, null), null);
+                        }
+                        break;
+                    }
+                }
+            }            
         }
     }
 }

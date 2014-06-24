@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
     $(function () {
-        SeletorMenu(0);
+        SeletorMenu(4);
     });
     </script>  
     <h2>Tem certeza que deseja excluir este item?</h2>

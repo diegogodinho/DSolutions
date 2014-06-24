@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.GrupoModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.CaracteristicaModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Delete
@@ -9,13 +9,14 @@
 
 <script type="text/javascript">
     $(function () {
-        SeletorMenu(2);
+        SeletorMenu(5);
     });
     </script>  
     <h2>Tem certeza que deseja excluir este item?</h2>
 	<hr/>
         
-         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.NomeGrupo) %>                   
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.Descricao) %>        
+         <%= Html.LabelAndDisableTextBoxPDSolution(model => model.ID) %>        
     
     <% using (Html.BeginForm()) { %>
         <p>

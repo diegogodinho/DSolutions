@@ -21,6 +21,10 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("Dados", "FK_BAIRRO_CIDADE", "CIDADE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.CIDADE), "BAIRRO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.BAIRRO), true)]
 [assembly: EdmRelationshipAttribute("Dados", "FK_USUARIO_GRUPO", "GRUPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dados.GRUPO), "USUARIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.USUARIO), true)]
+[assembly: EdmRelationshipAttribute("Dados", "FK_IMOVEL_BAIRRO", "BAIRRO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.BAIRRO), "IMOVEL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.IMOVEL), true)]
+[assembly: EdmRelationshipAttribute("Dados", "FK_IMOVEL_CIDADE", "CIDADE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.CIDADE), "IMOVEL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.IMOVEL), true)]
+[assembly: EdmRelationshipAttribute("Dados", "FK_IMAGEMIMOVEL_IMOVEL", "IMOVEL", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.IMOVEL), "IMAGEMIMOVEL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.IMAGEMIMOVEL), true)]
+[assembly: EdmRelationshipAttribute("Dados", "FK_IMOVEL_USUARIO", "USUARIO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dados.USUARIO), "IMOVEL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dados.IMOVEL), true)]
 
 #endregion
 
@@ -135,6 +139,54 @@ namespace Dados
             }
         }
         private ObjectSet<USUARIO> _USUARIO;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CARACTERISTICA> CARACTERISTICA
+        {
+            get
+            {
+                if ((_CARACTERISTICA == null))
+                {
+                    _CARACTERISTICA = base.CreateObjectSet<CARACTERISTICA>("CARACTERISTICA");
+                }
+                return _CARACTERISTICA;
+            }
+        }
+        private ObjectSet<CARACTERISTICA> _CARACTERISTICA;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<IMAGEMIMOVEL> IMAGEMIMOVEL
+        {
+            get
+            {
+                if ((_IMAGEMIMOVEL == null))
+                {
+                    _IMAGEMIMOVEL = base.CreateObjectSet<IMAGEMIMOVEL>("IMAGEMIMOVEL");
+                }
+                return _IMAGEMIMOVEL;
+            }
+        }
+        private ObjectSet<IMAGEMIMOVEL> _IMAGEMIMOVEL;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<IMOVEL> IMOVEL
+        {
+            get
+            {
+                if ((_IMOVEL == null))
+                {
+                    _IMOVEL = base.CreateObjectSet<IMOVEL>("IMOVEL");
+                }
+                return _IMOVEL;
+            }
+        }
+        private ObjectSet<IMOVEL> _IMOVEL;
 
         #endregion
 
@@ -170,6 +222,30 @@ namespace Dados
         public void AddToUSUARIO(USUARIO uSUARIO)
         {
             base.AddObject("USUARIO", uSUARIO);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CARACTERISTICA EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCARACTERISTICA(CARACTERISTICA cARACTERISTICA)
+        {
+            base.AddObject("CARACTERISTICA", cARACTERISTICA);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the IMAGEMIMOVEL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToIMAGEMIMOVEL(IMAGEMIMOVEL iMAGEMIMOVEL)
+        {
+            base.AddObject("IMAGEMIMOVEL", iMAGEMIMOVEL);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the IMOVEL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToIMOVEL(IMOVEL iMOVEL)
+        {
+            base.AddObject("IMOVEL", iMOVEL);
         }
 
         #endregion
@@ -350,9 +426,114 @@ namespace Dados
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMOVEL_BAIRRO", "IMOVEL")]
+        public EntityCollection<IMOVEL> IMOVEL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IMOVEL>("Dados.FK_IMOVEL_BAIRRO", "IMOVEL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IMOVEL>("Dados.FK_IMOVEL_BAIRRO", "IMOVEL", value);
+                }
+            }
+        }
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="CARACTERISTICA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CARACTERISTICA : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CARACTERISTICA object.
+        /// </summary>
+        /// <param name="iDCARACTERISTICA">Initial value of the IDCARACTERISTICA property.</param>
+        /// <param name="dESCRICAO">Initial value of the DESCRICAO property.</param>
+        public static CARACTERISTICA CreateCARACTERISTICA(global::System.Int32 iDCARACTERISTICA, global::System.String dESCRICAO)
+        {
+            CARACTERISTICA cARACTERISTICA = new CARACTERISTICA();
+            cARACTERISTICA.IDCARACTERISTICA = iDCARACTERISTICA;
+            cARACTERISTICA.DESCRICAO = dESCRICAO;
+            return cARACTERISTICA;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDCARACTERISTICA
+        {
+            get
+            {
+                return _IDCARACTERISTICA;
+            }
+            set
+            {
+                if (_IDCARACTERISTICA != value)
+                {
+                    OnIDCARACTERISTICAChanging(value);
+                    ReportPropertyChanging("IDCARACTERISTICA");
+                    _IDCARACTERISTICA = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IDCARACTERISTICA");
+                    OnIDCARACTERISTICAChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IDCARACTERISTICA;
+        partial void OnIDCARACTERISTICAChanging(global::System.Int32 value);
+        partial void OnIDCARACTERISTICAChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String DESCRICAO
+        {
+            get
+            {
+                return _DESCRICAO;
+            }
+            set
+            {
+                OnDESCRICAOChanging(value);
+                ReportPropertyChanging("DESCRICAO");
+                _DESCRICAO = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("DESCRICAO");
+                OnDESCRICAOChanged();
+            }
+        }
+        private global::System.String _DESCRICAO;
+        partial void OnDESCRICAOChanging(global::System.String value);
+        partial void OnDESCRICAOChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
@@ -485,6 +666,28 @@ namespace Dados
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMOVEL_CIDADE", "IMOVEL")]
+        public EntityCollection<IMOVEL> IMOVEL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IMOVEL>("Dados.FK_IMOVEL_CIDADE", "IMOVEL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IMOVEL>("Dados.FK_IMOVEL_CIDADE", "IMOVEL", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -591,6 +794,838 @@ namespace Dados
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<USUARIO>("Dados.FK_USUARIO_GRUPO", "USUARIO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="IMAGEMIMOVEL")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class IMAGEMIMOVEL : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new IMAGEMIMOVEL object.
+        /// </summary>
+        /// <param name="iDIMAGEM">Initial value of the IDIMAGEM property.</param>
+        /// <param name="iMAGEM">Initial value of the IMAGEM property.</param>
+        /// <param name="iDIMOVEL">Initial value of the IDIMOVEL property.</param>
+        public static IMAGEMIMOVEL CreateIMAGEMIMOVEL(global::System.Int32 iDIMAGEM, global::System.Byte[] iMAGEM, global::System.Int32 iDIMOVEL)
+        {
+            IMAGEMIMOVEL iMAGEMIMOVEL = new IMAGEMIMOVEL();
+            iMAGEMIMOVEL.IDIMAGEM = iDIMAGEM;
+            iMAGEMIMOVEL.IMAGEM = iMAGEM;
+            iMAGEMIMOVEL.IDIMOVEL = iDIMOVEL;
+            return iMAGEMIMOVEL;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDIMAGEM
+        {
+            get
+            {
+                return _IDIMAGEM;
+            }
+            set
+            {
+                if (_IDIMAGEM != value)
+                {
+                    OnIDIMAGEMChanging(value);
+                    ReportPropertyChanging("IDIMAGEM");
+                    _IDIMAGEM = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IDIMAGEM");
+                    OnIDIMAGEMChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IDIMAGEM;
+        partial void OnIDIMAGEMChanging(global::System.Int32 value);
+        partial void OnIDIMAGEMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] IMAGEM
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_IMAGEM);
+            }
+            set
+            {
+                OnIMAGEMChanging(value);
+                ReportPropertyChanging("IMAGEM");
+                _IMAGEM = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("IMAGEM");
+                OnIMAGEMChanged();
+            }
+        }
+        private global::System.Byte[] _IMAGEM;
+        partial void OnIMAGEMChanging(global::System.Byte[] value);
+        partial void OnIMAGEMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDIMOVEL
+        {
+            get
+            {
+                return _IDIMOVEL;
+            }
+            set
+            {
+                OnIDIMOVELChanging(value);
+                ReportPropertyChanging("IDIMOVEL");
+                _IDIMOVEL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDIMOVEL");
+                OnIDIMOVELChanged();
+            }
+        }
+        private global::System.Int32 _IDIMOVEL;
+        partial void OnIDIMOVELChanging(global::System.Int32 value);
+        partial void OnIDIMOVELChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMAGEMIMOVEL_IMOVEL", "IMOVEL")]
+        public IMOVEL IMOVEL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<IMOVEL>("Dados.FK_IMAGEMIMOVEL_IMOVEL", "IMOVEL").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<IMOVEL>("Dados.FK_IMAGEMIMOVEL_IMOVEL", "IMOVEL").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<IMOVEL> IMOVELReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<IMOVEL>("Dados.FK_IMAGEMIMOVEL_IMOVEL", "IMOVEL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<IMOVEL>("Dados.FK_IMAGEMIMOVEL_IMOVEL", "IMOVEL", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="IMOVEL")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class IMOVEL : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new IMOVEL object.
+        /// </summary>
+        /// <param name="iDIMOVEL">Initial value of the IDIMOVEL property.</param>
+        /// <param name="tITULO">Initial value of the TITULO property.</param>
+        /// <param name="dESCRICAO">Initial value of the DESCRICAO property.</param>
+        /// <param name="qTDEQUARTOS">Initial value of the QTDEQUARTOS property.</param>
+        /// <param name="qTDEBANHEIROS">Initial value of the QTDEBANHEIROS property.</param>
+        /// <param name="qTDEVAGASGARAGEM">Initial value of the QTDEVAGASGARAGEM property.</param>
+        /// <param name="vALOR">Initial value of the VALOR property.</param>
+        /// <param name="mETRAGEM">Initial value of the METRAGEM property.</param>
+        /// <param name="iDUSUARIO">Initial value of the IDUSUARIO property.</param>
+        /// <param name="tIPO">Initial value of the TIPO property.</param>
+        /// <param name="qTDESUITES">Initial value of the QTDESUITES property.</param>
+        /// <param name="qTDESALAS">Initial value of the QTDESALAS property.</param>
+        /// <param name="sITUACAO">Initial value of the SITUACAO property.</param>
+        /// <param name="iDBAIRRO">Initial value of the IDBAIRRO property.</param>
+        /// <param name="iDCIDADE">Initial value of the IDCIDADE property.</param>
+        public static IMOVEL CreateIMOVEL(global::System.Int32 iDIMOVEL, global::System.String tITULO, global::System.String dESCRICAO, global::System.Int32 qTDEQUARTOS, global::System.Int32 qTDEBANHEIROS, global::System.Int32 qTDEVAGASGARAGEM, global::System.Double vALOR, global::System.String mETRAGEM, global::System.Int32 iDUSUARIO, global::System.Int32 tIPO, global::System.Int32 qTDESUITES, global::System.Int32 qTDESALAS, global::System.Int32 sITUACAO, global::System.Int32 iDBAIRRO, global::System.Int32 iDCIDADE)
+        {
+            IMOVEL iMOVEL = new IMOVEL();
+            iMOVEL.IDIMOVEL = iDIMOVEL;
+            iMOVEL.TITULO = tITULO;
+            iMOVEL.DESCRICAO = dESCRICAO;
+            iMOVEL.QTDEQUARTOS = qTDEQUARTOS;
+            iMOVEL.QTDEBANHEIROS = qTDEBANHEIROS;
+            iMOVEL.QTDEVAGASGARAGEM = qTDEVAGASGARAGEM;
+            iMOVEL.VALOR = vALOR;
+            iMOVEL.METRAGEM = mETRAGEM;
+            iMOVEL.IDUSUARIO = iDUSUARIO;
+            iMOVEL.TIPO = tIPO;
+            iMOVEL.QTDESUITES = qTDESUITES;
+            iMOVEL.QTDESALAS = qTDESALAS;
+            iMOVEL.SITUACAO = sITUACAO;
+            iMOVEL.IDBAIRRO = iDBAIRRO;
+            iMOVEL.IDCIDADE = iDCIDADE;
+            return iMOVEL;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDIMOVEL
+        {
+            get
+            {
+                return _IDIMOVEL;
+            }
+            set
+            {
+                if (_IDIMOVEL != value)
+                {
+                    OnIDIMOVELChanging(value);
+                    ReportPropertyChanging("IDIMOVEL");
+                    _IDIMOVEL = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IDIMOVEL");
+                    OnIDIMOVELChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IDIMOVEL;
+        partial void OnIDIMOVELChanging(global::System.Int32 value);
+        partial void OnIDIMOVELChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TITULO
+        {
+            get
+            {
+                return _TITULO;
+            }
+            set
+            {
+                OnTITULOChanging(value);
+                ReportPropertyChanging("TITULO");
+                _TITULO = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TITULO");
+                OnTITULOChanged();
+            }
+        }
+        private global::System.String _TITULO;
+        partial void OnTITULOChanging(global::System.String value);
+        partial void OnTITULOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String DESCRICAO
+        {
+            get
+            {
+                return _DESCRICAO;
+            }
+            set
+            {
+                OnDESCRICAOChanging(value);
+                ReportPropertyChanging("DESCRICAO");
+                _DESCRICAO = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("DESCRICAO");
+                OnDESCRICAOChanged();
+            }
+        }
+        private global::System.String _DESCRICAO;
+        partial void OnDESCRICAOChanging(global::System.String value);
+        partial void OnDESCRICAOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 QTDEQUARTOS
+        {
+            get
+            {
+                return _QTDEQUARTOS;
+            }
+            set
+            {
+                OnQTDEQUARTOSChanging(value);
+                ReportPropertyChanging("QTDEQUARTOS");
+                _QTDEQUARTOS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QTDEQUARTOS");
+                OnQTDEQUARTOSChanged();
+            }
+        }
+        private global::System.Int32 _QTDEQUARTOS;
+        partial void OnQTDEQUARTOSChanging(global::System.Int32 value);
+        partial void OnQTDEQUARTOSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 QTDEBANHEIROS
+        {
+            get
+            {
+                return _QTDEBANHEIROS;
+            }
+            set
+            {
+                OnQTDEBANHEIROSChanging(value);
+                ReportPropertyChanging("QTDEBANHEIROS");
+                _QTDEBANHEIROS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QTDEBANHEIROS");
+                OnQTDEBANHEIROSChanged();
+            }
+        }
+        private global::System.Int32 _QTDEBANHEIROS;
+        partial void OnQTDEBANHEIROSChanging(global::System.Int32 value);
+        partial void OnQTDEBANHEIROSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 QTDEVAGASGARAGEM
+        {
+            get
+            {
+                return _QTDEVAGASGARAGEM;
+            }
+            set
+            {
+                OnQTDEVAGASGARAGEMChanging(value);
+                ReportPropertyChanging("QTDEVAGASGARAGEM");
+                _QTDEVAGASGARAGEM = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QTDEVAGASGARAGEM");
+                OnQTDEVAGASGARAGEMChanged();
+            }
+        }
+        private global::System.Int32 _QTDEVAGASGARAGEM;
+        partial void OnQTDEVAGASGARAGEMChanging(global::System.Int32 value);
+        partial void OnQTDEVAGASGARAGEMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double VALOR
+        {
+            get
+            {
+                return _VALOR;
+            }
+            set
+            {
+                OnVALORChanging(value);
+                ReportPropertyChanging("VALOR");
+                _VALOR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VALOR");
+                OnVALORChanged();
+            }
+        }
+        private global::System.Double _VALOR;
+        partial void OnVALORChanging(global::System.Double value);
+        partial void OnVALORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String METRAGEM
+        {
+            get
+            {
+                return _METRAGEM;
+            }
+            set
+            {
+                OnMETRAGEMChanging(value);
+                ReportPropertyChanging("METRAGEM");
+                _METRAGEM = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("METRAGEM");
+                OnMETRAGEMChanged();
+            }
+        }
+        private global::System.String _METRAGEM;
+        partial void OnMETRAGEMChanging(global::System.String value);
+        partial void OnMETRAGEMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDUSUARIO
+        {
+            get
+            {
+                return _IDUSUARIO;
+            }
+            set
+            {
+                OnIDUSUARIOChanging(value);
+                ReportPropertyChanging("IDUSUARIO");
+                _IDUSUARIO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDUSUARIO");
+                OnIDUSUARIOChanged();
+            }
+        }
+        private global::System.Int32 _IDUSUARIO;
+        partial void OnIDUSUARIOChanging(global::System.Int32 value);
+        partial void OnIDUSUARIOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TIPO
+        {
+            get
+            {
+                return _TIPO;
+            }
+            set
+            {
+                OnTIPOChanging(value);
+                ReportPropertyChanging("TIPO");
+                _TIPO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TIPO");
+                OnTIPOChanged();
+            }
+        }
+        private global::System.Int32 _TIPO;
+        partial void OnTIPOChanging(global::System.Int32 value);
+        partial void OnTIPOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> CONDOMINIO
+        {
+            get
+            {
+                return _CONDOMINIO;
+            }
+            set
+            {
+                OnCONDOMINIOChanging(value);
+                ReportPropertyChanging("CONDOMINIO");
+                _CONDOMINIO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CONDOMINIO");
+                OnCONDOMINIOChanged();
+            }
+        }
+        private Nullable<global::System.Double> _CONDOMINIO;
+        partial void OnCONDOMINIOChanging(Nullable<global::System.Double> value);
+        partial void OnCONDOMINIOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> IPTU
+        {
+            get
+            {
+                return _IPTU;
+            }
+            set
+            {
+                OnIPTUChanging(value);
+                ReportPropertyChanging("IPTU");
+                _IPTU = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IPTU");
+                OnIPTUChanged();
+            }
+        }
+        private Nullable<global::System.Double> _IPTU;
+        partial void OnIPTUChanging(Nullable<global::System.Double> value);
+        partial void OnIPTUChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IDADEIMOVEL
+        {
+            get
+            {
+                return _IDADEIMOVEL;
+            }
+            set
+            {
+                OnIDADEIMOVELChanging(value);
+                ReportPropertyChanging("IDADEIMOVEL");
+                _IDADEIMOVEL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDADEIMOVEL");
+                OnIDADEIMOVELChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IDADEIMOVEL;
+        partial void OnIDADEIMOVELChanging(Nullable<global::System.Int32> value);
+        partial void OnIDADEIMOVELChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 QTDESUITES
+        {
+            get
+            {
+                return _QTDESUITES;
+            }
+            set
+            {
+                OnQTDESUITESChanging(value);
+                ReportPropertyChanging("QTDESUITES");
+                _QTDESUITES = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QTDESUITES");
+                OnQTDESUITESChanged();
+            }
+        }
+        private global::System.Int32 _QTDESUITES;
+        partial void OnQTDESUITESChanging(global::System.Int32 value);
+        partial void OnQTDESUITESChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 QTDESALAS
+        {
+            get
+            {
+                return _QTDESALAS;
+            }
+            set
+            {
+                OnQTDESALASChanging(value);
+                ReportPropertyChanging("QTDESALAS");
+                _QTDESALAS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QTDESALAS");
+                OnQTDESALASChanged();
+            }
+        }
+        private global::System.Int32 _QTDESALAS;
+        partial void OnQTDESALASChanging(global::System.Int32 value);
+        partial void OnQTDESALASChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> QTDEUNIDADESPORANDAR
+        {
+            get
+            {
+                return _QTDEUNIDADESPORANDAR;
+            }
+            set
+            {
+                OnQTDEUNIDADESPORANDARChanging(value);
+                ReportPropertyChanging("QTDEUNIDADESPORANDAR");
+                _QTDEUNIDADESPORANDAR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QTDEUNIDADESPORANDAR");
+                OnQTDEUNIDADESPORANDARChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _QTDEUNIDADESPORANDAR;
+        partial void OnQTDEUNIDADESPORANDARChanging(Nullable<global::System.Int32> value);
+        partial void OnQTDEUNIDADESPORANDARChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LISTACARACTERISTICAS
+        {
+            get
+            {
+                return _LISTACARACTERISTICAS;
+            }
+            set
+            {
+                OnLISTACARACTERISTICASChanging(value);
+                ReportPropertyChanging("LISTACARACTERISTICAS");
+                _LISTACARACTERISTICAS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LISTACARACTERISTICAS");
+                OnLISTACARACTERISTICASChanged();
+            }
+        }
+        private global::System.String _LISTACARACTERISTICAS;
+        partial void OnLISTACARACTERISTICASChanging(global::System.String value);
+        partial void OnLISTACARACTERISTICASChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SITUACAO
+        {
+            get
+            {
+                return _SITUACAO;
+            }
+            set
+            {
+                OnSITUACAOChanging(value);
+                ReportPropertyChanging("SITUACAO");
+                _SITUACAO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SITUACAO");
+                OnSITUACAOChanged();
+            }
+        }
+        private global::System.Int32 _SITUACAO;
+        partial void OnSITUACAOChanging(global::System.Int32 value);
+        partial void OnSITUACAOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDBAIRRO
+        {
+            get
+            {
+                return _IDBAIRRO;
+            }
+            set
+            {
+                OnIDBAIRROChanging(value);
+                ReportPropertyChanging("IDBAIRRO");
+                _IDBAIRRO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDBAIRRO");
+                OnIDBAIRROChanged();
+            }
+        }
+        private global::System.Int32 _IDBAIRRO;
+        partial void OnIDBAIRROChanging(global::System.Int32 value);
+        partial void OnIDBAIRROChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDCIDADE
+        {
+            get
+            {
+                return _IDCIDADE;
+            }
+            set
+            {
+                OnIDCIDADEChanging(value);
+                ReportPropertyChanging("IDCIDADE");
+                _IDCIDADE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDCIDADE");
+                OnIDCIDADEChanged();
+            }
+        }
+        private global::System.Int32 _IDCIDADE;
+        partial void OnIDCIDADEChanging(global::System.Int32 value);
+        partial void OnIDCIDADEChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMOVEL_BAIRRO", "BAIRRO")]
+        public BAIRRO BAIRRO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BAIRRO>("Dados.FK_IMOVEL_BAIRRO", "BAIRRO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BAIRRO>("Dados.FK_IMOVEL_BAIRRO", "BAIRRO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<BAIRRO> BAIRROReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BAIRRO>("Dados.FK_IMOVEL_BAIRRO", "BAIRRO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<BAIRRO>("Dados.FK_IMOVEL_BAIRRO", "BAIRRO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMOVEL_CIDADE", "CIDADE")]
+        public CIDADE CIDADE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CIDADE>("Dados.FK_IMOVEL_CIDADE", "CIDADE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CIDADE>("Dados.FK_IMOVEL_CIDADE", "CIDADE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CIDADE> CIDADEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CIDADE>("Dados.FK_IMOVEL_CIDADE", "CIDADE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CIDADE>("Dados.FK_IMOVEL_CIDADE", "CIDADE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMAGEMIMOVEL_IMOVEL", "IMAGEMIMOVEL")]
+        public EntityCollection<IMAGEMIMOVEL> IMAGEMIMOVEL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IMAGEMIMOVEL>("Dados.FK_IMAGEMIMOVEL_IMOVEL", "IMAGEMIMOVEL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IMAGEMIMOVEL>("Dados.FK_IMAGEMIMOVEL_IMOVEL", "IMAGEMIMOVEL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMOVEL_USUARIO", "USUARIO")]
+        public USUARIO USUARIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USUARIO>("Dados.FK_IMOVEL_USUARIO", "USUARIO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USUARIO>("Dados.FK_IMOVEL_USUARIO", "USUARIO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<USUARIO> USUARIOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USUARIO>("Dados.FK_IMOVEL_USUARIO", "USUARIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<USUARIO>("Dados.FK_IMOVEL_USUARIO", "USUARIO", value);
                 }
             }
         }
@@ -920,6 +1955,28 @@ namespace Dados
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRUPO>("Dados.FK_USUARIO_GRUPO", "GRUPO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Dados", "FK_IMOVEL_USUARIO", "IMOVEL")]
+        public EntityCollection<IMOVEL> IMOVEL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IMOVEL>("Dados.FK_IMOVEL_USUARIO", "IMOVEL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IMOVEL>("Dados.FK_IMOVEL_USUARIO", "IMOVEL", value);
                 }
             }
         }

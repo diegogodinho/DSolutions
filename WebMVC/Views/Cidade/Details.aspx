@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript">
     $(function () {
-        SeletorMenu(0);
+        SeletorMenu(3);
     });
     </script>
     <h2>Detalhes</h2>

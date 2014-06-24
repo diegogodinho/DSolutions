@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.GrupoModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.CaracteristicaModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Edit
@@ -7,9 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript">
     $(function () {
-        SeletorMenu(2);
+        SeletorMenu(5);
     });
     </script>
+
     <h2>Alterar</h2>
 	<hr/>
 
@@ -18,7 +19,7 @@
         <%: Html.ValidationSummary(true) %>
         
             
-            <%= Html.LabelAndTextBoxPDSolution(model => model.NomeGrupo) %>
+            <%= Html.LabelAndTextBoxPDSolution(model => model.Descricao) %>
             
             <%= Html.LabelAndTextBoxPDSolution(model => model.ID) %>
             

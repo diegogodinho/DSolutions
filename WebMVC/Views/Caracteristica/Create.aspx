@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.GrupoModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<WebMVC.Models.CaracteristicaModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Create
@@ -6,17 +6,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         $(function () {
-            SeletorMenu(2);
+            SeletorMenu(5);
         });
     </script>
     <h2>
-        Novo Grupo</h2>
+        Create</h2>
     <hr />
     <% Html.EnableClientValidation(); %>
     <% using (Html.BeginForm())
        {%>
     <%: Html.ValidationSummary(true) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.NomeGrupo) %>
+    <%= Html.LabelAndTextBoxPDSolution(model => model.Descricao) %>
     <p>
         <input type="submit" value="Criar" />
     </p>

@@ -44,5 +44,47 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CARACTERISTICA">
+      <EntityTypeMapping TypeName="Dados.CARACTERISTICA">
+        <MappingFragment StoreEntitySet="CARACTERISTICA">
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="IDCARACTERISTICA" ColumnName="IDCARACTERISTICA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMAGEMIMOVEL">
+      <EntityTypeMapping TypeName="Dados.IMAGEMIMOVEL">
+        <MappingFragment StoreEntitySet="IMAGEMIMOVEL">
+          <ScalarProperty Name="IDIMOVEL" ColumnName="IDIMOVEL" />
+          <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
+          <ScalarProperty Name="IDIMAGEM" ColumnName="IDIMAGEM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMOVEL">
+      <EntityTypeMapping TypeName="Dados.IMOVEL">
+        <MappingFragment StoreEntitySet="IMOVEL">
+          <ScalarProperty Name="IDBAIRRO" ColumnName="IDBAIRRO" />
+          <ScalarProperty Name="SITUACAO" ColumnName="SITUACAO" />
+          <ScalarProperty Name="LISTACARACTERISTICAS" ColumnName="LISTACARACTERISTICAS" />
+          <ScalarProperty Name="QTDEUNIDADESPORANDAR" ColumnName="QTDEUNIDADESPORANDAR" />
+          <ScalarProperty Name="QTDESALAS" ColumnName="QTDESALAS" />
+          <ScalarProperty Name="QTDESUITES" ColumnName="QTDESUITES" />
+          <ScalarProperty Name="IDADEIMOVEL" ColumnName="IDADEIMOVEL" />
+          <ScalarProperty Name="IPTU" ColumnName="IPTU" />
+          <ScalarProperty Name="CONDOMINIO" ColumnName="CONDOMINIO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="METRAGEM" ColumnName="METRAGEM" />
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+          <ScalarProperty Name="QTDEVAGASGARAGEM" ColumnName="QTDEVAGASGARAGEM" />
+          <ScalarProperty Name="QTDEBANHEIROS" ColumnName="QTDEBANHEIROS" />
+          <ScalarProperty Name="QTDEQUARTOS" ColumnName="QTDEQUARTOS" />
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="IDIMOVEL" ColumnName="IDIMOVEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
