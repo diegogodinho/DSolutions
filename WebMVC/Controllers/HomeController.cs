@@ -10,12 +10,10 @@ namespace WebMVC.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        private CidadeRepository cidadeRepository;
-        private BairroRepository bairroRepository;
+        private CidadeRepository cidadeRepository;        
         public HomeController()
         {
-            cidadeRepository = new CidadeRepository();
-            bairroRepository = new BairroRepository();
+            cidadeRepository = new CidadeRepository();            
         }
         public ActionResult Index()
         {
@@ -27,20 +25,7 @@ namespace WebMVC.Controllers
             return View(pesquisaPrincipalModel);
         }
 
-        public ActionResult getBairros(int id)
-        {
-            List<SelectListItem> bairros = new List<SelectListItem>() { new SelectListItem() { Text = "Selecione...", Value = "selecione", Selected = true } };
-            bairroRepository.BuscarTodosDaCidade(id).ForEach(bairro =>
-            {
-                bairros.Add(new SelectListItem()
-                {
-                    Text = bairro.Nome,
-                    Value = bairro.ID.ToString()
-
-                });
-            });
-            return Json(bairros, JsonRequestBehavior.AllowGet);
-        }
+       
 
         public ActionResult About()
         {

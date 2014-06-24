@@ -140,5 +140,21 @@ namespace WebMVC.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult getBairros(int id)
+        {
+            List<SelectListItem> bairros = new List<SelectListItem>() { new SelectListItem() { Text = "Selecione...", Value = "selecione", Selected = true } };
+            bairroRepository.BuscarTodosDaCidade(id).ForEach(bairro =>
+            {
+                bairros.Add(new SelectListItem()
+                {
+                    Text = bairro.Nome,
+                    Value = bairro.ID.ToString()
+
+                });
+            });
+            return Json(bairros, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -64,6 +64,7 @@
     <EntitySetMapping Name="IMOVEL">
       <EntityTypeMapping TypeName="Dados.IMOVEL">
         <MappingFragment StoreEntitySet="IMOVEL">
+          <ScalarProperty Name="IDCIDADE" ColumnName="IDCIDADE" />
           <ScalarProperty Name="IDBAIRRO" ColumnName="IDBAIRRO" />
           <ScalarProperty Name="SITUACAO" ColumnName="SITUACAO" />
           <ScalarProperty Name="LISTACARACTERISTICAS" ColumnName="LISTACARACTERISTICAS" />

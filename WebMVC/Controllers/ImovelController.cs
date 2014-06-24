@@ -15,9 +15,11 @@ namespace WebMVC.Controllers
         // GET: /Imovel/
 
         private ImovelRepository imovelRepository;
+        private CidadeRepository cidadeRepository;
         public ImovelController()
         {
             imovelRepository = new ImovelRepository();
+            cidadeRepository = new CidadeRepository();
         }
 
         public ActionResult Index(int? page)
@@ -38,7 +40,15 @@ namespace WebMVC.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            ImovelModel imovelModel = new ImovelModel();
+            imovelModel.Cidades = new List<SelectListItem>() { new SelectListItem() { Selected = true, Text = "Selecione...", Value = "0" } };
+            cidadeRepository.BuscarTodos().ForEach(cidade =>
+                {
+                    imovelModel.Cidades.Add(new SelectListItem() { Selected = false, Text = cidade.Nome, Value = cidade.ID.ToString() });
+
+                });
+            imovelModel.Bairros = new List<SelectListItem>() { new SelectListItem() { Selected = true, Text = "Selecione...", Value = "0" } };
+            return View(imovelModel);
         }
 
         //

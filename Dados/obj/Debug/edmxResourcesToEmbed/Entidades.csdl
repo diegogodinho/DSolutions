@@ -20,6 +20,10 @@
       <End Role="BAIRRO" EntitySet="BAIRRO" />
       <End Role="IMOVEL" EntitySet="IMOVEL" />
     </AssociationSet>
+    <AssociationSet Name="FK_IMOVEL_CIDADE" Association="Dados.FK_IMOVEL_CIDADE">
+      <End Role="CIDADE" EntitySet="CIDADE" />
+      <End Role="IMOVEL" EntitySet="IMOVEL" />
+    </AssociationSet>
     <AssociationSet Name="FK_IMAGEMIMOVEL_IMOVEL" Association="Dados.FK_IMAGEMIMOVEL_IMOVEL">
       <End Role="IMOVEL" EntitySet="IMOVEL" />
       <End Role="IMAGEMIMOVEL" EntitySet="IMAGEMIMOVEL" />
@@ -48,6 +52,7 @@
     <Property Type="String" Name="NOME" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="SIGLA" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="BAIRRO" Relationship="Dados.FK_BAIRRO_CIDADE" FromRole="CIDADE" ToRole="BAIRRO" />
+    <NavigationProperty Name="IMOVEL" Relationship="Dados.FK_IMOVEL_CIDADE" FromRole="CIDADE" ToRole="IMOVEL" />
   </EntityType>
   <EntityType Name="GRUPO">
     <Key>
@@ -137,7 +142,9 @@
     <Property Type="String" Name="LISTACARACTERISTICAS" MaxLength="4000" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="SITUACAO" Nullable="false" />
     <Property Type="Int32" Name="IDBAIRRO" Nullable="false" />
+    <Property Type="Int32" Name="IDCIDADE" Nullable="false" />
     <NavigationProperty Name="BAIRRO" Relationship="Dados.FK_IMOVEL_BAIRRO" FromRole="IMOVEL" ToRole="BAIRRO" />
+    <NavigationProperty Name="CIDADE" Relationship="Dados.FK_IMOVEL_CIDADE" FromRole="IMOVEL" ToRole="CIDADE" />
     <NavigationProperty Name="IMAGEMIMOVEL" Relationship="Dados.FK_IMAGEMIMOVEL_IMOVEL" FromRole="IMOVEL" ToRole="IMAGEMIMOVEL" />
     <NavigationProperty Name="USUARIO" Relationship="Dados.FK_IMOVEL_USUARIO" FromRole="IMOVEL" ToRole="USUARIO" />
   </EntityType>
@@ -150,6 +157,18 @@
       </Principal>
       <Dependent Role="IMOVEL">
         <PropertyRef Name="IDBAIRRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMOVEL_CIDADE">
+    <End Type="Dados.CIDADE" Role="CIDADE" Multiplicity="1" />
+    <End Type="Dados.IMOVEL" Role="IMOVEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIDADE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IMOVEL">
+        <PropertyRef Name="IDCIDADE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

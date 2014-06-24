@@ -16,7 +16,7 @@
                 if (selectedItem != 'selecione') {
                     $.ajax({
                         type: "GET",
-                        url: "/Home/getBairros/" + selectedItem,
+                        url: "/Bairro/getBairros/" + selectedItem,
                         success: function (data) {
                             $("#Bairros").html('');
                             $.each(data, function (id, option) {

@@ -20,6 +20,10 @@
       <End Role="BAIRRO" EntitySet="BAIRRO" />
       <End Role="IMOVEL" EntitySet="IMOVEL" />
     </AssociationSet>
+    <AssociationSet Name="FK_IMOVEL_CIDADE" Association="Dados.Store.FK_IMOVEL_CIDADE">
+      <End Role="CIDADE" EntitySet="CIDADE" />
+      <End Role="IMOVEL" EntitySet="IMOVEL" />
+    </AssociationSet>
     <AssociationSet Name="FK_IMOVEL_USUARIO" Association="Dados.Store.FK_IMOVEL_USUARIO">
       <End Role="USUARIO" EntitySet="USUARIO" />
       <End Role="IMOVEL" EntitySet="IMOVEL" />
@@ -91,6 +95,7 @@
     <Property Name="LISTACARACTERISTICAS" Type="varchar" MaxLength="4000" />
     <Property Name="SITUACAO" Type="int" Nullable="false" />
     <Property Name="IDBAIRRO" Type="int" Nullable="false" />
+    <Property Name="IDCIDADE" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
@@ -140,6 +145,18 @@
       </Principal>
       <Dependent Role="IMOVEL">
         <PropertyRef Name="IDBAIRRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMOVEL_CIDADE">
+    <End Role="CIDADE" Type="Dados.Store.CIDADE" Multiplicity="1" />
+    <End Role="IMOVEL" Type="Dados.Store.IMOVEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIDADE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IMOVEL">
+        <PropertyRef Name="IDCIDADE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
