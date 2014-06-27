@@ -112,6 +112,27 @@ namespace WebMVC.Helpers
 
         #endregion
 
+        #region LabelAnChoosen
+        public static string LabelAndChosenPDSolution<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList)
+        {
+            return LabelAndChosenDSolution<TModel, TProperty>(htmlHelper, expression, selectList, "pequeno");
+        }
+        public static string LabelAndChosenMDSolution<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList)
+        {
+            return LabelAndChosenDSolution<TModel, TProperty>(htmlHelper, expression, selectList, "medio");
+        }
+        public static string LabelAndChosenGDSolution<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList)
+        {
+            return LabelAndChosenDSolution<TModel, TProperty>(htmlHelper, expression, selectList, "grande");
+        }
+        private static string LabelAndChosenDSolution<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, string tamanho)
+        {
+            MvcHtmlString label = LabelExtensions.LabelFor<TModel, TProperty>(htmlHelper, expression);
+            MvcHtmlString dropDownList = SelectExtensions.DropDownListFor<TModel, TProperty>(htmlHelper, expression, selectList, new { @class = "form-control", multiple = "multiple" });
+            MvcHtmlString validation = ValidationExtensions.ValidationMessageFor<TModel, TProperty>(htmlHelper, expression);
+            return string.Format("<div class=\"form-group {0}\"><div class=\"editor-label\">{1}</div><div class=\"editor-field\">{2}{3}</div></div>", tamanho, label.ToHtmlString(), dropDownList.ToHtmlString(), validation.ToHtmlString());
+        }
+        #endregion
 
         public static string Imagem<TModel>(this HtmlHelper<TModel> htmlHelper, string baseTeste)
         {

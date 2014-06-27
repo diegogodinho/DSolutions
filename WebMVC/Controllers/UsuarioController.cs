@@ -184,7 +184,7 @@ namespace WebMVC.Controllers
                 {
                     usuario.GruposDisponiveis.Add(new SelectListItem() { Selected = false, Text = grupo.NomeGrupo, Value = grupo.ID.ToString() });
                 });
-
+            usuario.DataNascimento = DateTime.Now;            
             return View(usuario);
         }
 

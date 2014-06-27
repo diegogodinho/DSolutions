@@ -26,17 +26,23 @@ namespace WebMVC.Models
         [DisplayName("Quantidade de Quartos")]
         public int QtdeQuartos { get; set; }
 
+        public List<SelectListItem> QtdeQuartosList { get; set; }
+
 
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("Quantidade de Banheiros")]
         public int QtdeBanheiros { get; set; }
 
+        public List<SelectListItem> QtdeBanheirosList { get; set; }
+
 
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("Quantidade de Vagas de Garagem")]
         public int QtdeVagasGaragem { get; set; }
+
+        public List<SelectListItem> QtdeVagasGaragemList { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
@@ -73,10 +79,14 @@ namespace WebMVC.Models
         [DisplayName("Quantidade de suítes")]
         public int QtdeSuites { get; set; }
 
+        public List<SelectListItem> QtdeSuitesList { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("Quantidade de salas")]
         public int QtdeSalas { get; set; }
+
+        public List<SelectListItem> QtdeSalasList { get; set; }
 
         [DataType(DataType.Text)]
         [DisplayName("Unidades por andar")]
@@ -86,10 +96,14 @@ namespace WebMVC.Models
         [DisplayName("Características")]
         public string ListaCaracteristicas { get; set; }
 
+        public List<SelectListItem> CaracteristicasDisponiveis { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         [DisplayName("Situação")]
         public int Situacao { get; set; }
+
+        public List<SelectListItem> SituacaoList { get; set; }
 
         [Required]
         [DataType(DataType.Text)]

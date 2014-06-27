@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Create
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
     <script type="text/javascript">
         $(function () {
             SeletorMenu(0);
@@ -30,6 +30,7 @@
                     });
                 }
             });
+            $("#ListaCaracteristicas").chosen();
         });
     </script>
     <h2>
@@ -41,19 +42,18 @@
     <%: Html.ValidationSummary(true) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Titulo) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Descricao) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.QtdeQuartos) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.QtdeBanheiros) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.QtdeVagasGaragem) %>
+    <%= Html.LabelAndDropDownListPDSolution(model => model.QtdeQuartos, Model.QtdeQuartosList)%>
+    <%= Html.LabelAndDropDownListPDSolution(model => model.QtdeBanheiros, Model.QtdeBanheirosList)%>
+    <%= Html.LabelAndDropDownListPDSolution(model => model.QtdeVagasGaragem, Model.QtdeVagasGaragemList)%>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Valor) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Metragem) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.IDUsuario) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Condominio) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Iptu) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.IdadeImovel) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.QtdeSuites) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.QtdeSalas) %>
+    <%= Html.LabelAndDropDownListPDSolution(model => model.QtdeSuites, Model.QtdeSuitesList) %>
+    <%= Html.LabelAndDropDownListPDSolution(model => model.QtdeSalas, Model.QtdeSalasList) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.QtdeUnidadesPorAndar) %>
-    <%= Html.LabelAndTextBoxPDSolution(model => model.ListaCaracteristicas) %>
+    <%= Html.LabelAndChosenPDSolution(model => model.ListaCaracteristicas,Model.CaracteristicasDisponiveis)%>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Situacao) %>
     <%= Html.LabelAndDropDownListPDSolution(model => model.IDCidade,Model.Cidades) %>
     <%= Html.LabelAndDropDownListPDSolution(model => model.IDBairro,Model.Bairros)%>

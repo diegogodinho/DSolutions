@@ -11,15 +11,16 @@ namespace WebMVC.Controllers
 {
     public class ImovelController : Controller
     {
-        //
-        // GET: /Imovel/
-
         private ImovelRepository imovelRepository;
         private CidadeRepository cidadeRepository;
+        private CaracteristicaRepository caracteristicaRepository;
+
         public ImovelController()
         {
             imovelRepository = new ImovelRepository();
             cidadeRepository = new CidadeRepository();
+            caracteristicaRepository = new CaracteristicaRepository();
+
         }
 
         public ActionResult Index(int? page)
@@ -27,16 +28,10 @@ namespace WebMVC.Controllers
             return View(new PaginatedData<ImovelModel>(imovelRepository.BuscarTodos().AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
         }
 
-        //
-        // GET: /Imovel/Details/5
-
         public ActionResult Details(int id)
         {
             return View(imovelRepository.BuscarPorID(id));
         }
-
-        //
-        // GET: /Imovel/Create
 
         public ActionResult Create()
         {
@@ -48,11 +43,26 @@ namespace WebMVC.Controllers
 
                 });
             imovelModel.Bairros = new List<SelectListItem>() { new SelectListItem() { Selected = true, Text = "Selecione...", Value = "0" } };
+            List<SelectListItem> selecaoQuatroItens = new List<SelectListItem>(){new SelectListItem(){Selected = true, Text="Selecione...",Value = "0"},
+                new SelectListItem(){Selected = true, Text="1",Value = "1"},
+                new SelectListItem(){Selected = true, Text="2",Value = "2"},
+                new SelectListItem(){Selected = true, Text="3",Value = "3"},
+                new SelectListItem(){Selected = true, Text="4 ou mais",Value = "4"},
+            };
+            imovelModel.QtdeBanheirosList = selecaoQuatroItens;
+            imovelModel.QtdeQuartosList = selecaoQuatroItens;
+            imovelModel.QtdeSalasList = selecaoQuatroItens;
+            imovelModel.QtdeSuitesList = selecaoQuatroItens;
+            imovelModel.QtdeVagasGaragemList = selecaoQuatroItens;
+            imovelModel.SituacaoList = selecaoQuatroItens;
+            imovelModel.CaracteristicasDisponiveis = new List<SelectListItem>();
+            caracteristicaRepository.BuscarTodos().ForEach(caracteristica =>
+                {
+                    imovelModel.CaracteristicasDisponiveis.Add(new SelectListItem() { Selected = false, Text = caracteristica.Descricao, Value = caracteristica.ID.ToString() });
+                });
+
             return View(imovelModel);
         }
-
-        //
-        // POST: /Imovel/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -69,16 +79,10 @@ namespace WebMVC.Controllers
             }
         }
 
-        //
-        // GET: /Imovel/Edit/5
-
         public ActionResult Edit(int id)
         {
             return View(imovelRepository.BuscarPorID(id));
         }
-
-        //
-        // POST: /Imovel/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -95,16 +99,10 @@ namespace WebMVC.Controllers
             }
         }
 
-        //
-        // GET: /Imovel/Delete/5
-
         public ActionResult Delete(int id)
         {
             return View(imovelRepository.BuscarPorID(id));
         }
-
-        //
-        // POST: /Imovel/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
