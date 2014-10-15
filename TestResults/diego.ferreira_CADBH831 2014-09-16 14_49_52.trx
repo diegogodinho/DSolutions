@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="1200afcb-432b-4537-b0f8-01f3c564f0c2" name="diego.ferreira@CADBH831 2014-09-16 14:49:52" runUser="CAD\diego.ferreira" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="cd8ea72a-3d1f-4eb7-a511-9bea12f76dba">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="diego.ferreira_CADBH831 2014-09-16 14_49_52">
+      <DeploymentItem filename="D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\bin\Debug\Dominio.Entidades.dll" />
+      <DeploymentItem filename="D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Dados.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-09-16T14:49:52.3933418-03:00" queuing="2014-09-16T14:49:53.4954520-03:00" start="2014-09-16T14:49:53.5994624-03:00" finish="2014-09-16T14:50:11.0442067-03:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestePersistenciaUsuario" storage="d:\estudo\mvcdsolutions\mvcapplication1\testdados\bin\debug\testdados.dll" id="b702c49a-38b3-10dc-720a-ff4f1fcb7199">
+      <Execution id="ef98926a-64c7-4aa2-9f23-08f894590a04" />
+      <TestMethod codeBase="D:/Estudo/MVCDSolutions/MvcApplication1/TestDados/bin/Debug/TestDados.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestDados.UnitTest1, TestDados, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestePersistenciaUsuario" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="b702c49a-38b3-10dc-720a-ff4f1fcb7199" executionId="ef98926a-64c7-4aa2-9f23-08f894590a04" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="ef98926a-64c7-4aa2-9f23-08f894590a04" testId="b702c49a-38b3-10dc-720a-ff4f1fcb7199" testName="TestePersistenciaUsuario" computerName="CADBH831" duration="00:00:14.5455555" startTime="2014-09-16T14:49:53.6984723-03:00" endTime="2014-09-16T14:50:09.4540477-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef98926a-64c7-4aa2-9f23-08f894590a04">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method TestDados.UnitTest1.TestePersistenciaUsuario threw exception: 
+System.InvalidOperationException: Já existe um objeto com a mesma chave no ObjectStateManager. O ObjectStateManager não pode controlar vários objetos com a mesma chave.</Message>
+          <StackTrace>    em System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet&amp; entitySet, Boolean&amp; isNoOperation)
+   em System.Data.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   em Dados.BaseRepository`1.RemoverItem(TModel model) na D:\Estudo\MVCDSolutions\MvcApplication1\Dados\Repositorio\BaseRepository.cs:linha 144
+   em TestDados.UnitTest1.ExcluirUsuario() na D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\UnitTest1.cs:linha 52
+   em TestDados.UnitTest1.TestePersistenciaUsuario() na D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\UnitTest1.cs:linha 38
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

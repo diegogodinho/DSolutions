@@ -5,18 +5,21 @@ using System.Web;
 using System.Web.Mvc;
 using WebMVC.Models;
 using WebMVC.Views.Shared;
-using WebMVC.Attributes;
 using System.Configuration;
+using Dados.Repositorio;
+using Web.Comum.Attributes;
+using Dominio.Entidades;
+using Dados;
 
 namespace WebMVC.Controllers
 {
     public class GrupoController : Controller
     {
-        private GrupoRepository _grupoRepository;
+        private GrupoRepositorio _grupoRepository;
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
-            _grupoRepository = new GrupoRepository();
+            _grupoRepository = new GrupoRepositorio();
 
             base.Initialize(requestContext);
         }
@@ -41,7 +44,8 @@ namespace WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _grupoRepository.AdicionarItem(model);
+                _grupoRepository.AdicionarItem(model);                
+
                 return RedirectToAction("Index");
             }            
             return View(model);

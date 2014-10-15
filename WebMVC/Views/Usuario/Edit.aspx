@@ -4,18 +4,20 @@
     Edit
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<script type="text/javascript">
-    $(function () {
-        SeletorMenu(1);
-    });
+    <script type="text/javascript">
+        $(function () {
+            SeletorMenu(1);
+        });
     </script>
     <h2>
         Alterar</h2>
     <hr />
     <% Html.EnableClientValidation(); %>
-    <% using (Html.BeginForm())
+    <% using (Html.BeginForm("Edit", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
        {%>
     <%: Html.ValidationSummary(true) %>
+    <%= Html.Imagem(Model.FotoString) %>
+    <%= Html.LabelAndImagePDSolution(model => model.Foto, "", "", "", false) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Nome) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.SobreNome) %>
     <%= Html.LabelAndTextBoxPDSolution(model => model.Email) %>

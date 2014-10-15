@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace Dados
 {
@@ -9,12 +10,18 @@ namespace Dados
     {
         public ContextDB dbContext
         {
-            get;
-            private set;
+            get
+            {
+                //string ocKey = "key_" + HttpContext.Current.GetHashCode().ToString("x");
+                //if (!HttpContext.Current.Items.Contains(ocKey))
+                //    HttpContext.Current.Items.Add(ocKey, new ContextDB());
+                //return HttpContext.Current.Items[ocKey] as ContextDB;
+                return new ContextDB();
+            }
         }
         private SingletonDBContext()
         {
-            dbContext = new ContextDB();
+
         }
         private static Object obj = new object();
 

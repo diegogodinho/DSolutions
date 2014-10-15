@@ -121,7 +121,7 @@ namespace WebMVC.Models
 
     }
 
-    public class ImovelRepository : BaseRepository<IMOVEL>
+    public class ImovelRepository //: BaseRepository<IMOVEL, ImovelModel>
     {
         public List<ImovelModel> BuscarTodos()
         {
@@ -202,5 +202,6 @@ namespace WebMVC.Models
                 SingletonDBContext.Current.dbContext.SaveChanges();
             }
         }
+       
     }
 }

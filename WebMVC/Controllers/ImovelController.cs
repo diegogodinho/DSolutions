@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using WebMVC.Models;
 using System.Configuration;
 using WebMVC.Views.Shared;
+using Web.Comum.Attributes;
+using Dados.Repositorio;
 
 namespace WebMVC.Controllers
 {
@@ -13,26 +15,26 @@ namespace WebMVC.Controllers
     {
         private ImovelRepository imovelRepository;
         private CidadeRepository cidadeRepository;
-        private CaracteristicaRepository caracteristicaRepository;
+        private CaracteristicaRepositorio caracteristicaRepository;
 
         public ImovelController()
         {
             imovelRepository = new ImovelRepository();
             cidadeRepository = new CidadeRepository();
-            caracteristicaRepository = new CaracteristicaRepository();
+            caracteristicaRepository = new CaracteristicaRepositorio();
 
         }
-
+        [CustomAuthorize]
         public ActionResult Index(int? page)
         {
             return View(new PaginatedData<ImovelModel>(imovelRepository.BuscarTodos().AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
         }
-
+        [CustomAuthorize]
         public ActionResult Details(int id)
         {
             return View(imovelRepository.BuscarPorID(id));
         }
-
+        [CustomAuthorize]
         public ActionResult Create()
         {
             ImovelModel imovelModel = new ImovelModel();
@@ -65,6 +67,7 @@ namespace WebMVC.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -79,12 +82,14 @@ namespace WebMVC.Controllers
             }
         }
 
+        [CustomAuthorize]
         public ActionResult Edit(int id)
         {
             return View(imovelRepository.BuscarPorID(id));
         }
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -98,13 +103,14 @@ namespace WebMVC.Controllers
                 return View();
             }
         }
-
+        [CustomAuthorize]
         public ActionResult Delete(int id)
         {
             return View(imovelRepository.BuscarPorID(id));
         }
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

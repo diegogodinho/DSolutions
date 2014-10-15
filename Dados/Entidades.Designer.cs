@@ -31,51 +31,54 @@ using System.Xml.Serialization;
 namespace Dados
 {
     #region Contexts
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
     public partial class ContextDB : ObjectContext
     {
         #region Constructors
-    
+
         /// <summary>
         /// Initializes a new ContextDB object using the connection string found in the 'ContextDB' section of the application configuration file.
         /// </summary>
-        public ContextDB() : base("name=ContextDB", "ContextDB")
+        public ContextDB()
+            : base("name=ContextDB", "ContextDB")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-    
+
         /// <summary>
         /// Initialize a new ContextDB object.
         /// </summary>
-        public ContextDB(string connectionString) : base(connectionString, "ContextDB")
+        public ContextDB(string connectionString)
+            : base(connectionString, "ContextDB")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-    
+
         /// <summary>
         /// Initialize a new ContextDB object.
         /// </summary>
-        public ContextDB(EntityConnection connection) : base(connection, "ContextDB")
+        public ContextDB(EntityConnection connection)
+            : base(connection, "ContextDB")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-    
+
         #endregion
-    
+
         #region Partial Methods
-    
+
         partial void OnContextCreated();
-    
+
         #endregion
-    
+
         #region ObjectSet Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -91,7 +94,7 @@ namespace Dados
             }
         }
         private ObjectSet<BAIRRO> _BAIRRO;
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -107,7 +110,7 @@ namespace Dados
             }
         }
         private ObjectSet<CIDADE> _CIDADE;
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -123,7 +126,7 @@ namespace Dados
             }
         }
         private ObjectSet<GRUPO> _GRUPO;
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -139,7 +142,7 @@ namespace Dados
             }
         }
         private ObjectSet<USUARIO> _USUARIO;
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -155,7 +158,7 @@ namespace Dados
             }
         }
         private ObjectSet<CARACTERISTICA> _CARACTERISTICA;
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -171,7 +174,7 @@ namespace Dados
             }
         }
         private ObjectSet<IMAGEMIMOVEL> _IMAGEMIMOVEL;
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -191,7 +194,7 @@ namespace Dados
         #endregion
 
         #region AddTo Methods
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the BAIRRO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -199,7 +202,7 @@ namespace Dados
         {
             base.AddObject("BAIRRO", bAIRRO);
         }
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the CIDADE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -207,7 +210,7 @@ namespace Dados
         {
             base.AddObject("CIDADE", cIDADE);
         }
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the GRUPO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -215,7 +218,7 @@ namespace Dados
         {
             base.AddObject("GRUPO", gRUPO);
         }
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the USUARIO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -223,7 +226,7 @@ namespace Dados
         {
             base.AddObject("USUARIO", uSUARIO);
         }
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the CARACTERISTICA EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -231,7 +234,7 @@ namespace Dados
         {
             base.AddObject("CARACTERISTICA", cARACTERISTICA);
         }
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the IMAGEMIMOVEL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -239,7 +242,7 @@ namespace Dados
         {
             base.AddObject("IMAGEMIMOVEL", iMAGEMIMOVEL);
         }
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the IMOVEL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -255,17 +258,17 @@ namespace Dados
     #endregion
 
     #region Entities
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="BAIRRO")]
+    [EdmEntityTypeAttribute(NamespaceName = "Dados", Name = "BAIRRO")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class BAIRRO : EntityObject
+    [DataContractAttribute(IsReference = true)]
+    public partial class BAIRRO : EntityObject, ITableBase
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new BAIRRO object.
         /// </summary>
@@ -284,11 +287,11 @@ namespace Dados
         #endregion
 
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 ID
         {
@@ -311,11 +314,11 @@ namespace Dados
         private global::System.Int32 _ID;
         partial void OnIDChanging(global::System.Int32 value);
         partial void OnIDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDCIDADE
         {
@@ -335,11 +338,11 @@ namespace Dados
         private global::System.Int32 _IDCIDADE;
         partial void OnIDCIDADEChanging(global::System.Int32 value);
         partial void OnIDCIDADEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String NOME
         {
@@ -359,11 +362,11 @@ namespace Dados
         private global::System.String _NOME;
         partial void OnNOMEChanging(global::System.String value);
         partial void OnNOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SIGLA
         {
@@ -386,9 +389,9 @@ namespace Dados
 
         #endregion
 
-    
+
         #region Navigation Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -426,7 +429,7 @@ namespace Dados
                 }
             }
         }
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -452,17 +455,17 @@ namespace Dados
         #endregion
 
     }
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="CARACTERISTICA")]
+    [EdmEntityTypeAttribute(NamespaceName = "Dados", Name = "CARACTERISTICA")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class CARACTERISTICA : EntityObject
+    [DataContractAttribute(IsReference = true)]
+    public partial class CARACTERISTICA : EntityObject, ITableBase
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new CARACTERISTICA object.
         /// </summary>
@@ -476,14 +479,23 @@ namespace Dados
             return cARACTERISTICA;
         }
 
+        public int ID
+        {
+            get
+            {
+                return IDCARACTERISTICA;
+            }
+        }
+
+
         #endregion
 
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDCARACTERISTICA
         {
@@ -506,11 +518,11 @@ namespace Dados
         private global::System.Int32 _IDCARACTERISTICA;
         partial void OnIDCARACTERISTICAChanging(global::System.Int32 value);
         partial void OnIDCARACTERISTICAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String DESCRICAO
         {
@@ -533,19 +545,19 @@ namespace Dados
 
         #endregion
 
-    
+
     }
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="CIDADE")]
+    [EdmEntityTypeAttribute(NamespaceName = "Dados", Name = "CIDADE")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
+    [DataContractAttribute(IsReference = true)]
     public partial class CIDADE : EntityObject
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new CIDADE object.
         /// </summary>
@@ -564,11 +576,11 @@ namespace Dados
         #endregion
 
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 ID
         {
@@ -591,11 +603,11 @@ namespace Dados
         private global::System.Int32 _ID;
         partial void OnIDChanging(global::System.Int32 value);
         partial void OnIDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String NOME
         {
@@ -615,11 +627,11 @@ namespace Dados
         private global::System.String _NOME;
         partial void OnNOMEChanging(global::System.String value);
         partial void OnNOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String SIGLA
         {
@@ -642,9 +654,9 @@ namespace Dados
 
         #endregion
 
-    
+
         #region Navigation Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -666,7 +678,7 @@ namespace Dados
                 }
             }
         }
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -692,17 +704,17 @@ namespace Dados
         #endregion
 
     }
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="GRUPO")]
+    [EdmEntityTypeAttribute(NamespaceName = "Dados", Name = "GRUPO")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
+    [DataContractAttribute(IsReference = true)]
     public partial class GRUPO : EntityObject
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new GRUPO object.
         /// </summary>
@@ -719,11 +731,11 @@ namespace Dados
         #endregion
 
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDGRUPO
         {
@@ -746,11 +758,11 @@ namespace Dados
         private global::System.Int32 _IDGRUPO;
         partial void OnIDGRUPOChanging(global::System.Int32 value);
         partial void OnIDGRUPOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String NOMEGRUPO
         {
@@ -773,9 +785,9 @@ namespace Dados
 
         #endregion
 
-    
+
         #region Navigation Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -801,17 +813,17 @@ namespace Dados
         #endregion
 
     }
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="IMAGEMIMOVEL")]
+    [EdmEntityTypeAttribute(NamespaceName = "Dados", Name = "IMAGEMIMOVEL")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
+    [DataContractAttribute(IsReference = true)]
     public partial class IMAGEMIMOVEL : EntityObject
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new IMAGEMIMOVEL object.
         /// </summary>
@@ -830,11 +842,11 @@ namespace Dados
         #endregion
 
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDIMAGEM
         {
@@ -857,11 +869,11 @@ namespace Dados
         private global::System.Int32 _IDIMAGEM;
         partial void OnIDIMAGEMChanging(global::System.Int32 value);
         partial void OnIDIMAGEMChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Byte[] IMAGEM
         {
@@ -881,11 +893,11 @@ namespace Dados
         private global::System.Byte[] _IMAGEM;
         partial void OnIMAGEMChanging(global::System.Byte[] value);
         partial void OnIMAGEMChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDIMOVEL
         {
@@ -908,9 +920,9 @@ namespace Dados
 
         #endregion
 
-    
+
         #region Navigation Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -952,17 +964,17 @@ namespace Dados
         #endregion
 
     }
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="IMOVEL")]
+    [EdmEntityTypeAttribute(NamespaceName = "Dados", Name = "IMOVEL")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class IMOVEL : EntityObject
+    [DataContractAttribute(IsReference = true)]
+    public partial class IMOVEL : EntityObject, ITableBase
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new IMOVEL object.
         /// </summary>
@@ -1002,14 +1014,19 @@ namespace Dados
             return iMOVEL;
         }
 
+        public int ID
+        {
+            get { return IDIMOVEL; }
+        }
+
         #endregion
 
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDIMOVEL
         {
@@ -1032,11 +1049,11 @@ namespace Dados
         private global::System.Int32 _IDIMOVEL;
         partial void OnIDIMOVELChanging(global::System.Int32 value);
         partial void OnIDIMOVELChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String TITULO
         {
@@ -1056,11 +1073,11 @@ namespace Dados
         private global::System.String _TITULO;
         partial void OnTITULOChanging(global::System.String value);
         partial void OnTITULOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String DESCRICAO
         {
@@ -1080,11 +1097,11 @@ namespace Dados
         private global::System.String _DESCRICAO;
         partial void OnDESCRICAOChanging(global::System.String value);
         partial void OnDESCRICAOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 QTDEQUARTOS
         {
@@ -1104,11 +1121,11 @@ namespace Dados
         private global::System.Int32 _QTDEQUARTOS;
         partial void OnQTDEQUARTOSChanging(global::System.Int32 value);
         partial void OnQTDEQUARTOSChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 QTDEBANHEIROS
         {
@@ -1128,11 +1145,11 @@ namespace Dados
         private global::System.Int32 _QTDEBANHEIROS;
         partial void OnQTDEBANHEIROSChanging(global::System.Int32 value);
         partial void OnQTDEBANHEIROSChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 QTDEVAGASGARAGEM
         {
@@ -1152,11 +1169,11 @@ namespace Dados
         private global::System.Int32 _QTDEVAGASGARAGEM;
         partial void OnQTDEVAGASGARAGEMChanging(global::System.Int32 value);
         partial void OnQTDEVAGASGARAGEMChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Double VALOR
         {
@@ -1176,11 +1193,11 @@ namespace Dados
         private global::System.Double _VALOR;
         partial void OnVALORChanging(global::System.Double value);
         partial void OnVALORChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String METRAGEM
         {
@@ -1200,11 +1217,11 @@ namespace Dados
         private global::System.String _METRAGEM;
         partial void OnMETRAGEMChanging(global::System.String value);
         partial void OnMETRAGEMChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDUSUARIO
         {
@@ -1224,11 +1241,11 @@ namespace Dados
         private global::System.Int32 _IDUSUARIO;
         partial void OnIDUSUARIOChanging(global::System.Int32 value);
         partial void OnIDUSUARIOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 TIPO
         {
@@ -1248,11 +1265,11 @@ namespace Dados
         private global::System.Int32 _TIPO;
         partial void OnTIPOChanging(global::System.Int32 value);
         partial void OnTIPOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> CONDOMINIO
         {
@@ -1272,11 +1289,11 @@ namespace Dados
         private Nullable<global::System.Double> _CONDOMINIO;
         partial void OnCONDOMINIOChanging(Nullable<global::System.Double> value);
         partial void OnCONDOMINIOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> IPTU
         {
@@ -1296,11 +1313,11 @@ namespace Dados
         private Nullable<global::System.Double> _IPTU;
         partial void OnIPTUChanging(Nullable<global::System.Double> value);
         partial void OnIPTUChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> IDADEIMOVEL
         {
@@ -1320,11 +1337,11 @@ namespace Dados
         private Nullable<global::System.Int32> _IDADEIMOVEL;
         partial void OnIDADEIMOVELChanging(Nullable<global::System.Int32> value);
         partial void OnIDADEIMOVELChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 QTDESUITES
         {
@@ -1344,11 +1361,11 @@ namespace Dados
         private global::System.Int32 _QTDESUITES;
         partial void OnQTDESUITESChanging(global::System.Int32 value);
         partial void OnQTDESUITESChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 QTDESALAS
         {
@@ -1368,11 +1385,11 @@ namespace Dados
         private global::System.Int32 _QTDESALAS;
         partial void OnQTDESALASChanging(global::System.Int32 value);
         partial void OnQTDESALASChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> QTDEUNIDADESPORANDAR
         {
@@ -1392,11 +1409,11 @@ namespace Dados
         private Nullable<global::System.Int32> _QTDEUNIDADESPORANDAR;
         partial void OnQTDEUNIDADESPORANDARChanging(Nullable<global::System.Int32> value);
         partial void OnQTDEUNIDADESPORANDARChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String LISTACARACTERISTICAS
         {
@@ -1416,11 +1433,11 @@ namespace Dados
         private global::System.String _LISTACARACTERISTICAS;
         partial void OnLISTACARACTERISTICASChanging(global::System.String value);
         partial void OnLISTACARACTERISTICASChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 SITUACAO
         {
@@ -1440,11 +1457,11 @@ namespace Dados
         private global::System.Int32 _SITUACAO;
         partial void OnSITUACAOChanging(global::System.Int32 value);
         partial void OnSITUACAOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDBAIRRO
         {
@@ -1464,11 +1481,11 @@ namespace Dados
         private global::System.Int32 _IDBAIRRO;
         partial void OnIDBAIRROChanging(global::System.Int32 value);
         partial void OnIDBAIRROChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 IDCIDADE
         {
@@ -1491,9 +1508,9 @@ namespace Dados
 
         #endregion
 
-    
+
         #region Navigation Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -1531,7 +1548,7 @@ namespace Dados
                 }
             }
         }
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -1569,7 +1586,7 @@ namespace Dados
                 }
             }
         }
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -1591,7 +1608,7 @@ namespace Dados
                 }
             }
         }
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -1633,17 +1650,17 @@ namespace Dados
         #endregion
 
     }
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Dados", Name="USUARIO")]
+    [EdmEntityTypeAttribute(NamespaceName = "Dados", Name = "USUARIO")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class USUARIO : EntityObject
+    [DataContractAttribute(IsReference = true)]
+    public partial class USUARIO : EntityObject, ITableBase
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new USUARIO object.
         /// </summary>
@@ -1672,11 +1689,11 @@ namespace Dados
         #endregion
 
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Int32 ID
         {
@@ -1699,11 +1716,11 @@ namespace Dados
         private global::System.Int32 _ID;
         partial void OnIDChanging(global::System.Int32 value);
         partial void OnIDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String NOME
         {
@@ -1723,11 +1740,11 @@ namespace Dados
         private global::System.String _NOME;
         partial void OnNOMEChanging(global::System.String value);
         partial void OnNOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String SOBRENOME
         {
@@ -1747,11 +1764,11 @@ namespace Dados
         private global::System.String _SOBRENOME;
         partial void OnSOBRENOMEChanging(global::System.String value);
         partial void OnSOBRENOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String EMAIL
         {
@@ -1771,11 +1788,11 @@ namespace Dados
         private global::System.String _EMAIL;
         partial void OnEMAILChanging(global::System.String value);
         partial void OnEMAILChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.DateTime DATANASCIMENTO
         {
@@ -1795,11 +1812,11 @@ namespace Dados
         private global::System.DateTime _DATANASCIMENTO;
         partial void OnDATANASCIMENTOChanging(global::System.DateTime value);
         partial void OnDATANASCIMENTOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String CPF
         {
@@ -1819,11 +1836,11 @@ namespace Dados
         private global::System.String _CPF;
         partial void OnCPFChanging(global::System.String value);
         partial void OnCPFChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.Byte[] FOTO
         {
@@ -1843,11 +1860,11 @@ namespace Dados
         private global::System.Byte[] _FOTO;
         partial void OnFOTOChanging(global::System.Byte[] value);
         partial void OnFOTOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String SENHA
         {
@@ -1867,11 +1884,11 @@ namespace Dados
         private global::System.String _SENHA;
         partial void OnSENHAChanging(global::System.String value);
         partial void OnSENHAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> IDGRUPO
         {
@@ -1891,11 +1908,11 @@ namespace Dados
         private Nullable<global::System.Int32> _IDGRUPO;
         partial void OnIDGRUPOChanging(Nullable<global::System.Int32> value);
         partial void OnIDGRUPOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.String LOGIN
         {
@@ -1918,9 +1935,9 @@ namespace Dados
 
         #endregion
 
-    
+
         #region Navigation Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -1958,7 +1975,7 @@ namespace Dados
                 }
             }
         }
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -1987,5 +2004,5 @@ namespace Dados
 
     #endregion
 
-    
+
 }

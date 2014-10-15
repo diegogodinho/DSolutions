@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebMVC.Models;
 using WebMVC.Views.Shared;
 using System.Configuration;
+using Web.Comum.Attributes;
 
 namespace WebMVC.Controllers
 {
@@ -19,6 +20,8 @@ namespace WebMVC.Controllers
             cidadeRepository = new CidadeRepository();
         }
 
+
+        [CustomAuthorize]
         public ActionResult Index(int? page)
         {
             return View(new PaginatedData<CidadeModel>(cidadeRepository.BuscarTodos().AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
@@ -27,6 +30,8 @@ namespace WebMVC.Controllers
         //
         // GET: /Cidade/Details/5
 
+
+        [CustomAuthorize]
         public ActionResult Details(int id)
         {
             return View(cidadeRepository.BuscarPorID(id));
@@ -35,6 +40,7 @@ namespace WebMVC.Controllers
         //
         // GET: /Cidade/Create
 
+        [CustomAuthorize]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +50,7 @@ namespace WebMVC.Controllers
         // POST: /Cidade/Create
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Create(CidadeModel model)
         {
             if (ModelState.IsValid)
@@ -58,6 +65,8 @@ namespace WebMVC.Controllers
         //
         // GET: /Cidade/Edit/5
 
+
+        [CustomAuthorize]
         public ActionResult Edit(int id)
         {
             CidadeModel cidade = cidadeRepository.BuscarPorID(id);
@@ -70,6 +79,7 @@ namespace WebMVC.Controllers
         // POST: /Cidade/Edit/5
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Edit(CidadeModel model)
         {
             cidadeRepository.EditarItem(model);
@@ -79,6 +89,7 @@ namespace WebMVC.Controllers
         //
         // GET: /Cidade/Delete/5
 
+        [CustomAuthorize]
         public ActionResult Delete(int id)
         {
             CidadeModel cidade = cidadeRepository.BuscarPorID(id);
@@ -91,6 +102,7 @@ namespace WebMVC.Controllers
         // POST: /Cidade/Delete/5
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Delete(CidadeModel model)
         {
             cidadeRepository.ExcluirItem(model);

@@ -1,0 +1,5 @@
+D:\Estudo\MVCDSolutions\MvcApplication1\Web.Comum\bin\Debug\Web.Comum.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\Web.Comum\bin\Debug\Web.Comum.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\Web.Comum\obj\Debug\Web.Comum.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\Web.Comum\obj\Debug\Web.Comum.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\Web.Comum\obj\Debug\Web.Comum.csprojResolveAssemblyReference.cache

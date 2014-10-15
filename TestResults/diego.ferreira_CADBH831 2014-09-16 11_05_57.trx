@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="b4edb3ac-0d4f-4533-b875-9714e290fd5f" name="diego.ferreira@CADBH831 2014-09-16 11:05:57" runUser="CAD\diego.ferreira" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="cd8ea72a-3d1f-4eb7-a511-9bea12f76dba">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="diego.ferreira_CADBH831 2014-09-16 11_05_57">
+      <DeploymentItem filename="D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\bin\Debug\Dominio.Entidades.dll" />
+      <DeploymentItem filename="D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Dados.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-09-16T11:05:57.5076096-03:00" queuing="2014-09-16T11:05:58.5346096-03:00" start="2014-09-16T11:05:58.6376096-03:00" finish="2014-09-16T11:06:56.6136096-03:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="CADBH831" outcome="Error" timestamp="2014-09-16T11:06:56.6126096-03:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestMethod1" storage="d:\estudo\mvcdsolutions\mvcapplication1\testdados\bin\debug\testdados.dll" id="5bbb4fef-6f3d-115c-2a43-871856d3b60a">
+      <Execution id="936f8bc2-3095-4daa-8449-1b9fde8cab8a" />
+      <TestMethod codeBase="D:/Estudo/MVCDSolutions/MvcApplication1/TestDados/bin/Debug/TestDados.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestDados.UnitTest1, TestDados, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="5bbb4fef-6f3d-115c-2a43-871856d3b60a" executionId="936f8bc2-3095-4daa-8449-1b9fde8cab8a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="936f8bc2-3095-4daa-8449-1b9fde8cab8a" testId="5bbb4fef-6f3d-115c-2a43-871856d3b60a" testName="TestMethod1" computerName="CADBH831" duration="00:00:57.8760000" startTime="2014-09-16T11:05:58.7376096-03:00" endTime="2014-09-16T11:06:56.6136096-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="936f8bc2-3095-4daa-8449-1b9fde8cab8a">
+    </UnitTestResult>
+  </Results>
+</TestRun>

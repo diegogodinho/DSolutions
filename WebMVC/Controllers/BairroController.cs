@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using WebMVC.Models;
 using WebMVC.Views.Shared;
 using System.Configuration;
+using Web.Comum.Attributes;
+using Dados.Repositorio;
 
 namespace WebMVC.Controllers
 {
@@ -14,21 +16,22 @@ namespace WebMVC.Controllers
         //
         // GET: /Bairro/
 
-        private BairroRepository bairroRepository;
+        private BairroRepositorio bairroRepository;
         private CidadeRepository cidadeRepository;
         public BairroController()
         {
-            bairroRepository = new BairroRepository();
+            bairroRepository = new BairroRepositorio();
             cidadeRepository = new CidadeRepository();
         }
 
-
+        [CustomAuthorize]
         public ActionResult Index(int? page)
         {
             return View(new PaginatedData<BairroModel>(bairroRepository.BuscarTodos().AsQueryable(), page ?? 0, Int32.Parse(ConfigurationManager.AppSettings["QuantidadeRegistroPorPagina"])));
+            
         }
 
-
+        [CustomAuthorize]
         public ActionResult Cidade(int id, int? page)
         {
             List<BairroModel> models = bairroRepository.BuscarTodosDaCidade(id);
@@ -41,7 +44,7 @@ namespace WebMVC.Controllers
 
         //
         // GET: /Bairro/Details/5
-
+        [CustomAuthorize]
         public ActionResult Details(int id)
         {
             return View(bairroRepository.BuscarPorID(id));
@@ -50,6 +53,7 @@ namespace WebMVC.Controllers
         //
         // GET: /Bairro/Create
 
+        [CustomAuthorize]
         public ActionResult Create()
         {
             BairroModel retorno = new BairroModel();
@@ -61,6 +65,7 @@ namespace WebMVC.Controllers
         // POST: /Bairro/Create
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Create(FormCollection collection)
         {
             if (ModelState.IsValid)
@@ -78,7 +83,8 @@ namespace WebMVC.Controllers
 
         //
         // GET: /Bairro/Edit/5
-
+        
+        [CustomAuthorize]
         public ActionResult Edit(int id)
         {
             BairroModel retorno = bairroRepository.BuscarPorID(id);
@@ -119,7 +125,7 @@ namespace WebMVC.Controllers
 
         //
         // GET: /Bairro/Delete/5
-
+        [CustomAuthorize]
         public ActionResult Delete(int id)
         {
             return View(bairroRepository.BuscarPorID(id));
@@ -129,6 +135,7 @@ namespace WebMVC.Controllers
         // POST: /Bairro/Delete/5
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
             if (ModelState.IsValid)
@@ -141,7 +148,7 @@ namespace WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
-
+        
         public ActionResult getBairros(int id)
         {
             List<SelectListItem> bairros = new List<SelectListItem>() { new SelectListItem() { Text = "Selecione...", Value = "selecione", Selected = true } };

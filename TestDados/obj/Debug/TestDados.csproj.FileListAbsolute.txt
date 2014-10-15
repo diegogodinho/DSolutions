@@ -1,0 +1,12 @@
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\TestDados.dll.config
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\TestDados.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\TestDados.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\Dados.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\Dominio.Entidades.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\Web.Comum.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\Dados.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\Dominio.Entidades.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\bin\Debug\Web.Comum.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\obj\Debug\TestDados.csprojResolveAssemblyReference.cache
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\obj\Debug\TestDados.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\TestDados\obj\Debug\TestDados.pdb

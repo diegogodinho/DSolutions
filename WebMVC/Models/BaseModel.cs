@@ -14,52 +14,29 @@ namespace WebMVC.Models
         [DataType(DataType.Text)]
         [DisplayName("ID")]
         [Key]
-        public int ID { get; set; }
+        public int ID { get; set; }        
+       
+       
 
-
-
-        public static TDestino AdaptarTipos<TOrigem, TDestino>(TOrigem objetoOrigem)
-           where TDestino : class,new()
-        {
-            TDestino objetoDeDestino = new TDestino();
-            PropertyInfo[] propriedadesDeOrigem = objetoOrigem.GetType().GetProperties();
-            PropertyInfo[] propriedadesDeDestino = objetoDeDestino.GetType().GetProperties();
-            foreach (PropertyInfo propriedadeDeOrigem in propriedadesDeOrigem)
-            {
-                foreach (PropertyInfo propriedadeDeDestino in propriedadesDeDestino)
-                {
-                    if (propriedadeDeOrigem.Name.ToUpper() == propriedadeDeDestino.Name.ToUpper())
-                    {
-                        if (propriedadeDeDestino.CanWrite)
-                        {
-                            propriedadeDeDestino.SetValue(objetoDeDestino, propriedadeDeOrigem.GetValue(objetoOrigem, null), null);
-                        }
-                        break;
-                    }
-                }
-            }
-            return objetoDeDestino;
-        }
-
-        public static void AdaptarTipos<TOrigem, TDestino>(TOrigem objetoOrigem,ref TDestino objetoDestino)
-          where TDestino : class,new()
-        {            
-            PropertyInfo[] propriedadesDeOrigem = objetoOrigem.GetType().GetProperties();
-            PropertyInfo[] propriedadesDeDestino = objetoDestino.GetType().GetProperties();
-            foreach (PropertyInfo propriedadeDeOrigem in propriedadesDeOrigem)
-            {
-                foreach (PropertyInfo propriedadeDeDestino in propriedadesDeDestino)
-                {
-                    if (propriedadeDeOrigem.Name.ToUpper() == propriedadeDeDestino.Name.ToUpper())
-                    {
-                        if (propriedadeDeDestino.CanWrite)
-                        {
-                            propriedadeDeDestino.SetValue(objetoDestino, propriedadeDeOrigem.GetValue(objetoOrigem, null), null);
-                        }
-                        break;
-                    }
-                }
-            }            
-        }
+        //public static TDestino PreencherValores<TOrigem, TDestino>(TOrigem objetoOrigem, TDestino objetoDestino)          
+        //{
+        //    PropertyInfo[] propriedadesDeOrigem = objetoOrigem.GetType().GetProperties();
+        //    PropertyInfo[] propriedadesDeDestino = objetoDestino.GetType().GetProperties();
+        //    foreach (PropertyInfo propriedadeDeOrigem in propriedadesDeOrigem)
+        //    {
+        //        foreach (PropertyInfo propriedadeDeDestino in propriedadesDeDestino)
+        //        {
+        //            if (propriedadeDeOrigem.Name.ToUpper() == propriedadeDeDestino.Name.ToUpper())
+        //            {
+        //                if (propriedadeDeDestino.CanWrite)
+        //                {
+        //                    propriedadeDeDestino.SetValue(objetoDestino, propriedadeDeOrigem.GetValue(objetoOrigem, null), null);
+        //                }
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return objetoDestino;
+        //}
     }
 }

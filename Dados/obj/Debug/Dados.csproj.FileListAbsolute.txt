@@ -7,6 +7,10 @@ D:\Estudo\RestAngularEntityFramework\MvcApplication1\Dados\obj\Debug\Dados.cspro
 D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Dados.dll.config
 D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Dados.dll
 D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Dados.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Dominio.Entidades.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Web.Comum.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Dominio.Entidades.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\Dados\bin\Debug\Web.Comum.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\Dados\obj\Debug\Dados.csprojResolveAssemblyReference.cache
 D:\Estudo\MVCDSolutions\MvcApplication1\Dados\obj\Debug\Dados.dll
 D:\Estudo\MVCDSolutions\MvcApplication1\Dados\obj\Debug\Dados.pdb
-D:\Estudo\MVCDSolutions\MvcApplication1\Dados\obj\Debug\Dados.csprojResolveAssemblyReference.cache

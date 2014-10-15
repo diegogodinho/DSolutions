@@ -6,16 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">    
-    
+    <meta name="author" content="">
     <script src="../../Scripts/jquery2.1.js" type="text/javascript"></script>
     <script src="../../js/Util.js" type="text/javascript"></script>
     <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../../css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link href="../../css/sb-admin.css" rel="stylesheet" type="text/css" />    
+    <link href="../../css/sb-admin.css" rel="stylesheet" type="text/css" />
     <script src="../../js/jquery.iframe-transport.js" type="text/javascript"></script>
     <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-    
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
@@ -38,7 +36,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li><a href="\HomeAdmin/"><i class="fa fa-dashboard"></i> Home</a></li>
+             <li><a href="\HomeAdmin/"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="\Usuario/"><i class="fa fa-font"></i> Usuarios</a></li>
             <li><a href="\Grupo/"><i class="fa fa-bar-chart-o"></i> Grupos</a></li>
             <li><a href="\Cidade/"><i class="fa fa-table"></i> Cidades</a></li>

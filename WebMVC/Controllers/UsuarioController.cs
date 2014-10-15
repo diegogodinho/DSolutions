@@ -8,11 +8,14 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using WebMVC.Models;
-using WebMVC.Authentication;
+
 using System.Web.Script.Serialization;
-using WebMVC.Validators;
-using WebMVC.Attributes;
+
 using System.IO;
+using Web.Comum.Authentication;
+using Web.Comum.Attributes;
+using Dominio.Entidades;
+using Dados.Repositorio;
 
 namespace WebMVC.Controllers
 {
@@ -21,12 +24,12 @@ namespace WebMVC.Controllers
     public class UsuarioController : Controller
     {
 
-        private UsuarioRepository usuarioRepository;
-        private GrupoRepository grupoRepository;
+        private UsuarioRepositorio usuarioRepository;
+        private GrupoRepositorio grupoRepository;
         public UsuarioController()
         {
-            usuarioRepository = new UsuarioRepository();
-            grupoRepository = new GrupoRepository();
+            usuarioRepository = new UsuarioRepositorio();
+            grupoRepository = new GrupoRepositorio();
 
         }
         public ActionResult LogOn()
@@ -62,7 +65,8 @@ namespace WebMVC.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "O nome do usuário ou senha são inválidos. Tente novamente");
+                    return new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Usuario", action = "LoginEspecifico", message = "O nome do usuário ou senha são inválidos. Tente novamente" }));
+                    //ModelState.AddModelError("", "O nome do usuário ou senha são inválidos. Tente novamente");
                 }
             }
 
@@ -167,6 +171,7 @@ namespace WebMVC.Controllers
 
 
         #region Index
+        [CustomAuthorize]
         public ActionResult Index()
         {
             return View(usuarioRepository.BuscarTodos());
@@ -174,20 +179,23 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Create
-        [CustomAuthorize]
+        [CustomAuthorize(Roles = "Administradores")]
         public ActionResult Create()
         {
             UsuarioModel usuario = new UsuarioModel();
             usuario.GruposDisponiveis = new List<SelectListItem>();
             usuario.GruposDisponiveis.Add(new SelectListItem() { Selected = true, Text = "Selecione...", Value = "0" });
+
+
             grupoRepository.BuscarTodos().ForEach(grupo =>
                 {
                     usuario.GruposDisponiveis.Add(new SelectListItem() { Selected = false, Text = grupo.NomeGrupo, Value = grupo.ID.ToString() });
                 });
-            usuario.DataNascimento = DateTime.Now;            
+            usuario.DataNascimento = DateTime.Now;
             return View(usuario);
         }
 
+        [CustomAuthorize]
         [HttpPost]
         public ActionResult Create(UsuarioModel model)
         {
@@ -208,11 +216,11 @@ namespace WebMVC.Controllers
             else
             {
                 model.GruposDisponiveis = new List<SelectListItem>();
-                model.GruposDisponiveis.Add(new SelectListItem() { Selected = true, Text = "Selecione...", Value = "0" });
-                grupoRepository.BuscarTodos().ForEach(grupo =>
-                {
-                    model.GruposDisponiveis.Add(new SelectListItem() { Selected = false, Text = grupo.NomeGrupo, Value = grupo.ID.ToString() });
-                });
+                //model.GruposDisponiveis.Add(new SelectListItem() { Selected = true, Text = "Selecione...", Value = "0" });
+                //grupoRepository.BuscarTodos().ForEach(grupo =>
+                //{
+                //    model.GruposDisponiveis.Add(new SelectListItem() { Selected = false, Text = grupo.NomeGrupo, Value = grupo.ID.ToString() });
+                //});
                 return View(model);
             }
 
@@ -220,21 +228,26 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Edit
+        [CustomAuthorize]
         public ActionResult Edit(int id)
         {
             UsuarioModel usuario = usuarioRepository.BuscarPorID(id);
             if (usuario != null)
             {
                 usuario.GruposDisponiveis = new List<SelectListItem>();
-                usuario.GruposDisponiveis.Add(new SelectListItem() { Selected = true, Text = usuario.Grupo.NomeGrupo, Value = usuario.idGrupo.ToString() });
+                //usuario.GruposDisponiveis.Add(new SelectListItem() { Selected = true, Text = usuario.Grupo.NomeGrupo, Value = usuario.idGrupo.ToString() });
 
-                grupoRepository.BuscarTodos().ForEach(r =>
-                    {
-                        if (r.ID != usuario.Grupo.ID)
-                        {
-                            usuario.GruposDisponiveis.Add(new SelectListItem() { Selected = false, Text = r.NomeGrupo, Value = r.ID.ToString() });
-                        }
-                    });
+                if (usuario.Foto != null)
+                    usuario.FotoString = System.Convert.ToBase64String(usuario.Foto, 0, usuario.Foto.Length);
+
+
+                //grupoRepository.BuscarTodos().ForEach(r =>
+                //    {
+                //        if (r.ID != usuario.Grupo.ID)
+                //        {
+                //            usuario.GruposDisponiveis.Add(new SelectListItem() { Selected = false, Text = r.NomeGrupo, Value = r.ID.ToString() });
+                //        }
+                //    });
 
                 return View(usuario);
             }
@@ -242,6 +255,7 @@ namespace WebMVC.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorize]
         public ActionResult Edit(UsuarioModel model)
         {
             ModelState.Remove("Senha");
@@ -283,6 +297,7 @@ namespace WebMVC.Controllers
         #endregion
 
         #region Details
+        [CustomAuthorize]
         public ActionResult Details(int id)
         {
             UsuarioModel usuario = usuarioRepository.BuscarPorID(id);

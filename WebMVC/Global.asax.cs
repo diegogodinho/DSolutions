@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.Script.Serialization;
-using WebMVC.Authentication;
+using Web.Comum.Authentication;
 
 namespace WebMVC
 {

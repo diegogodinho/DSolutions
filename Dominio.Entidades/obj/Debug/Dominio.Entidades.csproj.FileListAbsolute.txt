@@ -1,0 +1,7 @@
+D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\bin\Debug\Dominio.Entidades.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\bin\Debug\Dominio.Entidades.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\bin\Debug\Web.Comum.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\bin\Debug\Web.Comum.pdb
+D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\obj\Debug\Dominio.Entidades.csprojResolveAssemblyReference.cache
+D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\obj\Debug\Dominio.Entidades.dll
+D:\Estudo\MVCDSolutions\MvcApplication1\Dominio.Entidades\obj\Debug\Dominio.Entidades.pdb
